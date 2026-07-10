@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-soundorp-bg: #0a0a0a;
+  --color-soundorp-panel: #141414;
+  --color-soundorp-card: #181818;
+  --color-soundorp-border: #262626;
+  --color-soundorp-border-card: #2c2c2c;
+  --color-soundorp-text: #e8e6e1;
+  --color-soundorp-muted: #8a8a85;
+  --color-soundorp-red: #ee1d1d;
+
+  /* Compatibility engine severity colors — deliberately distinct from
+     soundorp-red so a critical result never reads as brand chrome. */
+  --color-status-pass: #22c55e;
+  --color-status-pass-bg: #0c1a12;
+  --color-status-pass-border: #1f6b3f;
+  --color-status-pass-text: #4ade80;
+
+  --color-status-warning: #f59e0b;
+  --color-status-warning-bg: #1f1608;
+  --color-status-warning-border: #92400e;
+  --color-status-warning-text: #fbbf24;
+
+  --color-status-critical: #ef4444;
+  --color-status-critical-bg: #1f0a0a;
+  --color-status-critical-border: #7f1d1d;
+  --color-status-critical-text: #f87171;
+
+  --font-orbitron: "Orbitron", sans-serif;
+}
+
+html,
+body {
+  background-color: var(--color-soundorp-bg);
+  color: var(--color-soundorp-text);
+}
