@@ -86,10 +86,12 @@ export function ChainCanvas({ devices, connections }: ChainCanvasProps) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-soundorp-border bg-soundorp-panel p-6">
+    <div
+      className="overflow-x-auto rounded-xl border border-soundorp-border bg-soundorp-panel p-6 [mask-image:linear-gradient(to_right,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,black_92%,transparent_100%)]"
+    >
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={slots.map((s) => s.slotId)} strategy={horizontalListSortingStrategy}>
-          <div className="flex items-center gap-0">
+          <div className="flex w-max items-center gap-0">
             {slots.map((slot, i) => (
               <div key={slot.slotId} className="flex items-center">
                 <SortableDeviceNode slot={slot} index={i} onRemove={removeDevice} />

@@ -14,6 +14,7 @@ export function Toolbar() {
   const [savedChainsOpen, setSavedChainsOpen] = useState(false)
   const [shareConfirmation, setShareConfirmation] = useState(false)
   const [shareFallbackUrl, setShareFallbackUrl] = useState<string | null>(null)
+  const [justSaved, setJustSaved] = useState(false)
   const fallbackInputRef = useRef<HTMLInputElement>(null)
 
   async function handleShare() {
@@ -33,16 +34,27 @@ export function Toolbar() {
     }
   }
 
+  function handleSave() {
+    saveCurrentChain()
+    // saveCurrentChain is a synchronous zustand set(), so the store already
+    // reflects the outcome here — only show success when it wasn't rejected
+    // by the free-tier cap (that case has its own error popover).
+    if (useChainStore.getState().saveError === null) {
+      setJustSaved(true)
+      setTimeout(() => setJustSaved(false), 2000)
+    }
+  }
+
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-soundorp-border bg-soundorp-panel px-4 py-3">
+    <div className="flex flex-col gap-3 rounded-xl border border-soundorp-border bg-soundorp-panel px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
       <input
         type="text"
         value={currentChain.name}
         onChange={(e) => renameCurrentChain(e.target.value)}
-        className="min-w-0 flex-1 rounded-md border border-transparent px-2 py-1 text-sm font-semibold text-soundorp-text outline-none hover:border-soundorp-border focus:border-soundorp-red"
+        className="w-full min-w-0 rounded-md border border-transparent px-2 py-1 text-sm font-semibold text-soundorp-text outline-none hover:border-soundorp-border focus:border-soundorp-red sm:flex-1"
       />
 
-      <div className="flex shrink-0 items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={newChain}
@@ -53,10 +65,14 @@ export function Toolbar() {
         <div className="relative">
           <button
             type="button"
-            onClick={saveCurrentChain}
-            className="rounded-md border border-soundorp-border px-3 py-1.5 text-sm font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+            onClick={handleSave}
+            className={
+              justSaved
+                ? 'rounded-md border border-green-600 bg-green-900/40 px-3 py-1.5 text-sm font-medium text-green-400'
+                : 'rounded-md border border-soundorp-border px-3 py-1.5 text-sm font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text'
+            }
           >
-            Save
+            {justSaved ? 'Saved ✓' : 'Save'}
           </button>
           {saveError && (
             <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-status-warning-border bg-status-warning-bg p-3 shadow-lg">
@@ -108,7 +124,11 @@ export function Toolbar() {
           <button
             type="button"
             onClick={() => setSavedChainsOpen((open) => !open)}
-            className="rounded-md border border-soundorp-border px-3 py-1.5 text-sm font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+            className={
+              savedChainsOpen
+                ? 'rounded-md border border-soundorp-border bg-[#2a2a2a] px-3 py-1.5 text-sm font-medium text-soundorp-text'
+                : 'rounded-md border border-soundorp-border px-3 py-1.5 text-sm font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text'
+            }
           >
             Saved chains
           </button>
