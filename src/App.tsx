@@ -4,6 +4,7 @@ import { evaluateChain } from './engine/evaluateChain'
 import { useChainStore } from './store/useChainStore'
 import { decodeShareParam } from './lib/share'
 import { ChainCanvas } from './components/ChainCanvas/ChainCanvas'
+import { SignalFlowHint } from './components/ChainCanvas/SignalFlowHint'
 import { CompatibilityReport } from './components/CompatibilityReport/CompatibilityReport'
 import { DeviceLibrary } from './components/DeviceLibrary/DeviceLibrary'
 import { Toolbar } from './components/Toolbar/Toolbar'
@@ -67,6 +68,7 @@ function App() {
           <DeviceLibrary />
 
           <div className="flex flex-1 flex-col gap-8">
+            <SignalFlowHint devices={devices} />
             <ChainCanvas devices={devices} connections={connections} />
 
             <section>
