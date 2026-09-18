@@ -734,5 +734,3146 @@
     "specs": {
       "inputConnectors": ["USB-A", "USB-C", "Thunderbolt"]
     }
+  },
+  {
+    "id": "shure-sm7db",
+    "name": "SM7dB",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 499,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 40
+    }
+  },
+  {
+    "id": "heil-pr40",
+    "name": "PR 40",
+    "brand": "Heil Sound",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 329,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "rode-nt2a",
+    "name": "NT2-A",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "audio-technica-at2035",
+    "name": "AT2035",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 169,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 32
+    }
+  },
+  {
+    "id": "neumann-tlm103",
+    "name": "TLM 103",
+    "brand": "Neumann",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 1299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 20
+    }
+  },
+  {
+    "id": "focusrite-scarlett-4i4-4gen",
+    "name": "Scarlett 4i4 (4th Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 279,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 69,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "focusrite-scarlett-18i20-4gen",
+    "name": "Scarlett 18i20 (4th Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 649,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C", "ADAT", "SPDIF"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 69,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "presonus-studio-24c",
+    "name": "Studio 24c",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 52,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "universal-audio-volt-2",
+    "name": "Volt 2",
+    "brand": "Universal Audio",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 55,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "audient-id4-mkii",
+    "name": "iD4 MkII",
+    "brand": "Audient",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 58,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-umc404hd",
+    "name": "U-Phoria UMC404HD",
+    "brand": "Behringer",
+    "category": "audio_interface",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "universal-audio-4-710d",
+    "name": "4-710d",
+    "brand": "Universal Audio",
+    "category": "preamp",
+    "msrp": 1999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "neve-1073spx",
+    "name": "1073SPX",
+    "brand": "Neve",
+    "category": "preamp",
+    "msrp": 3499,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "api-3124-plus",
+    "name": "3124+",
+    "brand": "API",
+    "category": "preamp",
+    "msrp": 3199,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 75,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "behringer-mic200",
+    "name": "MIC200",
+    "brand": "Behringer",
+    "category": "preamp",
+    "msrp": 79,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-q1202usb",
+    "name": "Xenyx Q1202USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "soundcraft-notepad-12fx",
+    "name": "Notepad-12FX",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 179,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "mackie-mix12fx",
+    "name": "Mix12FX",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 189,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "allen-heath-zed60-14fx",
+    "name": "ZED60-14FX",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "yamaha-mg12xu",
+    "name": "MG12XU",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "kali-audio-lp6",
+    "name": "LP-6",
+    "brand": "Kali Audio",
+    "category": "monitor",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR", "RCA"]
+    }
+  },
+  {
+    "id": "focal-alpha-50-evo",
+    "name": "Alpha 50 Evo",
+    "brand": "Focal",
+    "category": "monitor",
+    "msrp": 279,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "ik-multimedia-iloud-micro",
+    "name": "iLoud Micro Monitor",
+    "brand": "IK Multimedia",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA", "3.5mm"]
+    }
+  },
+  {
+    "id": "genelec-8010a",
+    "name": "8010A",
+    "brand": "Genelec",
+    "category": "monitor",
+    "msrp": 495,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA"]
+    }
+  },
+  {
+    "id": "akg-k240-studio",
+    "name": "K240 Studio",
+    "brand": "AKG",
+    "category": "headphones",
+    "msrp": 69,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "sennheiser-hd25",
+    "name": "HD 25",
+    "brand": "Sennheiser",
+    "category": "headphones",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "beyerdynamic-dt990-pro",
+    "name": "DT 990 Pro",
+    "brand": "Beyerdynamic",
+    "category": "headphones",
+    "msrp": 189,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "presonus-studio-one-7",
+    "name": "Studio One 7 Professional",
+    "brand": "PreSonus",
+    "category": "daw",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "rode-nt1000",
+    "name": "NT1000",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 349,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "akg-c214",
+    "name": "C214",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 449,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "audio-technica-at2050",
+    "name": "AT2050",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 349,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "sennheiser-mk4",
+    "name": "MK 4",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "shure-beta58a",
+    "name": "Beta 58A",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 159,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "electro-voice-re320",
+    "name": "RE320",
+    "brand": "Electro-Voice",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "focusrite-clarett-plus-4pre",
+    "name": "Clarett+ 4Pre",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 649,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["Thunderbolt"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 57,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "presonus-studio-68c",
+    "name": "Studio 68c",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "zoom-uac-2",
+    "name": "UAC-2",
+    "brand": "Zoom",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "native-instruments-komplete-audio-2",
+    "name": "Komplete Audio 2",
+    "brand": "Native Instruments",
+    "category": "audio_interface",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 55,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "rme-babyface-pro-fs",
+    "name": "Babyface Pro FS",
+    "brand": "RME",
+    "category": "audio_interface",
+    "msrp": 899,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "ssl-2",
+    "name": "SSL 2",
+    "brand": "Solid State Logic",
+    "category": "audio_interface",
+    "msrp": 229,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 62,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "warm-audio-wa273",
+    "name": "WA273",
+    "brand": "Warm Audio",
+    "category": "preamp",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "great-river-mp2nv",
+    "name": "MP2-NV",
+    "brand": "Great River",
+    "category": "preamp",
+    "msrp": 2495,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 70,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "focusrite-isa-one",
+    "name": "ISA One",
+    "brand": "Focusrite",
+    "category": "preamp",
+    "msrp": 899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "grace-design-m101",
+    "name": "m101",
+    "brand": "Grace Design",
+    "category": "preamp",
+    "msrp": 895,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "art-pro-mpa-ii",
+    "name": "Pro MPA II",
+    "brand": "ART",
+    "category": "preamp",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-xenyx-x1204usb",
+    "name": "Xenyx X1204USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 179,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "mackie-profx6v3",
+    "name": "ProFX6v3",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 179,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "soundcraft-signature-12mtk",
+    "name": "Signature 12MTK",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "allen-heath-zedi8",
+    "name": "ZEDi-8",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "yamaha-hs8",
+    "name": "HS8",
+    "brand": "Yamaha",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "krk-rokit-8-g4",
+    "name": "Rokit 8 G4",
+    "brand": "KRK",
+    "category": "monitor",
+    "msrp": 279,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "mackie-cr5-x",
+    "name": "CR5-X",
+    "brand": "Mackie",
+    "category": "monitor",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA", "3.5mm"]
+    }
+  },
+  {
+    "id": "neumann-kh120",
+    "name": "KH 120",
+    "brand": "Neumann",
+    "category": "monitor",
+    "msrp": 1199,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "audio-technica-ath-m40x",
+    "name": "ATH-M40x",
+    "brand": "Audio-Technica",
+    "category": "headphones",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "beyerdynamic-dt1990-pro",
+    "name": "DT 1990 Pro",
+    "brand": "Beyerdynamic",
+    "category": "headphones",
+    "msrp": 599,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "fl-studio-producer",
+    "name": "FL Studio Producer Edition",
+    "brand": "Image-Line",
+    "category": "daw",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "shure-sm48",
+    "name": "SM48",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 109,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "sennheiser-e835",
+    "name": "e835",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 99,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "akg-c314",
+    "name": "C314",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "audio-technica-at4050",
+    "name": "AT4050",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "lewitt-lct440-pure",
+    "name": "LCT 440 Pure",
+    "brand": "Lewitt",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "shure-ksm8",
+    "name": "KSM8",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 999,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "apogee-duet-3",
+    "name": "Duet 3",
+    "brand": "Apogee",
+    "category": "audio_interface",
+    "msrp": 695,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 75,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "arturia-minifuse-2",
+    "name": "MiniFuse 2",
+    "brand": "Arturia",
+    "category": "audio_interface",
+    "msrp": 119,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "ik-multimedia-axe-io",
+    "name": "AXE I/O",
+    "brand": "IK Multimedia",
+    "category": "audio_interface",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-umc1820",
+    "name": "U-Phoria UMC1820",
+    "brand": "Behringer",
+    "category": "audio_interface",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A", "ADAT"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "presonus-quantum-2626",
+    "name": "Quantum 2626",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["Thunderbolt"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "universal-audio-la610-mkii",
+    "name": "LA-610 MkII",
+    "brand": "Universal Audio",
+    "category": "preamp",
+    "msrp": 1899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "chandler-limited-tg2",
+    "name": "TG2",
+    "brand": "Chandler Limited",
+    "category": "preamp",
+    "msrp": 1799,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "millennia-stt1",
+    "name": "STT-1",
+    "brand": "Millennia",
+    "category": "preamp",
+    "msrp": 2795,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "presonus-adl700",
+    "name": "ADL 700",
+    "brand": "PreSonus",
+    "category": "preamp",
+    "msrp": 899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-1002fx",
+    "name": "Xenyx 1002FX",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "mackie-1202vlz4",
+    "name": "1202VLZ4",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 259,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "soundcraft-efx8",
+    "name": "EFX8",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "yamaha-mg16xu",
+    "name": "MG16XU",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 10
+    }
+  },
+  {
+    "id": "alto-professional-zmx122fx",
+    "name": "ZMX122FX",
+    "brand": "Alto Professional",
+    "category": "mixer",
+    "msrp": 89,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "jbl-306p-mkii",
+    "name": "306P MkII",
+    "brand": "JBL",
+    "category": "monitor",
+    "msrp": 219,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "behringer-truth-b3031a",
+    "name": "Truth B3031A",
+    "brand": "Behringer",
+    "category": "monitor",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "eve-audio-sc205",
+    "name": "SC205",
+    "brand": "Eve Audio",
+    "category": "monitor",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "avantone-mixcube",
+    "name": "Mixcube (Active)",
+    "brand": "Avantone",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA"]
+    }
+  },
+  {
+    "id": "sennheiser-hd650",
+    "name": "HD 650",
+    "brand": "Sennheiser",
+    "category": "headphones",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "akg-k712-pro",
+    "name": "K712 Pro",
+    "brand": "AKG",
+    "category": "headphones",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "sony-mdr-m1",
+    "name": "MDR-M1",
+    "brand": "Sony",
+    "category": "headphones",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "cakewalk-by-bandlab",
+    "name": "Cakewalk by BandLab",
+    "brand": "BandLab",
+    "category": "daw",
+    "msrp": 0,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "audio-technica-at4033a",
+    "name": "AT4033a",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "audio-technica-at4047",
+    "name": "AT4047",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "neumann-tlm102",
+    "name": "TLM 102",
+    "brand": "Neumann",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 749,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "neumann-km184",
+    "name": "KM 184",
+    "brand": "Neumann",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 999,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "akg-c451b",
+    "name": "C451 B",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 499,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "electro-voice-re27nd",
+    "name": "RE27 N/D",
+    "brand": "Electro-Voice",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 599,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "sennheiser-e845",
+    "name": "e845",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 129,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "motu-m4",
+    "name": "M4",
+    "brand": "MOTU",
+    "category": "audio_interface",
+    "msrp": 269,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "motu-8a",
+    "name": "8A",
+    "brand": "MOTU",
+    "category": "audio_interface",
+    "msrp": 695,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C", "Thunderbolt", "ADAT"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "focusrite-scarlett-2i2-3gen",
+    "name": "Scarlett 2i2 (3rd Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 179,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 56,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-umc22",
+    "name": "U-Phoria UMC22",
+    "brand": "Behringer",
+    "category": "audio_interface",
+    "msrp": 49,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "roland-rubix22",
+    "name": "Rubix22",
+    "brand": "Roland",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "warm-audio-wa412",
+    "name": "WA412",
+    "brand": "Warm Audio",
+    "category": "preamp",
+    "msrp": 899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 70,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "spl-crimson-3",
+    "name": "Crimson 3",
+    "brand": "SPL",
+    "category": "preamp",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "aphex-207d",
+    "name": "207D",
+    "brand": "Aphex",
+    "category": "preamp",
+    "msrp": 599,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "vintech-x73i",
+    "name": "X73i",
+    "brand": "Vintech",
+    "category": "preamp",
+    "msrp": 1699,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-502",
+    "name": "Xenyx 502",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 49,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "mackie-onyx8",
+    "name": "Onyx8",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "soundcraft-ui12",
+    "name": "Ui12",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 12
+    }
+  },
+  {
+    "id": "allen-heath-sq5",
+    "name": "SQ-5",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 2999,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "genelec-8030c",
+    "name": "8030C",
+    "brand": "Genelec",
+    "category": "monitor",
+    "msrp": 795,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "focal-shape-65",
+    "name": "Shape 65",
+    "brand": "Focal",
+    "category": "monitor",
+    "msrp": 799,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "adam-audio-a7v",
+    "name": "A7V",
+    "brand": "Adam Audio",
+    "category": "monitor",
+    "msrp": 549,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR", "RCA"]
+    }
+  },
+  {
+    "id": "yamaha-hs7",
+    "name": "HS7",
+    "brand": "Yamaha",
+    "category": "monitor",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "beyerdynamic-dt880-pro",
+    "name": "DT 880 Pro",
+    "brand": "Beyerdynamic",
+    "category": "headphones",
+    "msrp": 229,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "audio-technica-ath-m30x",
+    "name": "ATH-M30x",
+    "brand": "Audio-Technica",
+    "category": "headphones",
+    "msrp": 79,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "shure-srh440",
+    "name": "SRH440",
+    "brand": "Shure",
+    "category": "headphones",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "bitwig-studio",
+    "name": "Bitwig Studio",
+    "brand": "Bitwig",
+    "category": "daw",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "rode-nt-usb-mini",
+    "name": "NT-USB Mini",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 99,
+    "specs": {
+      "outputConnectors": ["USB-C"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false
+    }
+  },
+  {
+    "id": "audio-technica-at2040",
+    "name": "AT2040",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 99,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "se-electronics-se2200",
+    "name": "sE2200",
+    "brand": "sE Electronics",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 279,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "universal-audio-sd1",
+    "name": "SD-1",
+    "brand": "Universal Audio",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "telefunken-m80",
+    "name": "M80",
+    "brand": "Telefunken",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 249,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 52
+    }
+  },
+  {
+    "id": "warm-audio-wa87r2",
+    "name": "WA-87 R2",
+    "brand": "Warm Audio",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 599,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "slate-digital-ml1",
+    "name": "ML-1",
+    "brand": "Slate Digital",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 799,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "focusrite-vocaster-one",
+    "name": "Vocaster One",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "focusrite-vocaster-two",
+    "name": "Vocaster Two",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 259,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "tc-helicon-goxlr",
+    "name": "GoXLR",
+    "brand": "TC-Helicon",
+    "category": "audio_interface",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "universal-audio-apollo-solo",
+    "name": "Apollo Solo",
+    "brand": "Universal Audio",
+    "category": "audio_interface",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["Thunderbolt", "USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "antelope-zen-go-synergy-core",
+    "name": "Zen Go Synergy Core",
+    "brand": "Antelope Audio",
+    "category": "audio_interface",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "tonelux-tilt",
+    "name": "Tilt",
+    "brand": "Tonelux",
+    "category": "preamp",
+    "msrp": 1299,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "rupert-neve-shelford-channel",
+    "name": "Shelford Channel",
+    "brand": "Rupert Neve Designs",
+    "category": "preamp",
+    "msrp": 2999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "focusrite-red-1",
+    "name": "Red 1",
+    "brand": "Focusrite",
+    "category": "preamp",
+    "msrp": 3499,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 70,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-802",
+    "name": "Xenyx 802",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 69,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "mackie-profx8v3",
+    "name": "ProFX8v3",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 229,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "yamaha-ag06-mkii",
+    "name": "AG06 MkII",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-xenyx-qx1002usb",
+    "name": "Xenyx QX1002USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 119,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "ik-multimedia-iloud-mtm",
+    "name": "iLoud MTM",
+    "brand": "IK Multimedia",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA"]
+    }
+  },
+  {
+    "id": "presonus-eris-e3-5",
+    "name": "Eris E3.5",
+    "brand": "PreSonus",
+    "category": "monitor",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA", "3.5mm"]
+    }
+  },
+  {
+    "id": "m-audio-bx5-d3",
+    "name": "BX5 D3",
+    "brand": "M-Audio",
+    "category": "monitor",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA"]
+    }
+  },
+  {
+    "id": "fluid-audio-fx8",
+    "name": "FX8",
+    "brand": "Fluid Audio",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "audio-technica-ath-m20x",
+    "name": "ATH-M20x",
+    "brand": "Audio-Technica",
+    "category": "headphones",
+    "msrp": 49,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "sennheiser-hd599",
+    "name": "HD 599",
+    "brand": "Sennheiser",
+    "category": "headphones",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "beyerdynamic-dt250",
+    "name": "DT 250",
+    "brand": "Beyerdynamic",
+    "category": "headphones",
+    "msrp": 179,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "cubase-pro-14",
+    "name": "Cubase Pro 14",
+    "brand": "Steinberg",
+    "category": "daw",
+    "msrp": 579,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "shure-super55",
+    "name": "Super 55",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "sennheiser-e865",
+    "name": "e865",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 349,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 35
+    }
+  },
+  {
+    "id": "audio-technica-ae3000",
+    "name": "AE3000",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "neumann-tlm49",
+    "name": "TLM 49",
+    "brand": "Neumann",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 1399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "akg-d5",
+    "name": "D5",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 99,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "shure-mv7-plus",
+    "name": "MV7+",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 279,
+    "specs": {
+      "outputConnectors": ["XLR", "USB-C"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 45
+    }
+  },
+  {
+    "id": "rode-procaster",
+    "name": "Procaster",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 229,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 60
+    }
+  },
+  {
+    "id": "focusrite-scarlett-solo-3gen",
+    "name": "Scarlett Solo (3rd Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 119,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 56,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "presonus-audiobox-itwo",
+    "name": "AudioBox iTwo",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 35,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "zoom-h4essential",
+    "name": "H4essential",
+    "brand": "Zoom",
+    "category": "audio_interface",
+    "msrp": 219,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "tascam-series-208i",
+    "name": "Series 208i",
+    "brand": "Tascam",
+    "category": "audio_interface",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "universal-audio-apollo-x4",
+    "name": "Apollo x4",
+    "brand": "Universal Audio",
+    "category": "audio_interface",
+    "msrp": 1499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["Thunderbolt"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "behringer-um2",
+    "name": "U-Phoria UM2",
+    "brand": "Behringer",
+    "category": "audio_interface",
+    "msrp": 39,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 48,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "audient-mico",
+    "name": "MICO",
+    "brand": "Audient",
+    "category": "preamp",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "heritage-audio-1073",
+    "name": "Heritage 1073",
+    "brand": "Heritage Audio",
+    "category": "preamp",
+    "msrp": 1699,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "jdk-audio-r22",
+    "name": "R22",
+    "brand": "JDK Audio",
+    "category": "preamp",
+    "msrp": 1195,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "fmr-audio-rnp8380",
+    "name": "RNP8380",
+    "brand": "FMR Audio",
+    "category": "preamp",
+    "msrp": 549,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-xenyx-2442fx",
+    "name": "Xenyx 2442FX",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "mackie-dl806",
+    "name": "DL806",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "yamaha-mgp12x",
+    "name": "MGP12X",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 449,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "allen-heath-zed10fx",
+    "name": "ZED-10FX",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "jbl-308p-mkii",
+    "name": "308P MkII",
+    "brand": "JBL",
+    "category": "monitor",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "kali-audio-in8",
+    "name": "IN-8",
+    "brand": "Kali Audio",
+    "category": "monitor",
+    "msrp": 349,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR", "RCA"]
+    }
+  },
+  {
+    "id": "yamaha-msp5-studio",
+    "name": "MSP5 Studio",
+    "brand": "Yamaha",
+    "category": "monitor",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "direct-sound-ex29",
+    "name": "EX-29",
+    "brand": "Direct Sound",
+    "category": "headphones",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "superlux-hd668b",
+    "name": "HD668B",
+    "brand": "Superlux",
+    "category": "headphones",
+    "msrp": 49,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "tracktion-waveform-free",
+    "name": "Waveform Free",
+    "brand": "Tracktion",
+    "category": "daw",
+    "msrp": 0,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "akg-p220",
+    "name": "P220",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 199,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "audio-technica-at2031",
+    "name": "AT2031",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 149,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "rode-m5",
+    "name": "M5",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 219,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 32
+    }
+  },
+  {
+    "id": "shure-sm27",
+    "name": "SM27",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "akg-d7",
+    "name": "D7",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 199,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "mxl-990",
+    "name": "990",
+    "brand": "MXL",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 99,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "focusrite-scarlett-4i4-3gen",
+    "name": "Scarlett 4i4 (3rd Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 219,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 56,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "presonus-studio-26c",
+    "name": "Studio 26c",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "mackie-onyx-producer-2-2",
+    "name": "Onyx Producer 2·2",
+    "brand": "Mackie",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "esi-u22xt",
+    "name": "U22 XT",
+    "brand": "ESI",
+    "category": "audio_interface",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-umc204hd",
+    "name": "U-Phoria UMC204HD",
+    "brand": "Behringer",
+    "category": "audio_interface",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "presonus-dp88",
+    "name": "DP88",
+    "brand": "PreSonus",
+    "category": "preamp",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "ssl-vhd-pre",
+    "name": "VHD Pre",
+    "brand": "Solid State Logic",
+    "category": "preamp",
+    "msrp": 1199,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "universal-audio-6176",
+    "name": "6176",
+    "brand": "Universal Audio",
+    "category": "preamp",
+    "msrp": 1899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-302usb",
+    "name": "Xenyx 302USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 59,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "soundcraft-spirit-folio",
+    "name": "Spirit Folio",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 449,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 6
+    }
+  },
+  {
+    "id": "yamaha-mg20xu",
+    "name": "MG20XU",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 599,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "behringer-b1030a",
+    "name": "B1030A",
+    "brand": "Behringer",
+    "category": "monitor",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR", "RCA"]
+    }
+  },
+  {
+    "id": "alesis-elevate5-mkii",
+    "name": "Elevate 5 MkII",
+    "brand": "Alesis",
+    "category": "monitor",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA", "3.5mm"]
+    }
+  },
+  {
+    "id": "tannoy-reveal-502",
+    "name": "Reveal 502",
+    "brand": "Tannoy",
+    "category": "monitor",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR", "RCA"]
+    }
+  },
+  {
+    "id": "equator-audio-d5",
+    "name": "D5",
+    "brand": "Equator Audio",
+    "category": "monitor",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "status-audio-cb1",
+    "name": "CB-1",
+    "brand": "Status Audio",
+    "category": "headphones",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "philips-shp9500",
+    "name": "SHP9500",
+    "brand": "Philips",
+    "category": "headphones",
+    "msrp": 79,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "ardour",
+    "name": "Ardour",
+    "brand": "Ardour",
+    "category": "daw",
+    "msrp": 60,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "mixcraft-11",
+    "name": "Mixcraft 11",
+    "brand": "Acoustica",
+    "category": "daw",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "audio-technica-at4041",
+    "name": "AT4041",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "rode-nt55",
+    "name": "NT55",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "akg-c1000s",
+    "name": "C1000S",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 299,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "shure-sm86",
+    "name": "SM86",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 259,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 35
+    }
+  },
+  {
+    "id": "sennheiser-e615",
+    "name": "e615",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 179,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "cad-audio-equitek-e100s",
+    "name": "Equitek E100S",
+    "brand": "CAD Audio",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "warm-audio-wa14",
+    "name": "WA-14",
+    "brand": "Warm Audio",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 349,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "presonus-studio-1810c",
+    "name": "Studio 1810c",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "zoom-ams-24",
+    "name": "AMS-24",
+    "brand": "Zoom",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "m-audio-air-192-4",
+    "name": "AIR 192|4",
+    "brand": "M-Audio",
+    "category": "audio_interface",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "m-audio-air-192-6",
+    "name": "AIR 192|6",
+    "brand": "M-Audio",
+    "category": "audio_interface",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 50,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "native-instruments-komplete-audio-6",
+    "name": "Komplete Audio 6",
+    "brand": "Native Instruments",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 55,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "tascam-ixr",
+    "name": "iXR",
+    "brand": "Tascam",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 58,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "api-512c",
+    "name": "512c",
+    "brand": "API",
+    "category": "preamp",
+    "msrp": 899,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 70,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "neve-1084",
+    "name": "1084",
+    "brand": "Neve",
+    "category": "preamp",
+    "msrp": 3999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "true-systems-p-solo",
+    "name": "P-Solo",
+    "brand": "True Systems",
+    "category": "preamp",
+    "msrp": 649,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "ssl-alpha-vhd",
+    "name": "Alpha VHD",
+    "brand": "Solid State Logic",
+    "category": "preamp",
+    "msrp": 799,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "behringer-xenyx-1622usb",
+    "name": "Xenyx 1622USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 10
+    }
+  },
+  {
+    "id": "mackie-1642vlz4",
+    "name": "1642VLZ4",
+    "brand": "Mackie",
+    "category": "mixer",
+    "msrp": 699,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "soundcraft-gb2",
+    "name": "GB2",
+    "brand": "Soundcraft",
+    "category": "mixer",
+    "msrp": 2499,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "allen-heath-qu16",
+    "name": "Qu-16",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 2199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "presonus-sceptre-s6",
+    "name": "Sceptre S6",
+    "brand": "PreSonus",
+    "category": "monitor",
+    "msrp": 599,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "genelec-8331a",
+    "name": "8331A",
+    "brand": "Genelec",
+    "category": "monitor",
+    "msrp": 1799,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "adam-audio-s2v",
+    "name": "S2V",
+    "brand": "Adam Audio",
+    "category": "monitor",
+    "msrp": 1499,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "mackie-hr624",
+    "name": "HR624",
+    "brand": "Mackie",
+    "category": "monitor",
+    "msrp": 599,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "grado-sr80x",
+    "name": "SR80x",
+    "brand": "Grado",
+    "category": "headphones",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "akg-k271-mkii",
+    "name": "K271 MkII",
+    "brand": "AKG",
+    "category": "headphones",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "digital-performer",
+    "name": "Digital Performer",
+    "brand": "MOTU",
+    "category": "daw",
+    "msrp": 499,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
+  },
+  {
+    "id": "shure-beta87a",
+    "name": "Beta 87A",
+    "brand": "Shure",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 259,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 35
+    }
+  },
+  {
+    "id": "rode-ntk",
+    "name": "NTK",
+    "brand": "Rode",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "akg-c3000",
+    "name": "C3000",
+    "brand": "AKG",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 399,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 28
+    }
+  },
+  {
+    "id": "audio-technica-at4053b",
+    "name": "AT4053b",
+    "brand": "Audio-Technica",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "neumann-tlm107",
+    "name": "TLM 107",
+    "brand": "Neumann",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 1699,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 25
+    }
+  },
+  {
+    "id": "sennheiser-mkh416",
+    "name": "MKH 416",
+    "brand": "Sennheiser",
+    "category": "microphone",
+    "subtype": "condenser",
+    "msrp": 999,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "minPreampGain": 30
+    }
+  },
+  {
+    "id": "electro-voice-nd468",
+    "name": "N/D468",
+    "brand": "Electro-Voice",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 149,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 50
+    }
+  },
+  {
+    "id": "beyerdynamic-m201tg",
+    "name": "M201 TG",
+    "brand": "Beyerdynamic",
+    "category": "microphone",
+    "subtype": "dynamic",
+    "msrp": 349,
+    "specs": {
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": false,
+      "phantomPowerDamages": false,
+      "minPreampGain": 55
+    }
+  },
+  {
+    "id": "universal-audio-apollo-twin-duo",
+    "name": "Apollo Twin Duo",
+    "brand": "Universal Audio",
+    "category": "audio_interface",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["Thunderbolt"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "rme-fireface-ucx-ii",
+    "name": "Fireface UCX II",
+    "brand": "RME",
+    "category": "audio_interface",
+    "msrp": 1799,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 65,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "focusrite-scarlett-4i4-2gen",
+    "name": "Scarlett 4i4 (2nd Gen)",
+    "brand": "Focusrite",
+    "category": "audio_interface",
+    "msrp": 199,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 55,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "presonus-studio-192",
+    "name": "Studio 192",
+    "brand": "PreSonus",
+    "category": "audio_interface",
+    "msrp": 999,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 8
+    }
+  },
+  {
+    "id": "steinberg-ur44c",
+    "name": "UR44C",
+    "brand": "Steinberg",
+    "category": "audio_interface",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-C"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "warm-audio-wa273-eq",
+    "name": "WA273-EQ",
+    "brand": "Warm Audio",
+    "category": "preamp",
+    "msrp": 1299,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 66,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "neve-genesys-black",
+    "name": "Genesys Black",
+    "brand": "Neve",
+    "category": "preamp",
+    "msrp": 2999,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 80,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "api-the-channel-strip",
+    "name": "The Channel Strip",
+    "brand": "API",
+    "category": "preamp",
+    "msrp": 2599,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR", "TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 70,
+      "micPreampCount": 1
+    }
+  },
+  {
+    "id": "behringer-xenyx-x2222usb",
+    "name": "Xenyx X2222USB",
+    "brand": "Behringer",
+    "category": "mixer",
+    "msrp": 399,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["XLR", "TRS", "USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 16
+    }
+  },
+  {
+    "id": "yamaha-mg06",
+    "name": "MG06",
+    "brand": "Yamaha",
+    "category": "mixer",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 2
+    }
+  },
+  {
+    "id": "allen-heath-zedi10",
+    "name": "ZEDi-10",
+    "brand": "Allen & Heath",
+    "category": "mixer",
+    "msrp": 279,
+    "specs": {
+      "inputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["USB-A"],
+      "providesPhantomPower": true,
+      "maxPreampGain": 60,
+      "micPreampCount": 4
+    }
+  },
+  {
+    "id": "jbl-104-bt",
+    "name": "104-BT",
+    "brand": "JBL",
+    "category": "monitor",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA", "3.5mm"]
+    }
+  },
+  {
+    "id": "pioneer-dj-vm-50",
+    "name": "VM-50",
+    "brand": "Pioneer DJ",
+    "category": "monitor",
+    "msrp": 299,
+    "specs": {
+      "inputConnectors": ["TRS", "RCA"]
+    }
+  },
+  {
+    "id": "behringer-truth-b2031a",
+    "name": "Truth B2031A",
+    "brand": "Behringer",
+    "category": "monitor",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["TRS", "XLR"]
+    }
+  },
+  {
+    "id": "austrian-audio-hi-x55",
+    "name": "Hi-X55",
+    "brand": "Austrian Audio",
+    "category": "headphones",
+    "msrp": 249,
+    "specs": {
+      "inputConnectors": ["3.5mm", "TRS"]
+    }
+  },
+  {
+    "id": "n-track-studio",
+    "name": "n-Track Studio",
+    "brand": "n-Track",
+    "category": "daw",
+    "msrp": 99,
+    "specs": {
+      "inputConnectors": ["USB-A", "USB-C", "Thunderbolt", "ADAT", "SPDIF"]
+    }
   }
 ]
