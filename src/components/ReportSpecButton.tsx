@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import type { Device } from '../data/devices.schema'
 
 // TODO: point this at whichever inbox soundorp wants spec reports to land in.
-const SPEC_REPORT_EMAIL = 'specs@soundorp.com'
+const SPEC_REPORT_EMAIL = 'info@soundorp.com'
 
 interface ReportSpecButtonProps {
   device: Device
