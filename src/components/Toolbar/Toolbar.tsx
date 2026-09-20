@@ -3,12 +3,14 @@ import { useChainStore } from '../../store/useChainStore'
 import { encodeChainToShareParam } from '../../lib/share'
 import { SavedChains } from '../SavedChains/SavedChains'
 import { ProUnlock } from './ProUnlock'
+import { ExportPdfButton } from '../PdfExport/ExportPdfButton'
 
 export function Toolbar() {
   const currentChain = useChainStore((s) => s.currentChain)
   const newChain = useChainStore((s) => s.newChain)
   const saveCurrentChain = useChainStore((s) => s.saveCurrentChain)
   const renameCurrentChain = useChainStore((s) => s.renameCurrentChain)
+  const isPro = useChainStore((s) => s.isPro)
   const saveError = useChainStore((s) => s.saveError)
   const clearSaveError = useChainStore((s) => s.clearSaveError)
 
@@ -122,6 +124,7 @@ export function Toolbar() {
             </div>
           )}
         </div>
+        {isPro && <ExportPdfButton />}
         <div className="relative">
           <button
             type="button"

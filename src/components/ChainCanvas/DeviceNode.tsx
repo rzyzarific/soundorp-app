@@ -1,18 +1,9 @@
 import type { Device } from '../../data/devices.schema'
+import { CATEGORY_LABELS } from '../../lib/categoryLabels'
 import { ReportSpecButton } from '../ReportSpecButton'
 
 interface DeviceNodeProps {
   device: Device
-}
-
-const CATEGORY_LABELS: Record<Device['category'], string> = {
-  microphone: 'Microphone',
-  preamp: 'Preamp',
-  audio_interface: 'Audio Interface',
-  mixer: 'Mixer',
-  monitor: 'Monitor',
-  headphones: 'Headphones',
-  daw: 'DAW',
 }
 
 export function DeviceNode({ device }: DeviceNodeProps) {
