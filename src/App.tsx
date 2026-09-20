@@ -8,7 +8,6 @@ import { SignalFlowHint } from './components/ChainCanvas/SignalFlowHint'
 import { CompatibilityReport } from './components/CompatibilityReport/CompatibilityReport'
 import { DeviceLibrary } from './components/DeviceLibrary/DeviceLibrary'
 import { Toolbar } from './components/Toolbar/Toolbar'
-import { AuthPanel } from './components/Auth/AuthPanel'
 
 function App() {
   const deviceIds = useChainStore((s) => s.currentChain.deviceIds)
@@ -52,7 +51,6 @@ function App() {
               Build a chain and get live compatibility checks.
             </p>
           </div>
-          <AuthPanel />
         </header>
 
         {droppedCount > 0 && (
