@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { encodeChainToShareParam } from '../../lib/share'
 import { SavedChains } from '../SavedChains/SavedChains'
+import { ProUnlock } from './ProUnlock'
 
 export function Toolbar() {
   const currentChain = useChainStore((s) => s.currentChain)
@@ -55,6 +56,7 @@ export function Toolbar() {
       />
 
       <div className="flex flex-wrap items-center gap-2">
+        <ProUnlock />
         <button
           type="button"
           onClick={newChain}

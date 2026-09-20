@@ -1,17 +1,19 @@
 import { create } from 'zustand'
 import type { SignalChain } from '../data/devices.schema'
-import { readSavedChains, writeSavedChains } from '../lib/storage'
+import { readLicense, readSavedChains, writeLicense, writeSavedChains } from '../lib/storage'
+import { activateLicenseKey } from '../lib/licensing'
 
 export const FREE_TIER_SAVED_CHAIN_LIMIT = 1
 
 interface ChainStoreState {
   currentChain: SignalChain
   savedChains: SignalChain[]
-  // Always false until Milestone P4 (payments) wires this to a real Supabase-backed
-  // flag. Kept as a first-class field now so the cap-enforcement logic below never
-  // needs to be touched again when Pro status becomes real.
+  // True once a Lemon Squeezy license key has been activated on this browser
+  // (persisted in localStorage). The cap-enforcement logic below reads it directly.
   isPro: boolean
   saveError: string | null
+  licenseError: string | null
+  isActivatingLicense: boolean
 
   addDevice: (deviceId: string) => void
   removeDevice: (index: number) => void
@@ -23,6 +25,9 @@ interface ChainStoreState {
   loadChain: (chainId: string) => void
   deleteChain: (chainId: string) => void
   clearSaveError: () => void
+
+  activateLicense: (licenseKey: string) => Promise<boolean>
+  clearLicenseError: () => void
 
   loadChainFromShareData: (deviceIds: string[], name?: string) => void
 }
@@ -41,8 +46,10 @@ function createEmptyChain(): SignalChain {
 export const useChainStore = create<ChainStoreState>((set, get) => ({
   currentChain: createEmptyChain(),
   savedChains: readSavedChains(),
-  isPro: false,
+  isPro: readLicense() !== null,
   saveError: null,
+  licenseError: null,
+  isActivatingLicense: false,
 
   addDevice: (deviceId) =>
     set((state) => ({
@@ -115,6 +122,25 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
     }),
 
   clearSaveError: () => set({ saveError: null }),
+
+  activateLicense: async (licenseKey) => {
+    if (get().isActivatingLicense) return false
+    set({ isActivatingLicense: true, licenseError: null })
+
+    const result = await activateLicenseKey(licenseKey)
+
+    if (!result.ok) {
+      set({ isActivatingLicense: false, licenseError: result.error })
+      return false
+    }
+
+    writeLicense(result.license)
+    // Also clears any stale free-tier cap message now that the cap no longer applies.
+    set({ isPro: true, isActivatingLicense: false, licenseError: null, saveError: null })
+    return true
+  },
+
+  clearLicenseError: () => set({ licenseError: null }),
 
   loadChainFromShareData: (deviceIds, name) => {
     const now = Date.now()
