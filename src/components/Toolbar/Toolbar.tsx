@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { encodeChainToShareParam } from '../../lib/share'
+import { customDevicesUsedBy } from '../../lib/customDevices'
 import { SavedChains } from '../SavedChains/SavedChains'
 import { ProUnlock } from './ProUnlock'
 import { ExportPdfButton } from '../PdfExport/ExportPdfButton'
@@ -8,6 +9,7 @@ import { LockedFeatureButton } from '../Pro/LockedFeatureButton'
 
 export function Toolbar() {
   const currentChain = useChainStore((s) => s.currentChain)
+  const customLibrary = useChainStore((s) => s.customDevices)
   const newChain = useChainStore((s) => s.newChain)
   const saveCurrentChain = useChainStore((s) => s.saveCurrentChain)
   const renameCurrentChain = useChainStore((s) => s.renameCurrentChain)
@@ -23,7 +25,13 @@ export function Toolbar() {
   const fallbackInputRef = useRef<HTMLInputElement>(null)
 
   async function handleShare() {
-    const encoded = encodeChainToShareParam(currentChain)
+    // The link has to carry the specs of any custom devices, since the recipient has never seen them.
+    const customDevices = customDevicesUsedBy(
+      currentChain.deviceIds,
+      customLibrary,
+      currentChain.customDevices,
+    )
+    const encoded = encodeChainToShareParam({ ...currentChain, customDevices })
     const url = `${window.location.origin}${window.location.pathname}?chain=${encoded}`
 
     try {

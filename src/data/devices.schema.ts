@@ -26,6 +26,8 @@ export interface Device {
   category: DeviceCategory
   subtype?: string
   msrp?: number
+  // Set on devices a user created themselves (never on catalog rows).
+  isCustom?: boolean
   reviewUrl?: string
   affiliateLinks?: {
     amazon?: string
@@ -61,11 +63,14 @@ export interface SignalChain {
   id: string
   name: string
   deviceIds: string[]
+  // Snapshot of the custom devices this chain uses, so a saved or shared chain is
+  // self-contained and still renders where those devices were never created.
+  customDevices?: Device[]
   createdAt: number
   updatedAt: number
 }
 
-const DEVICE_CATEGORIES: DeviceCategory[] = [
+export const DEVICE_CATEGORIES: DeviceCategory[] = [
   'microphone',
   'preamp',
   'audio_interface',
@@ -75,7 +80,7 @@ const DEVICE_CATEGORIES: DeviceCategory[] = [
   'daw',
 ]
 
-const CONNECTORS: Connector[] = [
+export const CONNECTORS: Connector[] = [
   'XLR',
   'TRS',
   'TS',
@@ -108,6 +113,7 @@ export function isValidDevice(x: unknown): x is Device {
     return false
   if (d.subtype !== undefined && typeof d.subtype !== 'string') return false
   if (d.msrp !== undefined && typeof d.msrp !== 'number') return false
+  if (d.isCustom !== undefined && typeof d.isCustom !== 'boolean') return false
   if (d.reviewUrl !== undefined && typeof d.reviewUrl !== 'string') return false
 
   if (typeof d.specs !== 'object' || d.specs === null) return false

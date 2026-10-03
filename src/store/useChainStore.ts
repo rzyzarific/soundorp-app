@@ -1,15 +1,37 @@
 import { create } from 'zustand'
-import type { SignalChain } from '../data/devices.schema'
-import { readLicense, readSavedChains, writeLicense, writeSavedChains } from '../lib/storage'
+import type { Device, SignalChain } from '../data/devices.schema'
+import {
+  readCustomDevices,
+  readLicense,
+  readSavedChains,
+  writeCustomDevices,
+  writeLicense,
+  writeSavedChains,
+} from '../lib/storage'
 import { activateLicenseKey } from '../lib/licensing'
 import { trackEvent } from '../lib/analytics'
 import type { ProFeature } from '../lib/proFeatures'
+import {
+  createCustomDevice,
+  customDevicesUsedBy,
+  type CustomDeviceBuild,
+  type CustomDeviceInput,
+} from '../lib/customDevices'
 
 export const FREE_TIER_SAVED_CHAIN_LIMIT = 1
+export const FREE_TIER_CUSTOM_DEVICE_LIMIT = 1
+
+export type AddCustomDeviceResult =
+  | { ok: true; device: Device }
+  | { ok: false; reason: 'limit' }
+  | { ok: false; reason: 'invalid'; errors: Extract<CustomDeviceBuild, { ok: false }>['errors'] }
 
 interface ChainStoreState {
   currentChain: SignalChain
   savedChains: SignalChain[]
+  // The user's own devices (what the free-tier limit counts). Chains carry their own
+  // snapshot of the custom devices they use, which is not counted.
+  customDevices: Device[]
   // True once a Lemon Squeezy license key has been activated on this browser
   // (persisted in localStorage). The cap-enforcement logic below reads it directly.
   isPro: boolean
@@ -37,7 +59,11 @@ interface ChainStoreState {
   openUpgradeModal: (feature: ProFeature) => void
   closeUpgradeModal: () => void
 
-  loadChainFromShareData: (deviceIds: string[], name?: string) => void
+  addCustomDevice: (input: CustomDeviceInput) => AddCustomDeviceResult
+  updateCustomDevice: (id: string, input: CustomDeviceInput) => CustomDeviceBuild
+  deleteCustomDevice: (id: string) => void
+
+  loadChainFromShareData: (deviceIds: string[], name?: string, customDevices?: Device[]) => void
 }
 
 function createEmptyChain(): SignalChain {
@@ -54,6 +80,7 @@ function createEmptyChain(): SignalChain {
 export const useChainStore = create<ChainStoreState>((set, get) => ({
   currentChain: createEmptyChain(),
   savedChains: readSavedChains(),
+  customDevices: readCustomDevices(),
   isPro: readLicense() !== null,
   saveError: null,
   licenseError: null,
@@ -107,6 +134,15 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
     set((state) => {
       const now = Date.now()
       const chainToSave: SignalChain = { ...state.currentChain, updatedAt: now }
+      // Snapshot the custom devices this chain uses so it still loads if they're later
+      // edited, deleted, or opened somewhere that never had them.
+      const usedCustom = customDevicesUsedBy(
+        chainToSave.deviceIds,
+        state.customDevices,
+        state.currentChain.customDevices,
+      )
+      if (usedCustom.length > 0) chainToSave.customDevices = usedCustom
+      else delete chainToSave.customDevices
       const existingIndex = state.savedChains.findIndex((c) => c.id === chainToSave.id)
       const isNewChain = existingIndex === -1
 
@@ -176,16 +212,68 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
 
   closeUpgradeModal: () => set({ upgradeModalFeature: null, licenseError: null }),
 
-  loadChainFromShareData: (deviceIds, name) => {
+  addCustomDevice: (input) => {
+    const state = get()
+    // Soft limit, same as the saved-chain cap: it counts the library in this browser.
+    if (!state.isPro && state.customDevices.length >= FREE_TIER_CUSTOM_DEVICE_LIMIT) {
+      state.openUpgradeModal('custom_devices')
+      return { ok: false, reason: 'limit' }
+    }
+
+    const built = createCustomDevice(input)
+    if (!built.ok) return { ok: false, reason: 'invalid', errors: built.errors }
+
+    const customDevices = [...state.customDevices, built.device]
+    writeCustomDevices(customDevices)
+    set({ customDevices })
+    return { ok: true, device: built.device }
+  },
+
+  updateCustomDevice: (id, input) => {
+    const state = get()
+    if (!state.customDevices.some((d) => d.id === id)) {
+      return { ok: false, errors: { name: 'That device no longer exists.' } }
+    }
+
+    const built = createCustomDevice(input, id)
+    if (!built.ok) return built
+
+    const customDevices = state.customDevices.map((d) => (d.id === id ? built.device : d))
+    writeCustomDevices(customDevices)
+    set({ customDevices })
+    return built
+  },
+
+  deleteCustomDevice: (id) =>
+    set((state) => {
+      const customDevices = state.customDevices.filter((d) => d.id !== id)
+      writeCustomDevices(customDevices)
+
+      // Deleting a device removes it from the chain being edited. Saved chains keep their
+      // own snapshot, so they are unaffected.
+      const chain = state.currentChain
+      const snapshot = chain.customDevices?.filter((d) => d.id !== id)
+      const nextChain: SignalChain = {
+        ...chain,
+        deviceIds: chain.deviceIds.filter((deviceId) => deviceId !== id),
+        updatedAt: chain.deviceIds.includes(id) ? Date.now() : chain.updatedAt,
+      }
+      if (snapshot && snapshot.length > 0) nextChain.customDevices = snapshot
+      else delete nextChain.customDevices
+
+      return { customDevices, currentChain: nextChain }
+    }),
+
+  loadChainFromShareData: (deviceIds, name, customDevices) => {
     const now = Date.now()
-    set({
-      currentChain: {
-        id: crypto.randomUUID(),
-        name: name && name.trim() !== '' ? name : 'Shared chain',
-        deviceIds,
-        createdAt: now,
-        updatedAt: now,
-      },
-    })
+    const chain: SignalChain = {
+      id: crypto.randomUUID(),
+      name: name && name.trim() !== '' ? name : 'Shared chain',
+      deviceIds,
+      createdAt: now,
+      updatedAt: now,
+    }
+    if (customDevices && customDevices.length > 0) chain.customDevices = customDevices
+    set({ currentChain: chain })
   },
 }))

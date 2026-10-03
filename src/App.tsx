@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { getDeviceById } from './data/devices'
 import { evaluateChain } from './engine/evaluateChain'
 import { useChainStore } from './store/useChainStore'
 import { decodeShareParam } from './lib/share'
+import { resolveChainDevices } from './lib/customDevices'
 import { ChainCanvas } from './components/ChainCanvas/ChainCanvas'
 import { SignalFlowHint } from './components/ChainCanvas/SignalFlowHint'
 import { CableList } from './components/CableList/CableList'
@@ -13,6 +13,8 @@ import { UpgradeModal } from './components/Pro/UpgradeModal'
 
 function App() {
   const deviceIds = useChainStore((s) => s.currentChain.deviceIds)
+  const chainCustomDevices = useChainStore((s) => s.currentChain.customDevices)
+  const customLibrary = useChainStore((s) => s.customDevices)
   const loadChainFromShareData = useChainStore((s) => s.loadChainFromShareData)
   const [droppedCount, setDroppedCount] = useState(0)
 
@@ -23,7 +25,7 @@ function App() {
 
     const decoded = decodeShareParam(encoded)
     if (decoded) {
-      loadChainFromShareData(decoded.deviceIds, decoded.name)
+      loadChainFromShareData(decoded.deviceIds, decoded.name, decoded.customDevices)
       setDroppedCount(decoded.droppedCount)
     }
 
@@ -32,9 +34,7 @@ function App() {
     // Runs once on mount to consume the ?chain= param from a shared link.
   }, [])
 
-  const devices = deviceIds
-    .map((id) => getDeviceById(id))
-    .filter((d) => d !== undefined)
+  const { devices } = resolveChainDevices(deviceIds, customLibrary, chainCustomDevices)
 
   const connections = evaluateChain(devices)
 

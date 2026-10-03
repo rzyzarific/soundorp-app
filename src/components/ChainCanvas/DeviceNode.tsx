@@ -13,8 +13,9 @@ export function DeviceNode({ device }: DeviceNodeProps) {
         <span className="font-orbitron text-xs font-black uppercase tracking-[0.6px] text-soundorp-muted">
           {CATEGORY_LABELS[device.category]}
           {device.subtype ? ` · ${device.subtype}` : ''}
+          {device.isCustom ? ' · Custom' : ''}
         </span>
-        <ReportSpecButton device={device} />
+        {!device.isCustom && <ReportSpecButton device={device} />}
       </div>
       <span className="text-sm font-semibold text-soundorp-text">{device.brand}</span>
       <span className="text-sm text-soundorp-muted">{device.name}</span>

@@ -17,13 +17,18 @@ export function getDeviceById(id: string): Device | undefined {
   return byId.get(id)
 }
 
-export function searchDevices(query: string): Device[] {
+/** Case-insensitive match on name, brand, or "brand name"; an empty query matches everything. */
+export function filterDevices(devices: Device[], query: string): Device[] {
   const q = query.trim().toLowerCase()
-  if (q === '') return ALL_DEVICES
-  return ALL_DEVICES.filter(
+  if (q === '') return devices
+  return devices.filter(
     (d) =>
       d.name.toLowerCase().includes(q) ||
       d.brand.toLowerCase().includes(q) ||
       `${d.brand} ${d.name}`.toLowerCase().includes(q),
   )
+}
+
+export function searchDevices(query: string): Device[] {
+  return filterDevices(ALL_DEVICES, query)
 }

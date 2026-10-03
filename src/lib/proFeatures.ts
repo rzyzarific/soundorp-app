@@ -1,6 +1,6 @@
 // Features that can open the upgrade modal. Add a key here when a new Pro-gated
 // feature ships; only list benefits below that actually exist.
-export type ProFeature = 'pdf_export' | 'unlimited_chains'
+export type ProFeature = 'pdf_export' | 'unlimited_chains' | 'custom_devices'
 
 export const PRO_FEATURE_COPY: Record<ProFeature, { heading: string; description: string }> = {
   unlimited_chains: {
@@ -13,9 +13,15 @@ export const PRO_FEATURE_COPY: Record<ProFeature, { heading: string; description
     description:
       'Download your signal chain and its full compatibility report as a printable PDF to keep, share with a client, or take shopping.',
   },
+  custom_devices: {
+    heading: 'Add unlimited custom devices with Pro',
+    description:
+      "Free accounts can add one custom device. Pro removes the limit, so every mic, interface and speaker that isn't in the catalog can go into your chains.",
+  },
 }
 
 export const PRO_BENEFITS: string[] = [
   'Unlimited saved chains',
+  'Unlimited custom devices',
   'PDF export of your chain and compatibility report',
 ]

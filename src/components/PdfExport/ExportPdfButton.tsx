@@ -4,6 +4,7 @@ import { MIN_DEVICES_FOR_EXPORT } from '../../lib/pdfLayout'
 
 export function ExportPdfButton() {
   const currentChain = useChainStore((s) => s.currentChain)
+  const customLibrary = useChainStore((s) => s.customDevices)
   const [exporting, setExporting] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
 
@@ -18,7 +19,7 @@ export function ExportPdfButton() {
     setExporting(true)
     try {
       const { exportChainPdf } = await import('../../lib/exportChainPdf')
-      await exportChainPdf(currentChain)
+      await exportChainPdf(currentChain, customLibrary)
     } catch (err) {
       console.error('[export-pdf]', err)
       setMessage("Couldn't create the PDF. Please try again.")

@@ -2,8 +2,8 @@ import { flushSync } from 'react-dom'
 import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
-import { getDeviceById } from '../data/devices'
-import type { SignalChain } from '../data/devices.schema'
+import type { Device, SignalChain } from '../data/devices.schema'
+import { resolveChainDevices } from './customDevices'
 import { evaluateChain } from '../engine/evaluateChain'
 import { ChainPrintLayout, PRINT_LAYOUT_WIDTH_PX } from '../components/PdfExport/ChainPrintLayout'
 import { MIN_DEVICES_FOR_EXPORT, computePageSlices, pdfFileName } from './pdfLayout'
@@ -21,8 +21,8 @@ const PAGE_IMAGE_QUALITY = 0.95
  * Renders the static print layout off-screen, captures it with html2canvas, and
  * downloads it as a (multi-page) A4 PDF. The live interactive UI is never captured.
  */
-export async function exportChainPdf(chain: SignalChain): Promise<void> {
-  const devices = chain.deviceIds.map((id) => getDeviceById(id)).filter((d) => d !== undefined)
+export async function exportChainPdf(chain: SignalChain, customLibrary: Device[] = []): Promise<void> {
+  const { devices } = resolveChainDevices(chain.deviceIds, customLibrary, chain.customDevices)
   if (devices.length < MIN_DEVICES_FOR_EXPORT) {
     throw new Error('Add at least two devices to export a compatibility report.')
   }
