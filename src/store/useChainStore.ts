@@ -2,6 +2,8 @@ import { create } from 'zustand'
 import type { SignalChain } from '../data/devices.schema'
 import { readLicense, readSavedChains, writeLicense, writeSavedChains } from '../lib/storage'
 import { activateLicenseKey } from '../lib/licensing'
+import { trackEvent } from '../lib/analytics'
+import type { ProFeature } from '../lib/proFeatures'
 
 export const FREE_TIER_SAVED_CHAIN_LIMIT = 1
 
@@ -14,8 +16,11 @@ interface ChainStoreState {
   saveError: string | null
   licenseError: string | null
   isActivatingLicense: boolean
+  // The Pro feature a free user just tried to use; non-null means the upgrade modal is open.
+  upgradeModalFeature: ProFeature | null
 
   addDevice: (deviceId: string) => void
+  insertDevice: (index: number, deviceId: string) => void
   removeDevice: (index: number) => void
   reorderDevice: (fromIndex: number, toIndex: number) => void
   renameCurrentChain: (name: string) => void
@@ -28,6 +33,9 @@ interface ChainStoreState {
 
   activateLicense: (licenseKey: string) => Promise<boolean>
   clearLicenseError: () => void
+
+  openUpgradeModal: (feature: ProFeature) => void
+  closeUpgradeModal: () => void
 
   loadChainFromShareData: (deviceIds: string[], name?: string) => void
 }
@@ -50,6 +58,7 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
   saveError: null,
   licenseError: null,
   isActivatingLicense: false,
+  upgradeModalFeature: null,
 
   addDevice: (deviceId) =>
     set((state) => ({
@@ -59,6 +68,14 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
         updatedAt: Date.now(),
       },
     })),
+
+  insertDevice: (index, deviceId) =>
+    set((state) => {
+      const deviceIds = [...state.currentChain.deviceIds]
+      const at = Math.max(0, Math.min(index, deviceIds.length))
+      deviceIds.splice(at, 0, deviceId)
+      return { currentChain: { ...state.currentChain, deviceIds, updatedAt: Date.now() } }
+    }),
 
   removeDevice: (index) =>
     set((state) => ({
@@ -136,11 +153,28 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
 
     writeLicense(result.license)
     // Also clears any stale free-tier cap message now that the cap no longer applies.
-    set({ isPro: true, isActivatingLicense: false, licenseError: null, saveError: null })
+    // Also closes the upgrade modal if the key was entered from there.
+    set({
+      isPro: true,
+      isActivatingLicense: false,
+      licenseError: null,
+      saveError: null,
+      upgradeModalFeature: null,
+    })
+    trackEvent('license_activated')
     return true
   },
 
   clearLicenseError: () => set({ licenseError: null }),
+
+  openUpgradeModal: (feature) => {
+    // Pro users never see locked features, but guard so a stray call can't pop the modal.
+    if (get().isPro) return
+    trackEvent('locked_feature_click', { feature })
+    set({ upgradeModalFeature: feature, licenseError: null })
+  },
+
+  closeUpgradeModal: () => set({ upgradeModalFeature: null, licenseError: null }),
 
   loadChainFromShareData: (deviceIds, name) => {
     const now = Date.now()

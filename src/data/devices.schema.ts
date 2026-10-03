@@ -33,7 +33,12 @@ export interface Device {
     bhphoto?: string
   }
   specs: {
+    // Everything this device can send to the next one: digital host links (USB,
+    // Thunderbolt) and analog line/monitor outs alike. Mixed on purpose, as mixers do.
     outputConnectors?: Connector[]
+    // The headphone jack(s), kept apart so a ¼" headphone jack never counts as a line
+    // output into monitors. Used when the next device is headphones.
+    headphoneOutputConnectors?: Connector[]
     inputConnectors?: Connector[]
 
     needsPhantomPower?: boolean
@@ -45,6 +50,10 @@ export interface Device {
     maxPreampGain?: number
     inputImpedance?: number
     micPreampCount?: number
+
+    // In-line gain boosters (Cloudlifter, FetHead, DM1): clean dB added between a
+    // low-output mic and the next device's preamp.
+    gainBoost?: number
   }
 }
 
@@ -105,6 +114,8 @@ export function isValidDevice(x: unknown): x is Device {
   const s = d.specs as Record<string, unknown>
 
   if (s.outputConnectors !== undefined && !isConnectorArray(s.outputConnectors)) return false
+  if (s.headphoneOutputConnectors !== undefined && !isConnectorArray(s.headphoneOutputConnectors))
+    return false
   if (s.inputConnectors !== undefined && !isConnectorArray(s.inputConnectors)) return false
   if (s.needsPhantomPower !== undefined && typeof s.needsPhantomPower !== 'boolean') return false
   if (s.phantomPowerDamages !== undefined && typeof s.phantomPowerDamages !== 'boolean')
@@ -116,6 +127,7 @@ export function isValidDevice(x: unknown): x is Device {
   if (s.maxPreampGain !== undefined && typeof s.maxPreampGain !== 'number') return false
   if (s.inputImpedance !== undefined && typeof s.inputImpedance !== 'number') return false
   if (s.micPreampCount !== undefined && typeof s.micPreampCount !== 'number') return false
+  if (s.gainBoost !== undefined && typeof s.gainBoost !== 'number') return false
 
   return true
 }

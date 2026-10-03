@@ -383,7 +383,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
@@ -397,7 +398,8 @@
     "msrp": 129,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 1
@@ -411,7 +413,8 @@
     "msrp": 449,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 57,
       "micPreampCount": 2
@@ -425,7 +428,8 @@
     "msrp": 99,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 35,
       "micPreampCount": 2
@@ -440,6 +444,7 @@
     "specs": {
       "inputConnectors": ["XLR"],
       "outputConnectors": ["USB-C"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": false,
       "maxPreampGain": 50,
       "micPreampCount": 4
@@ -453,7 +458,8 @@
     "msrp": 699,
     "specs": {
       "inputConnectors": ["XLR"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS", "3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 76,
       "micPreampCount": 4
@@ -467,7 +473,8 @@
     "msrp": 899,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 2
@@ -481,7 +488,8 @@
     "msrp": 189,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -495,7 +503,8 @@
     "msrp": 79,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -509,7 +518,8 @@
     "msrp": 169,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -523,7 +533,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 58,
       "micPreampCount": 2
@@ -813,7 +824,8 @@
     "msrp": 279,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 69,
       "micPreampCount": 2
@@ -827,7 +839,8 @@
     "msrp": 649,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C", "ADAT", "SPDIF"],
+      "outputConnectors": ["USB-C", "ADAT", "SPDIF", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 69,
       "micPreampCount": 8
@@ -841,7 +854,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 52,
       "micPreampCount": 2
@@ -855,7 +869,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 2
@@ -869,7 +884,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS", "3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 58,
       "micPreampCount": 1
@@ -883,7 +899,8 @@
     "msrp": 129,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "XLR", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
@@ -1187,7 +1204,8 @@
     "msrp": 649,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 57,
       "micPreampCount": 4
@@ -1201,7 +1219,8 @@
     "msrp": 299,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -1215,7 +1234,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -1229,7 +1249,8 @@
     "msrp": 129,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 2
@@ -1243,7 +1264,8 @@
     "msrp": 899,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "XLR"],
+      "headphoneOutputConnectors": ["TRS", "3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 2
@@ -1257,7 +1279,8 @@
     "msrp": 229,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 62,
       "micPreampCount": 2
@@ -1551,7 +1574,8 @@
     "msrp": 695,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 75,
       "micPreampCount": 2
@@ -1565,7 +1589,8 @@
     "msrp": 119,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 2
@@ -1579,7 +1604,8 @@
     "msrp": 399,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -1593,7 +1619,8 @@
     "msrp": 399,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A", "ADAT"],
+      "outputConnectors": ["USB-A", "ADAT", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
@@ -1607,7 +1634,8 @@
     "msrp": 999,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
@@ -1925,7 +1953,8 @@
     "msrp": 269,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -1939,7 +1968,8 @@
     "msrp": 695,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C", "Thunderbolt", "ADAT"],
+      "outputConnectors": ["USB-C", "Thunderbolt", "ADAT", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
@@ -1953,7 +1983,8 @@
     "msrp": 179,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
@@ -1967,7 +1998,8 @@
     "msrp": 49,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 1
@@ -1981,7 +2013,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 2
@@ -2284,7 +2317,8 @@
     "msrp": 129,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
@@ -2298,7 +2332,8 @@
     "msrp": 259,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -2312,7 +2347,8 @@
     "msrp": 499,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "3.5mm"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
@@ -2326,7 +2362,8 @@
     "msrp": 499,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt", "USB-C"],
+      "outputConnectors": ["Thunderbolt", "USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 1
@@ -2340,7 +2377,8 @@
     "msrp": 499,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -2630,7 +2668,8 @@
     "msrp": 119,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 1
@@ -2644,7 +2683,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 35,
       "micPreampCount": 2
@@ -2658,7 +2698,8 @@
     "msrp": 219,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "3.5mm"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -2672,7 +2713,8 @@
     "msrp": 399,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
@@ -2686,7 +2728,8 @@
     "msrp": 1499,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 4
@@ -2700,7 +2743,8 @@
     "msrp": 39,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 48,
       "micPreampCount": 1
@@ -2970,7 +3014,8 @@
     "msrp": 219,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
@@ -2984,7 +3029,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -2998,7 +3044,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -3012,7 +3059,8 @@
     "msrp": 99,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 2
@@ -3026,7 +3074,8 @@
     "msrp": 99,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -3302,7 +3351,8 @@
     "msrp": 399,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
@@ -3316,7 +3366,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
@@ -3330,7 +3381,8 @@
     "msrp": 99,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 1
@@ -3344,7 +3396,8 @@
     "msrp": 149,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS", "RCA"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 2
@@ -3358,7 +3411,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 2
@@ -3372,7 +3426,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 58,
       "micPreampCount": 2
@@ -3680,7 +3735,8 @@
     "msrp": 999,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["Thunderbolt"],
+      "outputConnectors": ["Thunderbolt", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 2
@@ -3694,7 +3750,8 @@
     "msrp": 1799,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS", "3.5mm"],
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 4
@@ -3708,7 +3765,8 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A"],
+      "outputConnectors": ["USB-A", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 2
@@ -3722,7 +3780,8 @@
     "msrp": 999,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
@@ -3736,7 +3795,8 @@
     "msrp": 399,
     "specs": {
       "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-C"],
+      "outputConnectors": ["USB-C", "TRS"],
+      "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
@@ -3782,6 +3842,51 @@
       "providesPhantomPower": true,
       "maxPreampGain": 70,
       "micPreampCount": 1
+    }
+  },
+  {
+    "id": "triton-audio-fethead",
+    "name": "FetHead",
+    "brand": "Triton Audio",
+    "category": "preamp",
+    "subtype": "inline gain booster",
+    "msrp": 90,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "gainBoost": 27
+    }
+  },
+  {
+    "id": "se-electronics-dm1-dynamite",
+    "name": "DM1 Dynamite",
+    "brand": "sE Electronics",
+    "category": "preamp",
+    "subtype": "inline gain booster",
+    "msrp": 129,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "gainBoost": 28
+    }
+  },
+  {
+    "id": "cloud-microphones-cloudlifter-cl-1",
+    "name": "Cloudlifter CL-1",
+    "brand": "Cloud Microphones",
+    "category": "preamp",
+    "subtype": "inline gain booster",
+    "msrp": 149,
+    "specs": {
+      "inputConnectors": ["XLR"],
+      "outputConnectors": ["XLR"],
+      "needsPhantomPower": true,
+      "phantomPowerDamages": false,
+      "gainBoost": 25
     }
   },
   {

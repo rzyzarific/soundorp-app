@@ -5,9 +5,11 @@ import { useChainStore } from './store/useChainStore'
 import { decodeShareParam } from './lib/share'
 import { ChainCanvas } from './components/ChainCanvas/ChainCanvas'
 import { SignalFlowHint } from './components/ChainCanvas/SignalFlowHint'
+import { CableList } from './components/CableList/CableList'
 import { CompatibilityReport } from './components/CompatibilityReport/CompatibilityReport'
 import { DeviceLibrary } from './components/DeviceLibrary/DeviceLibrary'
 import { Toolbar } from './components/Toolbar/Toolbar'
+import { UpgradeModal } from './components/Pro/UpgradeModal'
 
 function App() {
   const deviceIds = useChainStore((s) => s.currentChain.deviceIds)
@@ -41,9 +43,14 @@ function App() {
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <header className="flex flex-wrap items-start justify-between gap-3">
           <div className="flex flex-col gap-1">
-            <span className="font-orbitron text-lg font-black lowercase text-soundorp-red">
+            <a
+              href="https://soundorp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit font-orbitron text-lg font-black lowercase text-soundorp-red hover:underline"
+            >
               soundorp
-            </span>
+            </a>
             <h1 className="font-orbitron text-xl font-black text-soundorp-text">
               Signal Chain Builder
             </h1>
@@ -81,9 +88,12 @@ function App() {
                 <CompatibilityReport devices={devices} connections={connections} />
               )}
             </section>
+
+            <CableList devices={devices} />
           </div>
         </div>
       </div>
+      <UpgradeModal />
     </div>
   )
 }

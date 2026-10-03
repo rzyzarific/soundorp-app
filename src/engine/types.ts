@@ -2,14 +2,40 @@ import type { Device } from '../data/devices.schema'
 
 export type CheckSeverity = 'pass' | 'warning' | 'critical'
 
+// A one-click remedy the UI can apply to the chain.
+export interface FixAction {
+  type: 'insert_device'
+  deviceId: string
+  // Index in the chain at which the device is inserted.
+  position: number
+  label: string
+}
+
+// Machine-readable description of what went wrong, so fixes can be derived without
+// parsing text. Rules only describe the problem; evaluateChain attaches the actions.
+export type CheckProblem = { type: 'gain_shortfall'; gap: number }
+
 export interface CheckResult {
   severity: CheckSeverity
   title: string
   detail: string
   fix?: string
+  problem?: CheckProblem
+  actions?: FixAction[]
 }
 
-export type CompatibilityRule = (upstream: Device, downstream: Device) => CheckResult | null
+// Where a rule is being evaluated within the full chain. Optional because most rules
+// only need the adjacent pair.
+export interface RuleContext {
+  devices: Device[]
+  upstreamIndex: number
+}
+
+export type CompatibilityRule = (
+  upstream: Device,
+  downstream: Device,
+  context?: RuleContext,
+) => CheckResult | null
 
 export interface ConnectionCheckResult {
   connectionIndex: number

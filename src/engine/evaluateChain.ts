@@ -1,25 +1,18 @@
 import type { Device } from '../data/devices.schema'
-import type { ConnectionCheckResult } from './types'
-import { rules } from './rules'
+import type { CheckResult, ConnectionCheckResult } from './types'
+import { evaluatePairs } from './evaluatePairs'
+import { suggestGainBoostActions } from './fixes'
+
+function withActions(result: CheckResult, devices: Device[], connectionIndex: number): CheckResult {
+  if (result.problem?.type !== 'gain_shortfall') return result
+
+  const actions = suggestGainBoostActions(devices, connectionIndex)
+  return actions.length > 0 ? { ...result, actions } : result
+}
 
 export function evaluateChain(devices: Device[]): ConnectionCheckResult[] {
-  const connections: ConnectionCheckResult[] = []
-
-  for (let i = 0; i < devices.length - 1; i++) {
-    const upstream = devices[i]
-    const downstream = devices[i + 1]
-
-    const results = rules
-      .map((rule) => rule(upstream, downstream))
-      .filter((r) => r !== null)
-
-    connections.push({
-      connectionIndex: i,
-      upstreamId: upstream.id,
-      downstreamId: downstream.id,
-      results,
-    })
-  }
-
-  return connections
+  return evaluatePairs(devices).map((connection) => ({
+    ...connection,
+    results: connection.results.map((r) => withActions(r, devices, connection.connectionIndex)),
+  }))
 }

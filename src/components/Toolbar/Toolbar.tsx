@@ -4,6 +4,7 @@ import { encodeChainToShareParam } from '../../lib/share'
 import { SavedChains } from '../SavedChains/SavedChains'
 import { ProUnlock } from './ProUnlock'
 import { ExportPdfButton } from '../PdfExport/ExportPdfButton'
+import { LockedFeatureButton } from '../Pro/LockedFeatureButton'
 
 export function Toolbar() {
   const currentChain = useChainStore((s) => s.currentChain)
@@ -13,6 +14,7 @@ export function Toolbar() {
   const isPro = useChainStore((s) => s.isPro)
   const saveError = useChainStore((s) => s.saveError)
   const clearSaveError = useChainStore((s) => s.clearSaveError)
+  const openUpgradeModal = useChainStore((s) => s.openUpgradeModal)
 
   const [savedChainsOpen, setSavedChainsOpen] = useState(false)
   const [shareConfirmation, setShareConfirmation] = useState(false)
@@ -81,13 +83,26 @@ export function Toolbar() {
           {saveError && (
             <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-status-warning-border bg-status-warning-bg p-3 shadow-lg">
               <p className="text-xs text-status-warning-text">{saveError}</p>
-              <button
-                type="button"
-                onClick={clearSaveError}
-                className="mt-2 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-              >
-                Dismiss
-              </button>
+              <div className="mt-2 flex gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    clearSaveError()
+                    openUpgradeModal('unlimited_chains')
+                  }}
+                  aria-haspopup="dialog"
+                  className="rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90"
+                >
+                  Upgrade to Pro
+                </button>
+                <button
+                  type="button"
+                  onClick={clearSaveError}
+                  className="rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+                >
+                  Dismiss
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -124,7 +139,11 @@ export function Toolbar() {
             </div>
           )}
         </div>
-        {isPro && <ExportPdfButton />}
+        {isPro ? (
+          <ExportPdfButton />
+        ) : (
+          <LockedFeatureButton feature="pdf_export">Export PDF</LockedFeatureButton>
+        )}
         <div className="relative">
           <button
             type="button"

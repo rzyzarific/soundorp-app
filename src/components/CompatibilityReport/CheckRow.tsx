@@ -1,4 +1,5 @@
 import type { CheckResult } from '../../engine/types'
+import { useChainStore } from '../../store/useChainStore'
 
 interface CheckRowProps {
   result: CheckResult
@@ -27,6 +28,8 @@ const SEVERITY_STYLES: Record<CheckResult['severity'], { chip: string; accent: s
 
 export function CheckRow({ result }: CheckRowProps) {
   const styles = SEVERITY_STYLES[result.severity]
+  const insertDevice = useChainStore((s) => s.insertDevice)
+  const hasActions = result.actions !== undefined && result.actions.length > 0
 
   return (
     <div className={`flex items-start gap-2 rounded-md border px-3 py-2 ${styles.chip}`}>
@@ -36,7 +39,28 @@ export function CheckRow({ result }: CheckRowProps) {
       <div className="flex flex-col gap-0.5 text-sm">
         <span className={`font-semibold ${styles.accent}`}>{result.title}</span>
         <span className="text-soundorp-text">{result.detail}</span>
-        {result.fix && <span className="italic text-soundorp-muted">Fix: {result.fix}</span>}
+        {/* The buttons replace the written advice; keep the text when there's nothing to click. */}
+        {result.fix && !hasActions && (
+          <span className="italic text-soundorp-muted">Fix: {result.fix}</span>
+        )}
+        {hasActions && (
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {result.actions!.map((action, i) => (
+              <button
+                key={action.deviceId}
+                type="button"
+                onClick={() => insertDevice(action.position, action.deviceId)}
+                className={
+                  i === 0
+                    ? 'rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90'
+                    : 'rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text'
+                }
+              >
+                {action.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

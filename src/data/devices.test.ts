@@ -27,6 +27,36 @@ describe('devices.json', () => {
   })
 })
 
+describe('inline gain boosters', () => {
+  const boosters = ALL_DEVICES.filter((d) => d.specs.gainBoost !== undefined)
+
+  it('includes the Cloudlifter, FetHead and DM1', () => {
+    expect(boosters.map((d) => d.id).sort()).toEqual([
+      'cloud-microphones-cloudlifter-cl-1',
+      'se-electronics-dm1-dynamite',
+      'triton-audio-fethead',
+    ])
+  })
+
+  it('models them as XLR in/out devices that need, but never pass on, phantom power', () => {
+    for (const b of boosters) {
+      expect(b.category).toBe('preamp')
+      expect(b.specs.inputConnectors).toEqual(['XLR'])
+      expect(b.specs.outputConnectors).toEqual(['XLR'])
+      expect(b.specs.needsPhantomPower).toBe(true)
+      expect(b.specs.providesPhantomPower).toBeFalsy()
+      expect(b.specs.phantomPowerDamages).toBe(false)
+      expect(b.specs.maxPreampGain).toBeUndefined()
+      expect(b.msrp).toBeGreaterThan(0)
+    }
+  })
+
+  it('rejects a non-numeric gainBoost', () => {
+    const base = boosters[0]
+    expect(isValidDevice({ ...base, specs: { ...base.specs, gainBoost: '25' } })).toBe(false)
+  })
+})
+
 describe('getDeviceById', () => {
   it('resolves a known id', () => {
     expect(getDeviceById('shure-sm7b')?.name).toBe('SM7B')
