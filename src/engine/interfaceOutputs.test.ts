@@ -19,7 +19,8 @@ function connectorWarnings(chain: Device[]) {
     .filter((r) => r.title === 'No matching connector')
 }
 
-describe('audio interface analog outputs (the false "No matching connector" bug)', () => {
+// Sweeps every interface against every monitor and pair of headphones; generous timeout for loaded machines.
+describe('audio interface analog outputs (the false "No matching connector" bug)', { timeout: 60_000 }, () => {
   it('gives every interface a headphone jack', () => {
     for (const i of interfaces) {
       expect(i.specs.headphoneOutputConnectors?.length, i.id).toBeGreaterThan(0)

@@ -198,7 +198,8 @@ describe('evaluateChain fix actions', () => {
   })
 })
 
-describe('real catalog: every offered fix really fixes the chain', () => {
+// Sweeps every mic against every gain device; generous timeout so a loaded machine can't flake it.
+describe('real catalog: every offered fix really fixes the chain', { timeout: 60_000 }, () => {
   const mics = ALL_DEVICES.filter((d) => d.specs.minPreampGain !== undefined)
   const gainDevices = ALL_DEVICES.filter((d) => d.specs.maxPreampGain !== undefined)
 

@@ -1,7 +1,16 @@
-import type { CSSProperties } from 'react'
+import { Fragment, type CSSProperties } from 'react'
 import type { Device } from '../../data/devices.schema'
-import type { CheckResult, ConnectionCheckResult } from '../../engine/types'
+import { worstSeverity, type CheckResult, type ConnectionCheckResult } from '../../engine/types'
+import { DeviceIcon } from './DeviceIcon'
 import { CATEGORY_LABELS } from '../../lib/categoryLabels'
+import type { CableListResult } from '../../lib/cableList'
+import {
+  PRICE_DISCLAIMER,
+  budgetStatus,
+  budgetStatusText,
+  formatPrice,
+  type ShoppingList,
+} from '../../lib/shoppingList'
 
 /** Width of the layout in CSS px — A4 at 96dpi. The exporter maps this to 210mm. */
 export const PRINT_LAYOUT_WIDTH_PX = 794
@@ -64,9 +73,31 @@ const styles = {
     letterSpacing: 0.8,
     color: MUTED,
   },
+  glance: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    gap: 4,
+    margin: '18px 0 0',
+    padding: '14px 12px 10px',
+    background: '#f9fafb',
+    border: `1px solid ${RULE}`,
+    borderRadius: 8,
+  },
+  glanceTile: {
+    width: 84,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 4,
+    textAlign: 'center',
+  },
+  glanceName: { fontSize: 10, fontWeight: 600, lineHeight: 1.2, color: INK, wordBreak: 'break-word' },
+  glanceArrow: { alignSelf: 'flex-start', marginTop: 10, fontSize: 20, fontWeight: 700, lineHeight: 1 },
+  glanceKey: { flexBasis: '100%', margin: '8px 0 0', fontSize: 10, color: MUTED },
   deviceRow: {
     display: 'flex',
-    alignItems: 'baseline',
+    alignItems: 'center',
     gap: 12,
     padding: '7px 0',
     borderBottom: `1px solid ${RULE}`,
@@ -74,9 +105,8 @@ const styles = {
   deviceIndex: { width: 22, flexShrink: 0, fontWeight: 700, color: MUTED },
   deviceName: { fontWeight: 700 },
   deviceBrand: { color: MUTED },
+  deviceText: { display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 },
   deviceCategory: {
-    marginLeft: 'auto',
-    flexShrink: 0,
     fontSize: 11,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -86,6 +116,34 @@ const styles = {
   connection: { marginBottom: 14 },
   connectionTitle: { margin: '0 0 6px', fontSize: 14, fontWeight: 700, color: INK },
   empty: { margin: 0, fontSize: 12, color: MUTED },
+  lineRow: {
+    display: 'flex',
+    alignItems: 'baseline',
+    gap: 12,
+    padding: '7px 0',
+    borderBottom: `1px solid ${RULE}`,
+  },
+  quantity: { width: 34, flexShrink: 0, fontWeight: 700, color: INK },
+  lineDetail: { color: MUTED, fontSize: 11 },
+  price: { marginLeft: 'auto', flexShrink: 0, fontWeight: 700, textAlign: 'right' },
+  noPrice: { marginLeft: 'auto', flexShrink: 0, color: MUTED, textAlign: 'right' },
+  totalRow: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between',
+    padding: '10px 0 4px',
+    borderTop: `2px solid ${INK}`,
+    fontSize: 15,
+    fontWeight: 700,
+  },
+  disclaimer: {
+    margin: '8px 0 0',
+    padding: '4px 10px',
+    borderLeft: '3px solid #fcd34d',
+    fontSize: 11,
+    color: INK,
+  },
+  note: { margin: '8px 0 0', fontSize: 11, color: MUTED },
   footer: { margin: '26px 0 0', fontSize: 10, color: MUTED },
 } satisfies Record<string, CSSProperties>
 
@@ -103,6 +161,19 @@ function checkStyle(severity: CheckResult['severity']): CSSProperties {
   }
 }
 
+// A custom device the owner gave no brand carries the placeholder brand "Custom"; "by Custom"
+// next to "(custom)" would just say it twice.
+function showBrand(device: Device): boolean {
+  return !(device.isCustom && device.brand === 'Custom')
+}
+
+// The colour of the arrow into the next device: its connection's worst result. A connection
+// with no applicable checks has nothing to report, so its arrow is neutral.
+function arrowColor(connection: ConnectionCheckResult | undefined): string {
+  if (!connection || connection.results.length === 0) return MUTED
+  return SEVERITY[worstSeverity(connection.results)].accent
+}
+
 function countBySeverity(connections: ConnectionCheckResult[]) {
   const counts = { critical: 0, warning: 0, pass: 0 }
   for (const c of connections) for (const r of c.results) counts[r.severity]++
@@ -114,15 +185,28 @@ interface ChainPrintLayoutProps {
   devices: Device[]
   connections: ConnectionCheckResult[]
   generatedAt: Date
+  cables: CableListResult
+  shopping: ShoppingList
+  // The user's budget in dollars, or null if they haven't set one.
+  budget: number | null
 }
 
-export function ChainPrintLayout({ chainName, devices, connections, generatedAt }: ChainPrintLayoutProps) {
+export function ChainPrintLayout({
+  chainName,
+  devices,
+  connections,
+  generatedAt,
+  cables,
+  shopping,
+  budget,
+}: ChainPrintLayoutProps) {
   const counts = countBySeverity(connections)
   const summary = [
     `${counts.critical} critical`,
     `${counts.warning} ${counts.warning === 1 ? 'warning' : 'warnings'}`,
     `${counts.pass} passed`,
   ].join('  ·  ')
+  const status = budgetStatus(shopping.total, budget)
 
   return (
     <div data-pdf-root style={styles.root}>
@@ -136,18 +220,41 @@ export function ChainPrintLayout({ chainName, devices, connections, generatedAt 
         {devices.length} devices · Generated {generatedAt.toLocaleDateString(undefined, { dateStyle: 'long' })}
       </p>
 
+      <section data-pdf-break style={styles.glance} aria-label="Chain at a glance">
+        {devices.map((device, i) => (
+          <Fragment key={`${device.id}-${i}`}>
+            <div style={styles.glanceTile}>
+              <DeviceIcon device={device} size={44} />
+              <span style={styles.glanceName}>{device.name}</span>
+            </div>
+            {i < devices.length - 1 && (
+              <span style={{ ...styles.glanceArrow, color: arrowColor(connections[i]) }}>→</span>
+            )}
+          </Fragment>
+        ))}
+        <p style={styles.glanceKey}>
+          Arrows show the worst result for each connection: green passed, amber warning, red critical.
+        </p>
+      </section>
+
       <section data-pdf-break>
         <h2 style={styles.sectionTitle}>Signal chain</h2>
         {devices.map((device, i) => (
           <div key={`${device.id}-${i}`} data-pdf-break={i > 0 ? '' : undefined} style={styles.deviceRow}>
             <span style={styles.deviceIndex}>{i + 1}.</span>
-            <span>
-              <span style={styles.deviceName}>{device.name}</span>{' '}
-              <span style={styles.deviceBrand}>by {device.brand}</span>
-            </span>
-            <span style={styles.deviceCategory}>
-              {CATEGORY_LABELS[device.category]}
-              {device.subtype ? ` · ${device.subtype}` : ''}
+            <DeviceIcon device={device} size={36} />
+            {/* Two lines beside the icon, so the text fills its height. A single line looked
+                adrift next to it, because html2canvas draws text a little below its box. */}
+            <span style={styles.deviceText}>
+              <span>
+                <span style={styles.deviceName}>{device.name}</span>{' '}
+                {showBrand(device) && <span style={styles.deviceBrand}>by {device.brand}</span>}
+              </span>
+              <span style={styles.deviceCategory}>
+                {CATEGORY_LABELS[device.category]}
+                {device.subtype ? ` · ${device.subtype}` : ''}
+                {device.isCustom ? ' · Custom' : ''}
+              </span>
             </span>
           </div>
         ))}
@@ -189,6 +296,87 @@ export function ChainPrintLayout({ chainName, devices, connections, generatedAt 
             </div>
           )
         })}
+      </section>
+
+      <section data-pdf-break>
+        <h2 style={styles.sectionTitle}>Cables &amp; adapters</h2>
+        {cables.lines.map((line, i) => (
+          <div key={`${line.kind}:${line.label}`} data-pdf-break={i > 0 ? '' : undefined} style={styles.lineRow}>
+            <span style={{ ...styles.quantity, color: line.kind === 'adapter' ? SEVERITY.warning.accent : INK }}>
+              {line.quantity}×
+            </span>
+            <span>
+              <span style={{ fontWeight: 700, color: line.kind === 'adapter' ? SEVERITY.warning.accent : INK }}>
+                {line.label}
+              </span>
+              <br />
+              <span style={styles.lineDetail}>{line.connections.join(', ')}</span>
+            </span>
+          </div>
+        ))}
+        {cables.lines.length === 0 && <p style={styles.empty}>No cables could be worked out for this chain.</p>}
+        {cables.noLineOutput.length > 0 && (
+          <p style={styles.note}>
+            No line-level output, so no cable is listed for: {cables.noLineOutput.join(', ')}. See the compatibility
+            report.
+          </p>
+        )}
+        {cables.skipped.length > 0 && (
+          <p style={styles.note}>Not included (no connector data): {cables.skipped.join(', ')}.</p>
+        )}
+        <p style={styles.note}>Cable lengths aren't specified, so measure your setup before buying.</p>
+      </section>
+
+      <section data-pdf-break>
+        <h2 style={styles.sectionTitle}>Shopping list</h2>
+        <p style={styles.summary}>
+          Estimated total {formatPrice(shopping.total)}
+          {budget !== null && status && (
+            <>
+              {'  ·  '}Budget {formatPrice(budget)}
+              {'  ·  '}
+              <span style={{ fontWeight: 700, color: status.state === 'over' ? SEVERITY.warning.accent : SEVERITY.pass.accent }}>
+                {budgetStatusText(status)}
+              </span>
+            </>
+          )}
+        </p>
+        {shopping.lines.map((line, i) => (
+          <div key={line.device.id} data-pdf-break={i > 0 ? '' : undefined} style={styles.lineRow}>
+            <span>
+              <span style={styles.deviceName}>
+                {line.quantity > 1 ? `${line.quantity}× ` : ''}
+                {line.device.name}
+              </span>{' '}
+              {showBrand(line.device) && <span style={styles.deviceBrand}>by {line.device.brand}</span>}
+              {line.device.isCustom && <span style={styles.deviceBrand}> (custom)</span>}
+              {line.quantity > 1 && line.unitPrice !== undefined && (
+                <>
+                  <br />
+                  <span style={styles.lineDetail}>{formatPrice(line.unitPrice)} each</span>
+                </>
+              )}
+            </span>
+            {line.subtotal === undefined ? (
+              <span style={styles.noPrice}>No price</span>
+            ) : (
+              <span style={styles.price}>{formatPrice(line.subtotal)}</span>
+            )}
+          </div>
+        ))}
+        {/* No break marker here on purpose: a page may not cut between the last item and the
+            total (or the disclaimer under it), so the total is never stranded from its items. */}
+        <div style={styles.totalRow}>
+          <span>Estimated total</span>
+          <span>{formatPrice(shopping.total)}</span>
+        </div>
+        <p style={styles.disclaimer}>{PRICE_DISCLAIMER}</p>
+        {shopping.unpricedCount > 0 && (
+          <p style={styles.note}>
+            {shopping.unpricedCount} device{shopping.unpricedCount === 1 ? '' : 's'} without a price{' '}
+            {shopping.unpricedCount === 1 ? "isn't" : "aren't"} included in the total.
+          </p>
+        )}
       </section>
 
       <p style={styles.footer}>Created with the soundorp Signal Chain Builder — soundorp.com</p>

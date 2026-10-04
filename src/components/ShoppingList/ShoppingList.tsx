@@ -4,6 +4,7 @@ import { findCheaperAlternatives } from '../../engine/swaps'
 import {
   PRICE_DISCLAIMER,
   budgetStatus,
+  budgetStatusText,
   buildShoppingList,
   formatPrice,
   parseBudget,
@@ -210,9 +211,7 @@ function ProShoppingList({ devices }: ShoppingListProps) {
                   : 'text-sm font-semibold text-status-pass-text'
               }
             >
-              {status.state === 'over' && `${formatPrice(status.amount)} over budget`}
-              {status.state === 'under' && `${formatPrice(status.amount)} under budget`}
-              {status.state === 'exact' && 'Right on budget'}
+              {budgetStatusText(status)}
             </span>
           )}
         </div>

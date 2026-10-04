@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client'
 import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import type { Device, SignalChain } from '../data/devices.schema'
+import { buildCableList } from './cableList'
 import { resolveChainDevices } from './customDevices'
+import { buildShoppingList } from './shoppingList'
 import { evaluateChain } from '../engine/evaluateChain'
 import { ChainPrintLayout, PRINT_LAYOUT_WIDTH_PX } from '../components/PdfExport/ChainPrintLayout'
 import { MIN_DEVICES_FOR_EXPORT, computePageSlices, pdfFileName } from './pdfLayout'
@@ -21,12 +23,25 @@ const PAGE_IMAGE_QUALITY = 0.95
  * Renders the static print layout off-screen, captures it with html2canvas, and
  * downloads it as a (multi-page) A4 PDF. The live interactive UI is never captured.
  */
-export async function exportChainPdf(chain: SignalChain, customLibrary: Device[] = []): Promise<void> {
+export interface ExportChainPdfOptions {
+  // The user's own devices, for resolving custom devices that aren't in the chain's snapshot.
+  customLibrary?: Device[]
+  // The shopping-list budget in dollars, if the user has set one.
+  budget?: number | null
+}
+
+export async function exportChainPdf(
+  chain: SignalChain,
+  { customLibrary = [], budget = null }: ExportChainPdfOptions = {},
+): Promise<void> {
   const { devices } = resolveChainDevices(chain.deviceIds, customLibrary, chain.customDevices)
   if (devices.length < MIN_DEVICES_FOR_EXPORT) {
     throw new Error('Add at least two devices to export a compatibility report.')
   }
   const connections = evaluateChain(devices)
+  // The same functions the on-screen panels use, so the PDF can't disagree with the screen.
+  const cables = buildCableList(devices)
+  const shopping = buildShoppingList(devices)
 
   const container = document.createElement('div')
   container.setAttribute('aria-hidden', 'true')
@@ -47,6 +62,9 @@ export async function exportChainPdf(chain: SignalChain, customLibrary: Device[]
           devices={devices}
           connections={connections}
           generatedAt={new Date()}
+          cables={cables}
+          shopping={shopping}
+          budget={budget}
         />,
       ),
     )

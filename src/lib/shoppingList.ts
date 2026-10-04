@@ -84,6 +84,18 @@ export function budgetStatus(total: number, budget: number | null): BudgetStatus
   return { state: 'exact', amount: 0 }
 }
 
+/** The words for a budget status, shared by the on-screen list and the PDF. */
+export function budgetStatusText(status: BudgetStatus): string {
+  switch (status.state) {
+    case 'over':
+      return `${formatPrice(status.amount)} over budget`
+    case 'under':
+      return `${formatPrice(status.amount)} under budget`
+    case 'exact':
+      return 'Right on budget'
+  }
+}
+
 /** "$1,234" for whole dollars, "$1,234.50" when there are cents. */
 export function formatPrice(amount: number): string {
   const whole = Number.isInteger(amount)

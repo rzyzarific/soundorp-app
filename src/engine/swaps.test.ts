@@ -390,7 +390,9 @@ describe('findCheaperAlternatives', () => {
   })
 })
 
-describe('findCheaperAlternatives on the real catalog', () => {
+// These sweep thousands of real chains. They take about a second normally, but a loaded machine
+// (or a full parallel run) has pushed one past vitest's 5s default, so give them real headroom.
+describe('findCheaperAlternatives on the real catalog', { timeout: 60_000 }, () => {
   const sm7b = getDeviceById('shure-sm7b')!
   const scarlett = getDeviceById('focusrite-scarlett-2i2-4gen')!
   const monitor = getDeviceById('yamaha-hs5')!
