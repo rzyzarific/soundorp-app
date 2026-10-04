@@ -1,13 +1,16 @@
 import { create } from 'zustand'
 import type { Device, SignalChain } from '../data/devices.schema'
 import {
+  readBudget,
   readCustomDevices,
   readLicense,
   readSavedChains,
+  writeBudget,
   writeCustomDevices,
   writeLicense,
   writeSavedChains,
 } from '../lib/storage'
+import { MAX_BUDGET } from '../lib/shoppingList'
 import { activateLicenseKey } from '../lib/licensing'
 import { trackEvent } from '../lib/analytics'
 import type { ProFeature } from '../lib/proFeatures'
@@ -32,6 +35,9 @@ interface ChainStoreState {
   // The user's own devices (what the free-tier limit counts). Chains carry their own
   // snapshot of the custom devices they use, which is not counted.
   customDevices: Device[]
+  // The shopping-list budget in dollars, or null for none. One budget for the whole app,
+  // not per chain, and persisted.
+  budget: number | null
   // True once a Lemon Squeezy license key has been activated on this browser
   // (persisted in localStorage). The cap-enforcement logic below reads it directly.
   isPro: boolean
@@ -43,6 +49,10 @@ interface ChainStoreState {
 
   addDevice: (deviceId: string) => void
   insertDevice: (index: number, deviceId: string) => void
+  // Replaces every use of one device in the chain with another (shopping-list swaps).
+  replaceDevice: (fromId: string, toId: string) => void
+  // Returns false and changes nothing if the value isn't a sensible dollar amount.
+  setBudget: (budget: number | null) => boolean
   removeDevice: (index: number) => void
   reorderDevice: (fromIndex: number, toIndex: number) => void
   renameCurrentChain: (name: string) => void
@@ -81,6 +91,7 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
   currentChain: createEmptyChain(),
   savedChains: readSavedChains(),
   customDevices: readCustomDevices(),
+  budget: readBudget(),
   isPro: readLicense() !== null,
   saveError: null,
   licenseError: null,
@@ -103,6 +114,27 @@ export const useChainStore = create<ChainStoreState>((set, get) => ({
       deviceIds.splice(at, 0, deviceId)
       return { currentChain: { ...state.currentChain, deviceIds, updatedAt: Date.now() } }
     }),
+
+  replaceDevice: (fromId, toId) =>
+    set((state) => {
+      if (!state.currentChain.deviceIds.includes(fromId)) return {}
+      return {
+        currentChain: {
+          ...state.currentChain,
+          deviceIds: state.currentChain.deviceIds.map((id) => (id === fromId ? toId : id)),
+          updatedAt: Date.now(),
+        },
+      }
+    }),
+
+  setBudget: (budget) => {
+    if (budget !== null && !(Number.isFinite(budget) && budget >= 0 && budget <= MAX_BUDGET)) {
+      return false
+    }
+    writeBudget(budget)
+    set({ budget })
+    return true
+  },
 
   removeDevice: (index) =>
     set((state) => ({

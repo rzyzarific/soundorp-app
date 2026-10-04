@@ -1,7 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import {
+  readBudget,
   readCustomDevices,
   readSavedChains,
+  writeBudget,
   writeCustomDevices,
   writeSavedChains,
 } from './storage'
@@ -87,6 +89,49 @@ describe('custom device storage', () => {
     })
 
     expect(() => writeCustomDevices([customDevice('A')])).not.toThrow()
+  })
+})
+
+describe('budget storage', () => {
+  const BUDGET_KEY = 'soundorp:signal-chain-builder:budget'
+
+  beforeEach(() => {
+    vi.stubGlobal('localStorage', createMemoryStorage())
+  })
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
+  it('round-trips a budget, including zero', () => {
+    writeBudget(1250.5)
+    expect(readBudget()).toBe(1250.5)
+    writeBudget(0)
+    expect(readBudget()).toBe(0)
+  })
+
+  it('starts empty and clears when written null', () => {
+    expect(readBudget()).toBeNull()
+    writeBudget(100)
+    writeBudget(null)
+    expect(readBudget()).toBeNull()
+    expect(localStorage.getItem(BUDGET_KEY)).toBeNull()
+  })
+
+  it.each(['abc', '-5', 'Infinity', 'NaN', '1000001', '', '   '])('ignores a stored %j', (stored) => {
+    localStorage.setItem(BUDGET_KEY, stored)
+
+    expect(readBudget()).toBeNull()
+  })
+
+  it('does not throw when storage refuses the write', () => {
+    vi.stubGlobal('localStorage', {
+      ...createMemoryStorage(),
+      setItem: () => {
+        throw new Error('quota')
+      },
+    })
+
+    expect(() => writeBudget(10)).not.toThrow()
   })
 })
 

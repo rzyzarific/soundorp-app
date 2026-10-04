@@ -1,6 +1,7 @@
 import type { Device, SignalChain } from '../data/devices.schema'
 import type { StoredLicense } from './licensing'
 import { normalizeCustomDevices } from './customDevices'
+import { MAX_BUDGET } from './shoppingList'
 
 const STORAGE_KEY = 'soundorp:signal-chain-builder:saved-chains'
 
@@ -44,6 +45,28 @@ export function writeCustomDevices(devices: Device[]): void {
     localStorage.setItem(CUSTOM_DEVICES_KEY, JSON.stringify(devices))
   } catch {
     // Storage blocked or full: the devices still work for this session.
+  }
+}
+
+const BUDGET_KEY = 'soundorp:signal-chain-builder:budget'
+
+export function readBudget(): number | null {
+  try {
+    const raw = localStorage.getItem(BUDGET_KEY)
+    if (raw === null || raw.trim() === '') return null
+    const value = Number(raw)
+    return Number.isFinite(value) && value >= 0 && value <= MAX_BUDGET ? value : null
+  } catch {
+    return null
+  }
+}
+
+export function writeBudget(budget: number | null): void {
+  try {
+    if (budget === null) localStorage.removeItem(BUDGET_KEY)
+    else localStorage.setItem(BUDGET_KEY, String(budget))
+  } catch {
+    // Storage blocked or full: the budget still applies for this session.
   }
 }
 

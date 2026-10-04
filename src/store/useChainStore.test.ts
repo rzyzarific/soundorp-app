@@ -321,6 +321,127 @@ describe('useChainStore custom devices', () => {
   })
 })
 
+describe('useChainStore replaceDevice', () => {
+  beforeEach(() => {
+    vi.stubGlobal('localStorage', createMemoryStorage())
+  })
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
+  async function storeWith(...ids: string[]) {
+    const useChainStore = await freshStore()
+    ids.forEach((id) => useChainStore.getState().addDevice(id))
+    return useChainStore
+  }
+
+  it('replaces the device in place, keeping the order of everything else', async () => {
+    const useChainStore = await storeWith('a', 'b', 'c')
+
+    useChainStore.getState().replaceDevice('b', 'x')
+
+    expect(useChainStore.getState().currentChain.deviceIds).toEqual(['a', 'x', 'c'])
+  })
+
+  it('replaces every occurrence of a repeated device', async () => {
+    const useChainStore = await storeWith('a', 'b', 'a')
+
+    useChainStore.getState().replaceDevice('a', 'x')
+
+    expect(useChainStore.getState().currentChain.deviceIds).toEqual(['x', 'b', 'x'])
+  })
+
+  it('does nothing, and does not touch updatedAt, when the device is not in the chain', async () => {
+    const useChainStore = await storeWith('a')
+    const before = useChainStore.getState().currentChain
+
+    useChainStore.getState().replaceDevice('nope', 'x')
+
+    expect(useChainStore.getState().currentChain).toBe(before)
+  })
+
+  it('bumps updatedAt when it does replace something', async () => {
+    const useChainStore = await storeWith('a')
+    const before = useChainStore.getState().currentChain.updatedAt
+    await new Promise((r) => setTimeout(r, 2))
+
+    useChainStore.getState().replaceDevice('a', 'x')
+
+    expect(useChainStore.getState().currentChain.updatedAt).toBeGreaterThan(before)
+  })
+
+  it('does not touch saved chains until the user saves', async () => {
+    const useChainStore = await storeWith('a', 'b')
+    useChainStore.getState().saveCurrentChain()
+
+    useChainStore.getState().replaceDevice('a', 'x')
+
+    expect(useChainStore.getState().savedChains[0].deviceIds).toEqual(['a', 'b'])
+  })
+})
+
+describe('useChainStore budget', () => {
+  beforeEach(() => {
+    vi.stubGlobal('localStorage', createMemoryStorage())
+  })
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
+  it('starts with no budget', async () => {
+    expect((await freshStore()).getState().budget).toBeNull()
+  })
+
+  it('stores a valid budget and persists it across a reload', async () => {
+    const useChainStore = await freshStore()
+
+    expect(useChainStore.getState().setBudget(750)).toBe(true)
+
+    expect(useChainStore.getState().budget).toBe(750)
+    expect((await freshStore()).getState().budget).toBe(750)
+  })
+
+  it('accepts zero as a real budget', async () => {
+    const useChainStore = await freshStore()
+
+    expect(useChainStore.getState().setBudget(0)).toBe(true)
+    expect(useChainStore.getState().budget).toBe(0)
+    expect((await freshStore()).getState().budget).toBe(0)
+  })
+
+  it('clears the budget, including from storage', async () => {
+    const useChainStore = await freshStore()
+    useChainStore.getState().setBudget(500)
+
+    useChainStore.getState().setBudget(null)
+
+    expect(useChainStore.getState().budget).toBeNull()
+    expect((await freshStore()).getState().budget).toBeNull()
+  })
+
+  it.each([-1, Number.NaN, Number.POSITIVE_INFINITY, 1_000_001])(
+    'rejects %s and keeps the previous budget',
+    async (bad) => {
+      const useChainStore = await freshStore()
+      useChainStore.getState().setBudget(300)
+
+      expect(useChainStore.getState().setBudget(bad)).toBe(false)
+
+      expect(useChainStore.getState().budget).toBe(300)
+      expect((await freshStore()).getState().budget).toBe(300)
+    },
+  )
+
+  it('is one budget for the app, not per chain', async () => {
+    const useChainStore = await freshStore()
+    useChainStore.getState().setBudget(900)
+
+    useChainStore.getState().newChain()
+
+    expect(useChainStore.getState().budget).toBe(900)
+  })
+})
+
 describe('useChainStore insertDevice', () => {
   beforeEach(() => {
     vi.stubGlobal('localStorage', createMemoryStorage())

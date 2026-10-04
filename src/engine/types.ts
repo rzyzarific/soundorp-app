@@ -13,7 +13,12 @@ export interface FixAction {
 
 // Machine-readable description of what went wrong, so fixes can be derived without
 // parsing text. Rules only describe the problem; evaluateChain attaches the actions.
-export type CheckProblem = { type: 'gain_shortfall'; gap: number }
+export type CheckProblem =
+  // A mic needs more gain than the next input has; a booster could close it.
+  | { type: 'gain_shortfall'; gap: number }
+  // The same shortfall left over after boosters already in the chain. It carries its size
+  // so it can be compared, but it is a different type so no further booster is offered.
+  | { type: 'boosted_gain_shortfall'; gap: number }
 
 export interface CheckResult {
   severity: CheckSeverity

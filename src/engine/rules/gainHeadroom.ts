@@ -44,6 +44,7 @@ function boostedGainCheck(
       title: 'Insufficient gain headroom',
       detail: `${summary} — but it only provides up to ${available}dB, a ${needed - available}dB shortfall even with the booster.`,
       fix: 'Route through a preamp with more headroom.',
+      problem: { type: 'boosted_gain_shortfall', gap: needed - available },
     }
   }
 

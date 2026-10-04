@@ -92,7 +92,9 @@ describe('checkGainHeadroom with an inline booster in the chain', () => {
 
     expect(result?.severity).toBe('warning')
     expect(result?.detail).toContain('5dB shortfall even with the booster')
-    expect(result?.problem).toBeUndefined()
+    // Its size is recorded so swaps can be compared, but it is not the "add a booster"
+    // kind of problem, so no further booster is offered for it.
+    expect(result?.problem).toEqual({ type: 'boosted_gain_shortfall', gap: 5 })
   })
 
   it('adds up boosters stacked back to back', () => {

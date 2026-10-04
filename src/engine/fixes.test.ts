@@ -163,6 +163,28 @@ describe('evaluateChain fix actions', () => {
     expect(all.some((r) => r.severity === 'warning' || r.severity === 'critical')).toBe(false)
   })
 
+  it('does not offer yet another booster for a shortfall left over after one', () => {
+    const mic = device({ id: 'm', name: 'M', subtype: 'dynamic', specs: { outputConnectors: ['XLR'], minPreampGain: 70 } })
+    const booster = device({
+      id: 'b',
+      name: 'B',
+      category: 'preamp',
+      specs: { inputConnectors: ['XLR'], outputConnectors: ['XLR'], needsPhantomPower: true, gainBoost: 10 },
+    })
+    const iface = device({
+      id: 'i',
+      name: 'I',
+      category: 'audio_interface',
+      specs: { inputConnectors: ['XLR'], providesPhantomPower: true, maxPreampGain: 56 },
+    })
+
+    const results = evaluateChain([mic, booster, iface]).flatMap((c) => c.results)
+
+    const leftover = results.find((r) => r.problem?.type === 'boosted_gain_shortfall')
+    expect(leftover?.severity).toBe('warning') // still short by 4 dB
+    expect(results.some((r) => r.actions)).toBe(false) // but nothing more to add
+  })
+
   it('tells the user to switch phantom power on once a booster is in the chain', () => {
     const chain = [
       getDeviceById('shure-sm7b')!,

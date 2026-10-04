@@ -6,6 +6,7 @@ import { resolveChainDevices } from './lib/customDevices'
 import { ChainCanvas } from './components/ChainCanvas/ChainCanvas'
 import { SignalFlowHint } from './components/ChainCanvas/SignalFlowHint'
 import { CableList } from './components/CableList/CableList'
+import { ShoppingList } from './components/ShoppingList/ShoppingList'
 import { CompatibilityReport } from './components/CompatibilityReport/CompatibilityReport'
 import { DeviceLibrary } from './components/DeviceLibrary/DeviceLibrary'
 import { Toolbar } from './components/Toolbar/Toolbar'
@@ -90,6 +91,8 @@ function App() {
             </section>
 
             <CableList devices={devices} />
+
+            <ShoppingList devices={devices} />
           </div>
         </div>
       </div>
