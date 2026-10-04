@@ -3,6 +3,8 @@ import { useChainStore } from '../../store/useChainStore'
 
 interface CheckRowProps {
   result: CheckResult
+  // A public, shared page: no buttons that change a chain, so the written advice shows instead.
+  readOnly?: boolean
 }
 
 const SEVERITY_ICON: Record<CheckResult['severity'], string> = {
@@ -26,10 +28,10 @@ const SEVERITY_STYLES: Record<CheckResult['severity'], { chip: string; accent: s
   },
 }
 
-export function CheckRow({ result }: CheckRowProps) {
+export function CheckRow({ result, readOnly = false }: CheckRowProps) {
   const styles = SEVERITY_STYLES[result.severity]
   const insertDevice = useChainStore((s) => s.insertDevice)
-  const hasActions = result.actions !== undefined && result.actions.length > 0
+  const hasActions = !readOnly && result.actions !== undefined && result.actions.length > 0
 
   return (
     <div className={`flex items-start gap-2 rounded-md border px-3 py-2 ${styles.chip}`}>

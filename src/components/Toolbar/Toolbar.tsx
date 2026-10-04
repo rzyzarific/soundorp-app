@@ -1,7 +1,9 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { encodeChainToShareParam } from '../../lib/share'
+import { buildPublicChainUrl } from '../../lib/publicLink'
 import { customDevicesUsedBy } from '../../lib/customDevices'
+import { CopyLinkButton } from './CopyLinkButton'
 import { SavedChains } from '../SavedChains/SavedChains'
 import { ProUnlock } from './ProUnlock'
 import { ExportPdfButton } from '../PdfExport/ExportPdfButton'
@@ -19,33 +21,24 @@ export function Toolbar() {
   const openUpgradeModal = useChainStore((s) => s.openUpgradeModal)
 
   const [savedChainsOpen, setSavedChainsOpen] = useState(false)
-  const [shareConfirmation, setShareConfirmation] = useState(false)
-  const [shareFallbackUrl, setShareFallbackUrl] = useState<string | null>(null)
   const [justSaved, setJustSaved] = useState(false)
-  const fallbackInputRef = useRef<HTMLInputElement>(null)
 
-  async function handleShare() {
-    // The link has to carry the specs of any custom devices, since the recipient has never seen them.
+  // Both links carry the same self-contained payload, which has to include the specs of any
+  // custom devices, since whoever opens it has never seen them.
+  function encodeCurrentChain(): string {
     const customDevices = customDevicesUsedBy(
       currentChain.deviceIds,
       customLibrary,
       currentChain.customDevices,
     )
-    const encoded = encodeChainToShareParam({ ...currentChain, customDevices })
-    const url = `${window.location.origin}${window.location.pathname}?chain=${encoded}`
-
-    try {
-      await navigator.clipboard.writeText(url)
-      setShareFallbackUrl(null)
-      setShareConfirmation(true)
-      setTimeout(() => setShareConfirmation(false), 2000)
-    } catch {
-      setShareConfirmation(false)
-      setShareFallbackUrl(url)
-      // Give the input a tick to mount before selecting its text.
-      setTimeout(() => fallbackInputRef.current?.select(), 0)
-    }
+    return encodeChainToShareParam({ ...currentChain, customDevices })
   }
+
+  // Opens the builder with a copy of this chain to edit.
+  const getShareUrl = () =>
+    `${window.location.origin}${window.location.pathname}?chain=${encodeCurrentChain()}`
+  // Opens a read-only page that never expires, with nothing to sign in to or install.
+  const getPublicUrl = () => buildPublicChainUrl(window.location.origin, encodeCurrentChain())
 
   function handleSave() {
     saveCurrentChain()
@@ -114,39 +107,12 @@ export function Toolbar() {
             </div>
           )}
         </div>
-        <div className="relative">
-          <button
-            type="button"
-            onClick={handleShare}
-            className="rounded-md bg-soundorp-red px-3 py-1.5 text-sm font-medium text-white hover:bg-soundorp-red/90"
-          >
-            {shareConfirmation ? 'Link copied!' : 'Share'}
-          </button>
-          {shareFallbackUrl && (
-            <div className="absolute right-0 top-full z-20 mt-2 w-80 rounded-xl border border-soundorp-border bg-soundorp-panel p-3 shadow-lg">
-              <p className="mb-2 text-xs text-soundorp-muted">
-                Couldn't copy automatically — select and copy this link manually:
-              </p>
-              <div className="flex gap-1.5">
-                <input
-                  ref={fallbackInputRef}
-                  type="text"
-                  readOnly
-                  value={shareFallbackUrl}
-                  onFocus={(e) => e.currentTarget.select()}
-                  className="min-w-0 flex-1 rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShareFallbackUrl(null)}
-                  className="shrink-0 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        <CopyLinkButton label="Share" copiedLabel="Link copied!" getUrl={getShareUrl} primary />
+        <CopyLinkButton
+          label="Copy permanent link"
+          copiedLabel="Link copied!"
+          getUrl={getPublicUrl}
+        />
         {isPro ? (
           <ExportPdfButton />
         ) : (

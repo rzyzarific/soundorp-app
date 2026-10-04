@@ -5,9 +5,10 @@ import { CheckRow } from './CheckRow'
 interface CompatibilityReportProps {
   devices: Device[]
   connections: ConnectionCheckResult[]
+  readOnly?: boolean
 }
 
-export function CompatibilityReport({ devices, connections }: CompatibilityReportProps) {
+export function CompatibilityReport({ devices, connections, readOnly = false }: CompatibilityReportProps) {
   return (
     <div className="flex flex-col gap-4">
       {connections.map((connection) => {
@@ -23,7 +24,7 @@ export function CompatibilityReport({ devices, connections }: CompatibilityRepor
               {connection.results.length === 0 ? (
                 <p className="text-sm text-soundorp-muted">No applicable checks for this connection.</p>
               ) : (
-                connection.results.map((result, i) => <CheckRow key={i} result={result} />)
+                connection.results.map((result, i) => <CheckRow key={i} result={result} readOnly={readOnly} />)
               )}
             </div>
           </div>

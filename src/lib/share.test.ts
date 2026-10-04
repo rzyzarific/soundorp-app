@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string'
-import { encodeChainToShareParam, decodeShareParam } from './share'
+import { MAX_CHAIN_NAME_LENGTH, encodeChainToShareParam, decodeShareParam, sanitizeChainName } from './share'
 import {
   MAX_CUSTOM_DEVICES_PER_SHARE,
   createCustomDevice,
@@ -207,6 +207,48 @@ describe('v2 links (with custom devices)', () => {
 
     expect(decoded?.customDevices).toHaveLength(MAX_CUSTOM_DEVICES_PER_SHARE)
     expect(decoded?.droppedCount).toBe(40 - MAX_CUSTOM_DEVICES_PER_SHARE)
+  })
+})
+
+describe('chain names arriving in a link', () => {
+  const nameOf = (name: string) => decodeShareParam(encodeChainToShareParam({ name, deviceIds: [] }))?.name
+
+  it('passes an ordinary name through untouched', () => {
+    expect(nameOf('Podcast setup — v2 (guest mic)')).toBe('Podcast setup — v2 (guest mic)')
+    expect(nameOf('Café Étude 🎙')).toBe('Café Étude 🎙')
+  })
+
+  it('caps the length', () => {
+    const name = nameOf('x'.repeat(5000))!
+
+    expect(name).toHaveLength(MAX_CHAIN_NAME_LENGTH)
+  })
+
+  it('replaces control characters and newlines with a space', () => {
+    expect(nameOf('line one\nline\ttwo\u0000end')).toBe('line one line two end')
+  })
+
+  it('strips the bidirectional overrides that can make text read backwards', () => {
+    expect(nameOf('invoice‮gnp.exe')).toBe('invoice gnp.exe')
+    expect(nameOf('a⁦b⁩c‎d‏e')).toBe('a b c d e')
+  })
+
+  it('collapses runs of whitespace and trims', () => {
+    expect(nameOf('   spaced     out   name  ')).toBe('spaced out name')
+  })
+
+  it('comes out empty for a name that was nothing but unsafe characters', () => {
+    expect(nameOf('‮\u0000\n')).toBe('')
+  })
+
+  it('leaves markup as plain text for React to escape rather than interpreting it', () => {
+    expect(nameOf('<script>alert(1)</script>')).toBe('<script>alert(1)</script>')
+  })
+
+  it('sanitizeChainName is idempotent', () => {
+    const once = sanitizeChainName('  a‮b\n' + 'z'.repeat(300))
+
+    expect(sanitizeChainName(once)).toBe(once)
   })
 })
 

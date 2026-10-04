@@ -6,6 +6,21 @@ import { MAX_CUSTOM_DEVICES_PER_SHARE, isCustomId, normalizeCustomDevices } from
 // A chain longer than this is not a real chain; refuse it rather than process it.
 const MAX_SHARED_DEVICES = 200
 
+export const MAX_CHAIN_NAME_LENGTH = 120
+
+// Control characters, and the invisible bidirectional overrides that can make text read
+// differently from how it is stored.
+const UNSAFE_NAME_CHARS = /[\p{Cc}‎‏‪-‮⁦-⁩]/gu
+
+/**
+ * A chain name arriving in a link is shown on a page we host, so it is trimmed of control
+ * and direction-override characters and capped. Anything else is plain text, which React
+ * escapes; this only stops a crafted link from putting odd or oversized text on our domain.
+ */
+export function sanitizeChainName(name: string): string {
+  return name.replace(UNSAFE_NAME_CHARS, ' ').replace(/\s+/g, ' ').trim().slice(0, MAX_CHAIN_NAME_LENGTH)
+}
+
 interface SharePayloadV1 {
   v: 1
   n: string
@@ -98,7 +113,7 @@ export function decodeShareParam(encoded: string): DecodedShareChain | null {
   const usedCustom = embedded.filter((d) => deviceIds.includes(d.id))
 
   return {
-    name: parsed.n,
+    name: sanitizeChainName(parsed.n),
     deviceIds,
     droppedCount: parsed.d.length - deviceIds.length,
     customDevices: usedCustom,
