@@ -25,3 +25,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Browser-script output (screenshots, PDFs)
+scripts/e2e/out/
