@@ -43,7 +43,10 @@ function SortableDeviceNode({ slot, index, onRemove }: SortableDeviceNodeProps) 
   }
 
   return (
-    <div ref={setNodeRef} style={style} className="relative" {...attributes} {...listeners}>
+    // touch-pan-y: a finger moving along the card is a drag (the browser leaves horizontal
+    // movement to the drag sensor instead of scrolling the row), while moving up or down still
+    // scrolls the page. The row itself scrolls from its padding and from the gaps between cards.
+    <div ref={setNodeRef} style={style} className="relative touch-pan-y" {...attributes} {...listeners}>
       <button
         type="button"
         onClick={(e) => {

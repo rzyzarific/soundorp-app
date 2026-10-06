@@ -26,6 +26,7 @@ node scripts/e2e/ui-layout.mjs     # or a single script
 | `m5` | PDF export (short and multi-page), free-tier lock |
 | `m6` | Public `/c/<chain>` page, hostile and invalid links |
 | `ui-layout` | No page-level horizontal scroll at 320-1440px, toolbar sizing, report popovers (mouse and touch), toolbar popovers and modals, navbar |
+| `touch-drag` | Drag-to-reorder by mouse and by real touch events (swap, edge autoscroll, no browser back-swipe), and that the gaps between cards still scroll the row and a vertical swipe still scrolls the page |
 
 Screenshots, PDFs and other output go to `scripts/e2e/out/` (git-ignored).
 
