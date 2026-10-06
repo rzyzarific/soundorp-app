@@ -12,6 +12,8 @@ import { PRICE_DISCLAIMER, buildShoppingList } from '../../lib/shoppingList'
 const dev = (id: string) => getDeviceById(id)!
 const sm7b = dev('shure-sm7b')
 const scarlett = dev('focusrite-scarlett-2i2-4gen')
+// A real shortfall for the SM7B: the 3rd Gen has 56 dB against its 60 dB. (The 4th Gen has 69 dB.)
+const underpoweredInterface = dev('focusrite-scarlett-2i2-3gen')
 const hs5 = dev('yamaha-hs5')
 
 function render(devices: Device[], budget: number | null = null): string {
@@ -57,7 +59,7 @@ describe('ChainPrintLayout sections', () => {
 
   it('keeps the existing signal chain and report content', () => {
     expect(text).toContain('SM7B')
-    expect(text).toContain('Insufficient gain headroom')
+    expect(textOf(render([sm7b, underpoweredInterface, hs5]))).toContain('Insufficient gain headroom')
     expect(text).toContain('Connectors match')
     expect(text).toContain('3 devices')
   })
@@ -301,7 +303,7 @@ describe('device icons in the PDF', () => {
   })
 
   it('colours each arrow by the worst result for that connection', () => {
-    const html = render([sm7b, scarlett, hs5]) // gain warning, then a clean connection
+    const html = render([sm7b, underpoweredInterface, hs5]) // gain warning, then a clean connection
     const arrows = [...html.matchAll(/<span style="[^"]*color:(#[0-9a-f]{6})[^"]*">→<\/span>/gi)].map((m) => m[1])
 
     expect(arrows).toEqual(['#b45309', '#15803d']) // amber warning, green pass

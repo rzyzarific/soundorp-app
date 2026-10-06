@@ -49,16 +49,28 @@ describe('audio interface analog outputs (the false "No matching connector" bug)
     }
   })
 
-  it('lets every interface with a TRS line out feed every studio monitor in the catalog', () => {
-    // Every monitor in the catalog takes TRS, so a TRS line out always fits.
-    expect(monitors.every((m) => m.specs.inputConnectors?.includes('TRS'))).toBe(true)
+  it('lets every interface with a TRS line out feed every studio monitor that takes TRS', () => {
+    const takesTrs = monitors.filter((m) => m.specs.inputConnectors?.includes('TRS'))
+    // Only the Genelec 8010A is left out: it has a single XLR input (genelec.com/8010a).
+    expect(monitors.filter((m) => !takesTrs.includes(m)).map((m) => m.id)).toEqual(['genelec-8010a'])
 
     for (const i of interfaces) {
       if (!i.specs.outputConnectors?.includes('TRS')) continue
-      for (const m of monitors) {
+      for (const m of takesTrs) {
         expect(connectorWarnings([i, m]), `${i.id} → ${m.id}`).toEqual([])
       }
     }
+  })
+
+  it('asks for a TRS-to-XLR cable where a TRS-only line out meets the XLR-only Genelec 8010A', () => {
+    const genelec = getDeviceById('genelec-8010a')!
+    expect(genelec.specs.inputConnectors).toEqual(['XLR'])
+    const trsOnly = interfaces.find(
+      (i) => i.specs.outputConnectors?.includes('TRS') && !i.specs.outputConnectors.includes('XLR'),
+    )!
+
+    expect(connectorWarnings([trsOnly, genelec])).toHaveLength(1)
+    expect(buildCableList([trsOnly, genelec]).lines[0].kind).toBe('adapter')
   })
 
   it('asks for an XLR-to-TRS cable where an XLR-only line out meets a monitor with no XLR input', () => {

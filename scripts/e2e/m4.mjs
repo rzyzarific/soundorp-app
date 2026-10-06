@@ -159,6 +159,7 @@ async function session({ pro }) {
   }
 
   // ---- an existing gain shortfall must never get bigger through a swap ----
+  // (The 3rd Gen 2i2 has 56 dB against the SM7B's 60 dB; the 4th Gen has 69 dB, so it has no shortfall.)
   const shortfallOnScreen = async () => {
     const m = (await report.innerText()).match(/a (\d+)dB shortfall/)
     return m ? Number(m[1]) : 0
@@ -170,14 +171,14 @@ async function session({ pro }) {
   // A $0 budget puts every chain over budget, which keeps the "Cheaper options" lists open
   // (closed <details> are invisible to the accessibility tree, so nothing could be clicked).
   await budget.fill('0')
-  await freshChain('SM7B', 'Scarlett 2i2 (4th', 'HS5')
+  await freshChain('SM7B', 'Scarlett 2i2 (3rd', 'HS5')
   const baseShortfall = await shortfallOnScreen()
   check('pro: the SM7B → Scarlett 2i2 chain starts with a real gain shortfall', baseShortfall > 0, JSON.stringify({ baseShortfall, chain: await chainNames(), report: (await report.innerText()).slice(0, 260) }))
-  const ifaceSwaps = await panel.getByRole('button', { name: /^Swap Focusrite Scarlett 2i2 \(4th Gen\) for / }).evaluateAll((els) => els.map((e) => e.getAttribute('aria-label')))
+  const ifaceSwaps = await panel.getByRole('button', { name: /^Swap Focusrite Scarlett 2i2 \(3rd Gen\) for / }).evaluateAll((els) => els.map((e) => e.getAttribute('aria-label')))
   check('pro: it still offers interface swaps to try', ifaceSwaps.length > 0, JSON.stringify(ifaceSwaps))
   const grown = []
   for (const label of ifaceSwaps) {
-    await freshChain('SM7B', 'Scarlett 2i2 (4th', 'HS5')
+    await freshChain('SM7B', 'Scarlett 2i2 (3rd', 'HS5')
     await panel.getByRole('button', { name: label, exact: true }).click()
     const now = await shortfallOnScreen()
     if (now > baseShortfall) grown.push(`${label}: ${baseShortfall} → ${now} dB`)

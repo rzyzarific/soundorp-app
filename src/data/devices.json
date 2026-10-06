@@ -301,7 +301,7 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 65,
+      "maxPreampGain": 60,
       "micPreampCount": 1
     }
   },
@@ -386,7 +386,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 56,
+      "maxPreampGain": 69,
       "micPreampCount": 2
     }
   },
@@ -536,7 +536,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 58,
+      "maxPreampGain": 56,
       "micPreampCount": 2
     }
   },
@@ -973,7 +973,7 @@
       "outputConnectors": ["TRS", "USB-A"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 2
+      "micPreampCount": 4
     }
   },
   {
@@ -1069,7 +1069,7 @@
     "category": "monitor",
     "msrp": 495,
     "specs": {
-      "inputConnectors": ["TRS", "RCA"]
+      "inputConnectors": ["XLR"]
     }
   },
   {
@@ -1577,7 +1577,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
-      "maxPreampGain": 75,
+      "maxPreampGain": 65,
       "micPreampCount": 2
     }
   },
@@ -1665,8 +1665,8 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
-      "micPreampCount": 1
+      "maxPreampGain": 75,
+      "micPreampCount": 2
     }
   },
   {
@@ -2760,8 +2760,8 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 65,
-      "micPreampCount": 1
+      "maxPreampGain": 66,
+      "micPreampCount": 2
     }
   },
   {
@@ -2802,7 +2802,7 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 66,
       "micPreampCount": 2
     }
   },

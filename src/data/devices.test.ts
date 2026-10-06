@@ -84,3 +84,34 @@ describe('searchDevices', () => {
     expect(searchDevices('zzzznonexistentzzzz')).toEqual([])
   })
 })
+
+// Values corrected after checking them against a manufacturer page (or two independent retailer
+// listings) in the 2026-10-06 audit. If one of these fails, someone has put back a figure the
+// manufacturer contradicts: check the source before changing the test.
+describe('specs corrected against manufacturer pages', () => {
+  const corrected: Array<[id: string, specs: Record<string, unknown>, source: string]> = [
+    ['warm-audio-wa273-eq', { maxPreampGain: 80, micPreampCount: 2 }, 'warmaudio.com/mic-pre-wa73-eq; bswusa.com'],
+    ['warm-audio-wa273', { maxPreampGain: 80, micPreampCount: 2 }, 'warmaudio.com/mic-pre-wa73'],
+    ['warm-audio-wa412', { maxPreampGain: 65, micPreampCount: 4 }, 'warmaudio.com/wa412'],
+    ['warm-audio-wa12', { maxPreampGain: 71 }, 'warmaudio.com/wa12mkii'],
+    ['universal-audio-volt-2', { maxPreampGain: 55 }, 'uaudio.com/products/volt-2-usb-audio-interface'],
+    ['great-river-mp2nv', { maxPreampGain: 70, micPreampCount: 2 }, 'retrogearshop.com; Great River distributor datasheet'],
+    ['tascam-us-2x2', { maxPreampGain: 56 }, 'tascam.com/us/product/us-2x2hr/spec'],
+    ['focusrite-scarlett-2i2-4gen', { maxPreampGain: 69 }, 'us.focusrite.com/products/scarlett-2i2'],
+    ['apogee-duet-3', { maxPreampGain: 65 }, 'knowledge.apogeedigital.com/how-does-duet-3-compare-to-other-apogee-units'],
+    ['universal-audio-solo-610', { maxPreampGain: 60 }, 'uaudio.com/hardware/mic-preamps/solo-610.html'],
+    ['audient-mico', { maxPreampGain: 66, micPreampCount: 2 }, 'soundonsound.com/reviews/audient-mico; Audient spec page'],
+    ['fmr-audio-rnp8380', { maxPreampGain: 66, micPreampCount: 2 }, 'united-music.by; analoguehaven.com'],
+    ['chandler-limited-tg2', { maxPreampGain: 75, micPreampCount: 2 }, 'proaudiodesign.com; zenproaudio.com'],
+    ['genelec-8010a', { inputConnectors: ['XLR'] }, 'genelec.com/8010a: "1 x XLR Analog Input"'],
+    ['behringer-xenyx-q1202usb', { micPreampCount: 4 }, 'behringer.com/en/products/0601-AGC'],
+  ]
+
+  it.each(corrected)('%s matches its source', (id, specs, source) => {
+    const device = getDeviceById(id)
+    expect(device, id).toBeDefined()
+    for (const [key, value] of Object.entries(specs)) {
+      expect((device!.specs as Record<string, unknown>)[key], `${id}.${key} (${source})`).toEqual(value)
+    }
+  })
+})
