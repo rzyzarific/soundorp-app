@@ -1,16 +1,20 @@
+import type { RefObject } from 'react'
 import { useChainStore } from '../../store/useChainStore'
+import { Popover } from '../Popover/Popover'
 
 interface SavedChainsProps {
   onClose: () => void
+  // The "Saved chains" button the panel opens from.
+  anchorRef: RefObject<HTMLElement | null>
 }
 
-export function SavedChains({ onClose }: SavedChainsProps) {
+export function SavedChains({ onClose, anchorRef }: SavedChainsProps) {
   const savedChains = useChainStore((s) => s.savedChains)
   const loadChain = useChainStore((s) => s.loadChain)
   const deleteChain = useChainStore((s) => s.deleteChain)
 
   return (
-    <div className="absolute right-0 top-full z-20 mt-2 w-80 rounded-xl border border-soundorp-border bg-soundorp-panel p-4 shadow-lg">
+    <Popover open onClose={onClose} anchorRef={anchorRef} label="Saved chains" widthClass="w-80" ownClose>
       <div className="mb-3 flex items-center justify-between">
         <h2 className="font-orbitron text-sm font-black uppercase tracking-[0.6px] text-soundorp-muted">
           Saved chains
@@ -63,6 +67,6 @@ export function SavedChains({ onClose }: SavedChainsProps) {
             ))}
         </ul>
       )}
-    </div>
+    </Popover>
   )
 }

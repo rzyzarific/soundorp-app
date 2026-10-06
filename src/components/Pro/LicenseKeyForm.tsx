@@ -38,6 +38,7 @@ export function LicenseKeyForm({ onCancel, onActivated, autoFocus }: LicenseKeyF
           autoComplete="off"
           spellCheck={false}
           autoFocus={autoFocus}
+          data-autofocus={autoFocus ? '' : undefined}
           className="w-full rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
         />
         <div className="flex justify-end gap-1.5">

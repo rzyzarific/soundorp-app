@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import type { Device } from '../data/devices.schema'
+import { Popover } from './Popover/Popover'
 
 // TODO: point this at whichever inbox soundorp wants spec reports to land in.
 const SPEC_REPORT_EMAIL = 'info@soundorp.com'
@@ -14,6 +15,7 @@ export function ReportSpecButton({ device, className }: ReportSpecButtonProps) {
   const [field, setField] = useState('')
   const [comment, setComment] = useState('')
   const [sent, setSent] = useState(false)
+  const triggerRef = useRef<HTMLButtonElement>(null)
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -42,8 +44,9 @@ export function ReportSpecButton({ device, className }: ReportSpecButtonProps) {
   }
 
   return (
-    <div className={`relative ${className ?? ''}`}>
+    <div className={className}>
       <button
+        ref={triggerRef}
         type="button"
         onClick={(e) => {
           e.stopPropagation()
@@ -51,56 +54,62 @@ export function ReportSpecButton({ device, className }: ReportSpecButtonProps) {
         }}
         title="Report incorrect spec"
         aria-label={`Report incorrect spec for ${device.brand} ${device.name}`}
-        className="flex h-5 w-5 items-center justify-center rounded text-xs text-soundorp-muted hover:text-status-warning-text"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        // The flag is small; the invisible ::before makes it a 24x44px target without moving
+        // anything (kept narrow so it does not cover the button beside it).
+        className="relative flex h-5 w-5 items-center justify-center rounded text-xs text-soundorp-muted before:absolute before:-inset-x-0.5 before:-inset-y-3 before:content-[''] hover:text-status-warning-text"
       >
         🚩
       </button>
 
-      {open && (
-        <div
-          onClick={(e) => e.stopPropagation()}
-          className="absolute right-0 top-full z-30 mt-2 w-64 rounded-xl border border-soundorp-border bg-soundorp-panel p-3 shadow-lg"
-        >
-          {sent ? (
-            <p className="text-xs text-status-pass-text">Thanks — report noted.</p>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-              <p className="text-xs font-medium text-soundorp-text">
-                Report incorrect spec for {device.brand} {device.name}
-              </p>
-              <input
-                type="text"
-                value={field}
-                onChange={(e) => setField(e.target.value)}
-                placeholder="Which field is wrong? (e.g. maxPreampGain)"
-                className="w-full rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
-              />
-              <textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Optional comment"
-                rows={2}
-                className="w-full resize-none rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
-              />
-              <div className="flex justify-end gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  className="rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90"
-                >
-                  Send
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-      )}
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorRef={triggerRef}
+        label={`Report incorrect spec for ${device.brand} ${device.name}`}
+        widthClass="w-64"
+      >
+        {sent ? (
+          <p className="text-xs text-status-pass-text">Thanks — report noted.</p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+            <p className="text-xs font-medium text-soundorp-text">
+              Report incorrect spec for {device.brand} {device.name}
+            </p>
+            <input
+              type="text"
+              value={field}
+              onChange={(e) => setField(e.target.value)}
+              placeholder="Which field is wrong? (e.g. maxPreampGain)"
+              data-autofocus
+              className="w-full rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
+            />
+            <textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Optional comment"
+              rows={2}
+              className="w-full resize-none rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
+            />
+            <div className="flex justify-end gap-1.5">
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90"
+              >
+                Send
+              </button>
+            </div>
+          </form>
+        )}
+      </Popover>
     </div>
   )
 }

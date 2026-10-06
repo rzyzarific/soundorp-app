@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { CHECKOUT_URL } from '../../lib/licensing'
 import { trackEvent } from '../../lib/analytics'
 import { LicenseKeyForm } from '../Pro/LicenseKeyForm'
+import { Popover } from '../Popover/Popover'
 
 export function ProUnlock() {
   const isPro = useChainStore((s) => s.isPro)
   const clearLicenseError = useChainStore((s) => s.clearLicenseError)
 
   const [open, setOpen] = useState(false)
+  const keyButtonRef = useRef<HTMLButtonElement>(null)
 
   if (isPro) {
     return (
@@ -21,6 +23,11 @@ export function ProUnlock() {
   function handleToggle() {
     clearLicenseError()
     setOpen((v) => !v)
+  }
+
+  function handleClose() {
+    clearLicenseError()
+    setOpen(false)
   }
 
   return (
@@ -36,8 +43,11 @@ export function ProUnlock() {
       </a>
       <div className="relative">
         <button
+          ref={keyButtonRef}
           type="button"
           onClick={handleToggle}
+          aria-haspopup="dialog"
+          aria-expanded={open}
           className={
             open
               ? 'rounded-md border border-soundorp-border bg-[#2a2a2a] px-3 py-1.5 text-sm font-medium text-soundorp-text'
@@ -46,11 +56,15 @@ export function ProUnlock() {
         >
           I have a key
         </button>
-        {open && (
-          <div className="absolute right-0 top-full z-20 mt-2 w-80 rounded-xl border border-soundorp-border bg-soundorp-panel p-3 shadow-lg">
-            <LicenseKeyForm autoFocus onCancel={handleToggle} onActivated={() => setOpen(false)} />
-          </div>
-        )}
+        <Popover
+          open={open}
+          onClose={handleClose}
+          anchorRef={keyButtonRef}
+          label="Activate a license key"
+          widthClass="w-80"
+        >
+          <LicenseKeyForm autoFocus onCancel={handleClose} onActivated={() => setOpen(false)} />
+        </Popover>
       </div>
     </>
   )

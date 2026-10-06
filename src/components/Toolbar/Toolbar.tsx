@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { encodeChainToShareParam } from '../../lib/share'
 import { buildPublicChainUrl } from '../../lib/publicLink'
@@ -8,6 +8,7 @@ import { SavedChains } from '../SavedChains/SavedChains'
 import { ProUnlock } from './ProUnlock'
 import { ExportPdfButton } from '../PdfExport/ExportPdfButton'
 import { LockedFeatureButton } from '../Pro/LockedFeatureButton'
+import { Popover } from '../Popover/Popover'
 
 export function Toolbar() {
   const currentChain = useChainStore((s) => s.currentChain)
@@ -22,6 +23,8 @@ export function Toolbar() {
 
   const [savedChainsOpen, setSavedChainsOpen] = useState(false)
   const [justSaved, setJustSaved] = useState(false)
+  const saveButtonRef = useRef<HTMLButtonElement>(null)
+  const savedChainsButtonRef = useRef<HTMLButtonElement>(null)
 
   // Both links carry the same self-contained payload, which has to include the specs of any
   // custom devices, since whoever opens it has never seen them.
@@ -72,6 +75,7 @@ export function Toolbar() {
         </button>
         <div className="relative">
           <button
+            ref={saveButtonRef}
             type="button"
             onClick={handleSave}
             className={
@@ -82,31 +86,36 @@ export function Toolbar() {
           >
             {justSaved ? 'Saved ✓' : 'Save'}
           </button>
-          {saveError && (
-            <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-status-warning-border bg-status-warning-bg p-3 shadow-lg">
-              <p className="text-xs text-status-warning-text">{saveError}</p>
-              <div className="mt-2 flex gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => {
-                    clearSaveError()
-                    openUpgradeModal('unlimited_chains')
-                  }}
-                  aria-haspopup="dialog"
-                  className="rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90"
-                >
-                  Upgrade to Pro
-                </button>
-                <button
-                  type="button"
-                  onClick={clearSaveError}
-                  className="rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-                >
-                  Dismiss
-                </button>
-              </div>
+          <Popover
+            open={saveError !== null}
+            onClose={clearSaveError}
+            anchorRef={saveButtonRef}
+            label="Saved chain limit"
+            widthClass="w-72"
+            surfaceClass="border-status-warning-border bg-status-warning-bg"
+          >
+            <p className="text-xs text-status-warning-text">{saveError}</p>
+            <div className="mt-2 flex gap-1.5">
+              <button
+                type="button"
+                onClick={() => {
+                  clearSaveError()
+                  openUpgradeModal('unlimited_chains')
+                }}
+                aria-haspopup="dialog"
+                className="rounded-md bg-soundorp-red px-2 py-1 text-xs font-medium text-white hover:bg-soundorp-red/90"
+              >
+                Upgrade to Pro
+              </button>
+              <button
+                type="button"
+                onClick={clearSaveError}
+                className="rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+              >
+                Dismiss
+              </button>
             </div>
-          )}
+          </Popover>
         </div>
         <CopyLinkButton label="Share" copiedLabel="Link copied!" getUrl={getShareUrl} primary />
         <CopyLinkButton
@@ -121,8 +130,11 @@ export function Toolbar() {
         )}
         <div className="relative">
           <button
+            ref={savedChainsButtonRef}
             type="button"
             onClick={() => setSavedChainsOpen((open) => !open)}
+            aria-haspopup="dialog"
+            aria-expanded={savedChainsOpen}
             className={
               savedChainsOpen
                 ? 'rounded-md border border-soundorp-border bg-[#2a2a2a] px-3 py-1.5 text-sm font-medium text-soundorp-text'
@@ -131,7 +143,9 @@ export function Toolbar() {
           >
             Saved chains
           </button>
-          {savedChainsOpen && <SavedChains onClose={() => setSavedChainsOpen(false)} />}
+          {savedChainsOpen && (
+            <SavedChains onClose={() => setSavedChainsOpen(false)} anchorRef={savedChainsButtonRef} />
+          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Popover } from '../Popover/Popover'
 
 interface CopyLinkButtonProps {
   label: string
@@ -18,6 +19,7 @@ export function CopyLinkButton({ label, copiedLabel, getUrl, primary = false }: 
   const [copied, setCopied] = useState(false)
   const [fallbackUrl, setFallbackUrl] = useState<string | null>(null)
   const fallbackInputRef = useRef<HTMLInputElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   async function handleClick() {
     const url = getUrl()
@@ -37,34 +39,39 @@ export function CopyLinkButton({ label, copiedLabel, getUrl, primary = false }: 
 
   return (
     <div className="relative">
-      <button type="button" onClick={handleClick} className={primary ? PRIMARY : SECONDARY}>
+      <button ref={buttonRef} type="button" onClick={handleClick} className={primary ? PRIMARY : SECONDARY}>
         {copied ? copiedLabel : label}
       </button>
-      {fallbackUrl && (
-        <div className="absolute right-0 top-full z-20 mt-2 w-80 rounded-xl border border-soundorp-border bg-soundorp-panel p-3 shadow-lg">
-          <p className="mb-2 text-xs text-soundorp-muted">
-            Couldn't copy automatically — select and copy this link manually:
-          </p>
-          <div className="flex gap-1.5">
-            <input
-              ref={fallbackInputRef}
-              type="text"
-              readOnly
-              value={fallbackUrl}
-              aria-label="Link to copy"
-              onFocus={(e) => e.currentTarget.select()}
-              className="min-w-0 flex-1 rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
-            />
-            <button
-              type="button"
-              onClick={() => setFallbackUrl(null)}
-              className="shrink-0 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-            >
-              Close
-            </button>
-          </div>
+      <Popover
+        open={fallbackUrl !== null}
+        onClose={() => setFallbackUrl(null)}
+        anchorRef={buttonRef}
+        label="Copy this link manually"
+        widthClass="w-80"
+      >
+        <p className="mb-2 text-xs text-soundorp-muted">
+          Couldn't copy automatically — select and copy this link manually:
+        </p>
+        <div className="flex gap-1.5">
+          <input
+            ref={fallbackInputRef}
+            type="text"
+            readOnly
+            value={fallbackUrl ?? ''}
+            aria-label="Link to copy"
+            data-autofocus
+            onFocus={(e) => e.currentTarget.select()}
+            className="min-w-0 flex-1 rounded-md border border-soundorp-border bg-soundorp-bg px-2 py-1 text-xs text-soundorp-text outline-none focus:border-soundorp-red"
+          />
+          <button
+            type="button"
+            onClick={() => setFallbackUrl(null)}
+            className="shrink-0 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+          >
+            Close
+          </button>
         </div>
-      )}
+      </Popover>
     </div>
   )
 }

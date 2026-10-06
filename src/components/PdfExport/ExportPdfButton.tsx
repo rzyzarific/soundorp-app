@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useChainStore } from '../../store/useChainStore'
 import { MIN_DEVICES_FOR_EXPORT } from '../../lib/pdfLayout'
+import { Popover } from '../Popover/Popover'
 
 export function ExportPdfButton() {
   const currentChain = useChainStore((s) => s.currentChain)
@@ -8,6 +9,7 @@ export function ExportPdfButton() {
   const budget = useChainStore((s) => s.budget)
   const [exporting, setExporting] = useState(false)
   const [message, setMessage] = useState<string | null>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   async function handleExport() {
     // The heavy export module (html2canvas + jsPDF) is only fetched below, on demand.
@@ -32,6 +34,7 @@ export function ExportPdfButton() {
   return (
     <div className="relative">
       <button
+        ref={buttonRef}
         type="button"
         onClick={handleExport}
         disabled={exporting}
@@ -39,18 +42,23 @@ export function ExportPdfButton() {
       >
         {exporting ? 'Exporting…' : 'Export PDF'}
       </button>
-      {message && (
-        <div className="absolute right-0 top-full z-20 mt-2 w-72 rounded-xl border border-status-warning-border bg-status-warning-bg p-3 shadow-lg">
-          <p className="text-xs text-status-warning-text">{message}</p>
-          <button
-            type="button"
-            onClick={() => setMessage(null)}
-            className="mt-2 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
-          >
-            Dismiss
-          </button>
-        </div>
-      )}
+      <Popover
+        open={message !== null}
+        onClose={() => setMessage(null)}
+        anchorRef={buttonRef}
+        label="Export PDF"
+        widthClass="w-72"
+        surfaceClass="border-status-warning-border bg-status-warning-bg"
+      >
+        <p className="text-xs text-status-warning-text">{message}</p>
+        <button
+          type="button"
+          onClick={() => setMessage(null)}
+          className="mt-2 rounded-md border border-soundorp-border px-2 py-1 text-xs font-medium text-soundorp-muted hover:bg-[#1f1f1f] hover:text-soundorp-text"
+        >
+          Dismiss
+        </button>
+      </Popover>
     </div>
   )
 }
