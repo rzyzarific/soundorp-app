@@ -40,25 +40,16 @@ function App() {
   const connections = evaluateChain(devices)
 
   return (
-    <div className="min-h-screen bg-soundorp-bg px-6 py-10 text-soundorp-text">
+    <div className="px-6 py-10 text-soundorp-text">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
-        <header className="flex flex-wrap items-start justify-between gap-3">
-          <div className="flex flex-col gap-1">
-            <a
-              href="https://soundorp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit font-orbitron text-lg font-black lowercase text-soundorp-red hover:underline"
-            >
-              soundorp
-            </a>
-            <h1 className="font-orbitron text-xl font-black text-soundorp-text">
-              Signal Chain Builder
-            </h1>
-            <p className="text-sm text-soundorp-muted">
-              Build a chain and get live compatibility checks.
-            </p>
-          </div>
+        {/* The soundorp wordmark and the way back to soundorp.com live in the navbar (AppShell). */}
+        <header className="flex flex-col gap-1">
+          <h1 className="font-orbitron text-xl font-black text-soundorp-text">
+            Signal Chain Builder
+          </h1>
+          <p className="text-sm text-soundorp-muted">
+            Build a chain and get live compatibility checks.
+          </p>
         </header>
 
         {droppedCount > 0 && (

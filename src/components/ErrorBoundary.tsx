@@ -27,7 +27,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (this.state.error) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-soundorp-bg px-6">
+        <div className="flex flex-1 items-center justify-center bg-soundorp-bg px-6 py-16">
           <div className="flex max-w-md flex-col gap-2 text-center">
             <h1 className="font-orbitron text-lg font-black text-soundorp-text">Something went wrong</h1>
             <p className="text-sm text-soundorp-muted">

@@ -42,24 +42,10 @@ function usePageHead(title: string) {
 
 function PageShell({ children, action }: { children: React.ReactNode; action?: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-soundorp-bg px-6 py-10 text-soundorp-text">
+    <div className="px-6 py-10 text-soundorp-text">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
-        <header className="flex flex-wrap items-start justify-between gap-3">
-          <div className="flex flex-col gap-1">
-            <a
-              href={SITE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit font-orbitron text-lg font-black lowercase text-soundorp-red hover:underline"
-            >
-              soundorp
-            </a>
-            <span className="font-orbitron text-sm font-black text-soundorp-muted">
-              Signal Chain Builder
-            </span>
-          </div>
-          {action}
-        </header>
+        {/* The soundorp wordmark and the way back to soundorp.com live in the navbar (AppShell). */}
+        {action && <header className="flex justify-end">{action}</header>}
         {children}
         <footer className="border-t border-soundorp-border pt-4 text-xs text-soundorp-muted">
           Made with the{' '}

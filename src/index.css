@@ -36,6 +36,11 @@ body {
   color: var(--color-soundorp-text);
 }
 
+/* Layering, lowest to highest. Anything new goes into this order rather than picking a number:
+     navbar (sticky)        z-40
+     popovers (Popover)     z-[45]   above the navbar, so one opened under it is never hidden
+     modals (Modal)         z-50     above everything, so a modal always covers an open popover */
+
 /* Toolbar controls (the buttons and links that are direct children of the toolbar, or of the
    wrapper that anchors their popover; buttons inside popovers are deeper and left alone).
    Phones: fill their grid cell, at least 44px tall, label may wrap to two lines.
