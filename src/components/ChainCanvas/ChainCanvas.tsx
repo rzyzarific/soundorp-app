@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import {
   DndContext,
   closestCenter,
@@ -59,10 +60,30 @@ function SortableDeviceNode({ slot, index, onRemove }: SortableDeviceNodeProps) 
   )
 }
 
+const FADE_MASK =
+  '[mask-image:linear-gradient(to_right,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,black_92%,transparent_100%)]'
+
 export function ChainCanvas({ devices, connections }: ChainCanvasProps) {
   const removeDevice = useChainStore((s) => s.removeDevice)
   const reorderDevice = useChainStore((s) => s.reorderDevice)
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 5 } }))
+
+  // The right-edge fade hints that there is more to scroll to; once the row is scrolled to its end
+  // (or fits) it would only make the last card look disabled, so it comes off.
+  const rowRef = useRef<HTMLDivElement>(null)
+  const [moreToRight, setMoreToRight] = useState(false)
+  useEffect(() => {
+    const row = rowRef.current
+    if (!row) return
+    const update = () => setMoreToRight(row.scrollLeft + row.clientWidth < row.scrollWidth - 1)
+    update()
+    row.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      row.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [devices.length])
 
   const slots: Slot[] = devices.map((device, i) => ({ slotId: `${device.id}-${i}`, device }))
 
@@ -87,7 +108,8 @@ export function ChainCanvas({ devices, connections }: ChainCanvasProps) {
 
   return (
     <div
-      className="overflow-x-auto rounded-xl border border-soundorp-border bg-soundorp-panel p-6 [mask-image:linear-gradient(to_right,black_92%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,black_92%,transparent_100%)]"
+      ref={rowRef}
+      className={`min-w-0 max-w-full overflow-x-auto overscroll-x-contain rounded-xl border border-soundorp-border bg-soundorp-panel p-6 ${moreToRight ? FADE_MASK : ''}`}
     >
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext items={slots.map((s) => s.slotId)} strategy={horizontalListSortingStrategy}>

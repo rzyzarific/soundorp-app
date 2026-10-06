@@ -73,7 +73,9 @@ function App() {
         <div className="flex flex-col gap-6 min-[900px]:flex-row">
           <DeviceLibrary />
 
-          <div className="flex flex-1 flex-col gap-8">
+          {/* min-w-0: a flex item's minimum width is its content's, so without it the wide chain
+              row stretches this column (and the page) instead of scrolling inside its own box. */}
+          <div className="flex w-full min-w-0 max-w-full flex-1 flex-col gap-8">
             <SignalFlowHint devices={devices} />
             <ChainCanvas devices={devices} connections={connections} />
 

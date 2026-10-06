@@ -54,7 +54,7 @@ export function DeviceLibrary() {
         )}
       </div>
 
-      <div className="flex max-h-64 flex-col gap-1.5 overflow-y-auto min-[900px]:max-h-[60vh]">
+      <div className="flex max-h-64 flex-col gap-1.5 overflow-y-auto overscroll-x-contain min-[900px]:max-h-[60vh]">
         {myResults.length > 0 && (
           <>
             <h3 className="font-orbitron text-xs font-black uppercase tracking-[0.6px] text-soundorp-muted">

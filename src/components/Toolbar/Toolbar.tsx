@@ -60,7 +60,8 @@ export function Toolbar() {
         className="w-full min-w-0 rounded-md border border-transparent px-2 py-1 text-sm font-semibold text-soundorp-text outline-none hover:border-soundorp-border focus:border-soundorp-red sm:flex-1"
       />
 
-      <div className="flex flex-wrap items-center gap-2">
+      {/* .toolbar-actions (index.css): a 2-column grid of 44px controls on phones, wrapping row above. */}
+      <div className="toolbar-actions grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
         <ProUnlock />
         <button
           type="button"

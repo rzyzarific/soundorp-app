@@ -35,3 +35,40 @@ body {
   background-color: var(--color-soundorp-bg);
   color: var(--color-soundorp-text);
 }
+
+/* Toolbar controls (the buttons and links that are direct children of the toolbar, or of the
+   wrapper that anchors their popover; buttons inside popovers are deeper and left alone).
+   Phones: fill their grid cell, at least 44px tall, label may wrap to two lines.
+   Larger screens: natural size, but still 44px for coarse pointers (touch). */
+.toolbar-actions > button,
+.toolbar-actions > a,
+.toolbar-actions > span,
+.toolbar-actions > div > button {
+  min-height: 2.75rem;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .toolbar-actions > button,
+  .toolbar-actions > a,
+  .toolbar-actions > span,
+  .toolbar-actions > div > button {
+    width: auto;
+    min-height: 0;
+  }
+}
+@media (min-width: 640px) and (pointer: coarse) {
+  .toolbar-actions > button,
+  .toolbar-actions > a,
+  .toolbar-actions > span,
+  .toolbar-actions > div > button {
+    min-height: 2.75rem;
+  }
+}
+/* `a` and `span` are inline by default; they need to be able to centre their label and grow. */
+.toolbar-actions > a,
+.toolbar-actions > span {
+  display: inline-flex;
+  align-items: center;
+}

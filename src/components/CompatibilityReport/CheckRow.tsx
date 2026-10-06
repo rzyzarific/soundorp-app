@@ -38,7 +38,7 @@ export function CheckRow({ result, readOnly = false }: CheckRowProps) {
       <span className={`mt-0.5 text-sm font-bold ${styles.accent}`} aria-hidden="true">
         {SEVERITY_ICON[result.severity]}
       </span>
-      <div className="flex flex-col gap-0.5 text-sm">
+      <div className="flex min-w-0 flex-col gap-0.5 break-words text-sm">
         <span className={`font-semibold ${styles.accent}`}>{result.title}</span>
         <span className="text-soundorp-text">{result.detail}</span>
         {/* The buttons replace the written advice; keep the text when there's nothing to click. */}

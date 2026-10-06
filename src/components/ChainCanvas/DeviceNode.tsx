@@ -19,8 +19,8 @@ export function DeviceNode({ device, readOnly = false }: DeviceNodeProps) {
         </span>
         {!device.isCustom && !readOnly && <ReportSpecButton device={device} />}
       </div>
-      <span className="text-sm font-semibold text-soundorp-text">{device.brand}</span>
-      <span className="text-sm text-soundorp-muted">{device.name}</span>
+      <span className="break-words text-sm font-semibold text-soundorp-text">{device.brand}</span>
+      <span className="break-words text-sm text-soundorp-muted">{device.name}</span>
     </div>
   )
 }

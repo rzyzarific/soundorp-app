@@ -18,7 +18,7 @@ export function SignalFlowHint({ devices }: SignalFlowHintProps) {
 
   return (
     <div className="flex items-start justify-between gap-3 rounded-md border border-status-warning-border bg-status-warning-bg px-3 py-2 text-sm text-status-warning-text">
-      <p>
+      <p className="min-w-0 break-words">
         Typical signal flow is Mic → Preamp → Interface → DAW → Monitors. Your current order may
         work, but double-check it makes sense.
       </p>
