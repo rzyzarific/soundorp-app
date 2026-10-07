@@ -216,6 +216,20 @@ describe('verification', () => {
     expect(questionOn(id, 'maxPreampGain'), id).toBe(true)
   })
 
+  it('flags the values that agree with a source only through a search extract', () => {
+    for (const [id, field] of [
+      ['steinberg-ur22c', 'maxPreampGain'],
+      ['behringer-xenyx-x1204usb', 'maxPreampGain'],
+      ['behringer-xenyx-802', 'maxPreampGain'],
+      ['zoom-uac-2', 'maxPreampGain'],
+      ['spl-crimson-3', 'maxPreampGain'],
+      ['rupert-neve-shelford-channel', 'maxPreampGain'],
+      ['shure-srh440', 'inputConnectors'],
+    ]) {
+      expect(questionOn(id, field), id).toBe(true)
+    }
+  })
+
   it('does not flag gains that a manufacturer document confirmed', () => {
     for (const id of ['yamaha-mg20xu', 'yamaha-mg10xu', 'allen-heath-zed60-14fx', 'allen-heath-qu16', 'mackie-profx6v3', 'tascam-us-2x2']) {
       expect(questionOn(id, 'maxPreampGain'), id).toBe(false)

@@ -637,6 +637,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "download.steinberg.net/downloads_hardware/UR-C/Manuals/UR22C_Operation_Manual_English.pdf",
+      "note": "Agrees with the catalog (mic gain +6 to +60 dB), but only through search-extract text of Steinberg's UR22C operation manual; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1483,6 +1490,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "adorama.com and long-mcquade.com listings",
+      "note": "Agrees with the catalog (0 to 60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1626,6 +1640,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "adorama.com and gear4music.ie listings",
+      "note": "Agrees with the catalog (+10 to +60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2419,6 +2440,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "bonedo.de and musicmatter.co.uk listings",
+      "note": "Agrees with the catalog (+7 to +60 dB), but only through search-extract text of retailer and review listings; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2579,6 +2607,13 @@
     "msrp": 99,
     "specs": {
       "inputConnectors": ["3.5mm", "TRS"]
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["inputConnectors"],
+      "source": "shure.com/en-US/products/headphones/srh440",
+      "note": "Agrees with the catalog (3.5 mm plug with a threaded 1/4 inch adapter), but only through search-extract text of Shure's SRH440 product page; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2838,6 +2873,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 66,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "rupertneve.com/products/shelford-channel",
+      "note": "Agrees with the catalog (0 to 66 dB in 6 dB steps), but only through search-extract text of Rupert Neve Designs' Shelford Channel page; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2866,6 +2908,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "fullcompass.com and adorama.com listings",
+      "note": "Agrees with the catalog (+10 to +60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
