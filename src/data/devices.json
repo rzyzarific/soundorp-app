@@ -469,7 +469,7 @@
     "msrp": 199,
     "specs": {
       "inputConnectors": ["XLR"],
-      "outputConnectors": ["XLR", "TRS"],
+      "outputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
@@ -1474,7 +1474,14 @@
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 2
+      "micPreampCount": 4
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "intl.presonus.com/products/studio-68c",
+      "note": "PreSonus lists a \"Gain Control Range\" of 80 dB for the Studio 68c, which is a span: it equals the maximum gain only if the range starts at 0 dB, and no maximum is stated. The catalog says 60.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1603,7 +1610,7 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 75,
       "micPreampCount": 1
     }
   },
@@ -1930,6 +1937,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "ikmultimedia.com/products/axeio/index.php?p=specs",
+      "note": "IK's specification gives only the level that reaches 0 dBFS: +12 dBu at minimum gain and -37 dBu at maximum gain, a span of 49 dB. No maximum gain in dB is stated; the catalog says 60.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1967,6 +1981,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "presonus.com/products/Quantum-2626/tech-specs",
+      "note": "PreSonus lists a \"Gain Control Range\" of 60 dB for the Quantum 2626, which is a span: it equals the maximum gain only if the range starts at 0 dB, and no maximum is stated. The catalog's 60 matches that range, but a range alone does not confirm it.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2105,8 +2126,8 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
-      "micPreampCount": 2
+      "maxPreampGain": 50,
+      "micPreampCount": 4
     }
   },
   {
@@ -2808,6 +2829,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "markertek.com GoXLR Mini listing",
+      "note": "No gain figure was found for the Midas preamp on any page read (a retailer page for the GoXLR Mini states none).",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -3262,8 +3290,8 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
-      "micPreampCount": 8
+      "maxPreampGain": 58,
+      "micPreampCount": 4
     }
   },
   {
@@ -3714,6 +3742,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "intl.presonus.com/products/DigiMax-DP88/tech-specs",
+      "note": "PreSonus's page lists 8 digitally controlled XMAX preamps but gives no gain figure, and the owner's manual was not read.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -4058,7 +4093,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["3.5mm"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 58,
       "micPreampCount": 2
     }
   },
@@ -4526,6 +4561,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "presonus.com/products/Studio-192/tech-specs (search extract)",
+      "note": "A search extract of PreSonus's tech specs gives a gain control range of 60 dB; the page could not be opened, and a range is not clearly the maximum.",
+      "checkedOn": "2026-10-07"
     }
   },
   {

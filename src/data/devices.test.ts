@@ -106,6 +106,15 @@ describe('specs corrected against manufacturer pages', () => {
     ['genelec-8010a', { inputConnectors: ['XLR'] }, 'genelec.com/8010a: "1 x XLR Analog Input"'],
     ['behringer-xenyx-q1202usb', { micPreampCount: 4 }, 'behringer.com/en/products/0601-AGC'],
     ['yamaha-mg20xu', { maxPreampGain: 64, micPreampCount: 16 }, 'musicredone.com; Yamaha technical specifications'],
+    ['grace-design-m101', { maxPreampGain: 75 }, 'gracedesign.com: mic input 10-65 dB plus 10 dB output trim, "overall maximum of 75dB"'],
+    ['tascam-series-208i', { maxPreampGain: 58, micPreampCount: 4 }, 'Tascam spec sheet: maximum gain 58 dB, four mic/line combo inputs'],
+    ['zoom-ams-24', { maxPreampGain: 58 }, 'Zoom AMS-24 manual: input gain -inf to +58 dB'],
+    ['alto-professional-zmx122fx', { maxPreampGain: 50, micPreampCount: 4 }, 'andertons.co.uk; bajaao.com: 0 dB to 50 dB (Mic), four mic inputs'],
+    ['dbx-286s', { maxPreampGain: 60, outputConnectors: ['TRS'] }, 'dbxpro.com datasheet: mic gain 0 to 60 dB; line output 1/4" TRS only'],
+    ['presonus-studio-68c', { micPreampCount: 4 }, 'presonus.com: four XMAX-L mic preamps'],
+    ['motu-m2', { maxPreampGain: 60 }, 'MOTU M-Series user guide: mic gain range 0 to +60 dB'],
+    ['motu-m4', { maxPreampGain: 60 }, 'MOTU M-Series user guide: mic gain range 0 to +60 dB'],
+    ['steinberg-ur44c', { maxPreampGain: 60, micPreampCount: 4 }, 'UR44C operation manual: mic input gain range +6 to +60 dB'],
     ['yamaha-mg10xu', { maxPreampGain: 64, micPreampCount: 4 }, 'Yamaha MG10XU technical specifications: GAIN trim +64 dB'],
     ['yamaha-mg12xu', { maxPreampGain: 64, micPreampCount: 6 }, 'Yamaha MG12X/MG12XU technical specifications: GAIN trim +64 dB'],
     ['yamaha-mg16xu', { maxPreampGain: 64, micPreampCount: 10 }, 'Yamaha MG16X/MG16XU technical specifications: GAIN trim +64 dB'],
@@ -230,7 +239,21 @@ describe('verification', () => {
     }
   })
 
+  it.each([
+    'presonus-studio-68c',
+    'presonus-quantum-2626',
+    'presonus-studio-192',
+    'presonus-dp88',
+    'ik-multimedia-axe-io',
+    'tc-helicon-goxlr',
+  ])('flags the gain of %s: no maximum gain is stated by a source', (id) => {
+    expect(questionOn(id, 'maxPreampGain'), id).toBe(true)
+  })
+
   it('does not flag gains that a manufacturer document confirmed', () => {
+    for (const id of ['motu-m2', 'motu-m4', 'steinberg-ur44c', 'dbx-286s', 'grace-design-m101', 'tascam-series-208i', 'zoom-ams-24']) {
+      expect(questionOn(id, 'maxPreampGain'), id).toBe(false)
+    }
     for (const id of ['yamaha-mg20xu', 'yamaha-mg10xu', 'allen-heath-zed60-14fx', 'allen-heath-qu16', 'mackie-profx6v3', 'tascam-us-2x2']) {
       expect(questionOn(id, 'maxPreampGain'), id).toBe(false)
     }
