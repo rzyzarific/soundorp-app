@@ -55,7 +55,7 @@ groups (MOTU 3, Zoom 3, Steinberg 2, Focusrite 2, and one each for 11 other bran
 | `antelope-zen-go-synergy-core` | 65 dB, from the search results for soundpure, musicredone and zzounds | I could not open any of those pages |
 | `presonus-studio-26c` | "Microphone Preamp Gain Control Range: 70 dB" ([presonus.com](https://au.presonus.com/products/studio-26c) page) | a *range* may not equal the maximum gain |
 | `art-pro-mpa-ii` | 70 to 75 dB, extracts from retailer pages that disagree with each other | single extracts |
-| `allen-heath-zed60-14fx` | "69dB gain range", 8 mic/line inputs ([soundpro.com](https://soundpro.com/products/allen-heath-zed60-14fx-multipurpose-usb-mixer-with-fx) page) against the catalog's 60 dB and 6 | a range description; the trim range is also quoted as 60 |
+| `allen-heath-zed60-14fx` | "69dB gain range", 8 mic/line inputs ([soundpro.com](https://soundpro.com/products/allen-heath-zed60-14fx-multipurpose-usb-mixer-with-fx) page) against the catalog's 60 dB and 6 | a range description; the trim range is also quoted as 60. **Later resolved: the gain is correct, see the follow-up below** |
 
 ### Agrees with 60
 
@@ -84,6 +84,45 @@ The wrong values cluster in brands and lines other than Mackie Onyx and Behringe
 confirmed-correct families are left out of further sampling unless something specific flags a
 device. The next group to check is the rest of the 60s from Yamaha (MG series), Allen & Heath and
 Soundcraft.
+
+## Follow-up, 2026-10-07: the fix pass
+
+Corrections made (each from a manufacturer or retailer page, or a manufacturer document read as text):
+
+| Device | Was | Now | Source |
+|---|---|---|---|
+| Yamaha MG20XU, MG10XU, MG12XU, MG16XU, MG06 | 60 | **64** | Yamaha technical specifications, "Analog Input Characteristics": MIC/LINE, PAD off, GAIN trim +64 dB |
+| Behringer Xenyx 302USB | 60 | **55** | musiciansfriend.com: "+15dB to +55dB" |
+| Focusrite Vocaster Two and One | 60 | **70** | us.focusrite.com |
+| Golden Age Project Pre-73 | 60 | **80** | greentoe.com (20 to 80 dB; only the JR is 70) |
+| Scarlett Solo (4th Gen) | 56 | **57** | us.focusrite.com |
+| MOTU 8A | 60, mic preamps, phantom, XLR | **line inputs only**: those fields removed | motu.com |
+
+Checked and found **correct at 60** (so not changed): Allen & Heath ZEDi-8, ZEDi-10, ZEDi-10FX (datasheets:
+XLR mic gain "6dB to 60dB"), ZED-10FX and ZED Sixty-14FX (user guides: "+10dB to +60dB", "60dB max"),
+Qu-16 ("-5 to +60dB") and SQ-5 ("0dB to +60dB"); Soundcraft Signature 12MTK ("Gain range is 10dB to 60dB").
+The ZED60-14FX suspicion above came from a retailer's "69dB gain range" line and was wrong.
+
+**Flagged `in_question`, value kept:** Antelope Zen Go, PreSonus Studio 26c and 1810c, ART Pro MPA II,
+and the gain of Behringer UMC204HD, UMC1820, Xenyx QX1002USB, Q1202USB and 2442FX, Zoom H4essential,
+UA LA-610 MkII, Yamaha AG06 MkII and MGP12X, Mackie Onyx Producer 2·2, Behringer MIC200, and Soundcraft
+Notepad-12FX, EFX8, GB2, Ui12 and Spirit Folio.
+
+### The 60 dB count now
+
+**62 of 302 devices** (was 72 of 303): 34 mixers, 21 interfaces, 7 preamps.
+
+| Of the 62 | Count |
+|---|---|
+| Confirmed 60 by a manufacturer document or page | 11 |
+| Agree with 60 through a search extract only | 5 |
+| Flagged `in_question` on gain | 19 |
+| Not examined | 27 |
+
+The 27 not examined: 13 Behringer or Mackie units (the Xenyx +10 to +60 dB and Onyx 60 dB lines, left out of
+further sampling unless something specific flags them) and 14 others: PreSonus Studio 68c, Quantum 2626,
+DP88 and Studio 192; MOTU M2 and M4; dbx 286s; Grace Design m101; IK Multimedia AXE I/O; Alto ZMX122FX;
+TC-Helicon GoXLR; Tascam Series 208i; Zoom AMS-24; Steinberg UR44C.
 
 ## Not verified
 
