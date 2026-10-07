@@ -44,9 +44,19 @@ describe('audio interface analog outputs (the false "No matching connector" bug)
 
     for (const i of interfaces) {
       const hasBalanced = (i.specs.outputConnectors ?? []).some((c) => c === 'TRS' || c === 'XLR')
-      if (!hasBalanced) continue
+      // A mic can only plug into an interface that has mic inputs (XLR); see the 8A, below.
+      const takesMics = i.specs.inputConnectors?.includes('XLR')
+      if (!hasBalanced || !takesMics) continue
       expect(connectorWarnings([sm7b, i, yamahaHs5]), i.id).toEqual([])
     }
+  })
+
+  it('warns when an XLR mic is plugged into the MOTU 8A, which has line inputs only', () => {
+    const motu8a = getDeviceById('motu-8a')!
+    expect(motu8a.specs.inputConnectors).toEqual(['TRS'])
+    expect(motu8a.specs.providesPhantomPower).toBeUndefined()
+
+    expect(connectorWarnings([sm7b, motu8a])).toHaveLength(1)
   })
 
   it('lets every interface with a TRS line out feed every studio monitor that takes TRS', () => {

@@ -105,7 +105,29 @@ describe('specs corrected against manufacturer pages', () => {
     ['chandler-limited-tg2', { maxPreampGain: 75, micPreampCount: 2 }, 'proaudiodesign.com; zenproaudio.com'],
     ['genelec-8010a', { inputConnectors: ['XLR'] }, 'genelec.com/8010a: "1 x XLR Analog Input"'],
     ['behringer-xenyx-q1202usb', { micPreampCount: 4 }, 'behringer.com/en/products/0601-AGC'],
+    ['yamaha-mg20xu', { maxPreampGain: 64, micPreampCount: 16 }, 'musicredone.com; Yamaha technical specifications'],
+    ['behringer-xenyx-302usb', { maxPreampGain: 55 }, 'musiciansfriend.com: +15dB to +55dB'],
+    ['focusrite-vocaster-two', { maxPreampGain: 70 }, 'us.focusrite.com/products/vocaster-two'],
+    ['focusrite-vocaster-one', { maxPreampGain: 70 }, 'us.focusrite.com/products/vocaster-one'],
+    ['golden-age-pre-73', { maxPreampGain: 80 }, 'greentoe.com: PRE-73 MKIII 20 to 80 dB'],
+    ['focusrite-scarlett-solo-4gen', { maxPreampGain: 57 }, 'us.focusrite.com/products/scarlett-solo'],
+    ['motu-8a', { inputConnectors: ['TRS'] }, 'motu.com/products/avb/8a/specs.html: 8 x 1/4" TRS line inputs'],
   ]
+
+  it('gives the MOTU 8A no mic preamp, phantom power or gain: it has line inputs only', () => {
+    const specs = getDeviceById('motu-8a')!.specs
+    expect(specs.providesPhantomPower).toBeUndefined()
+    expect(specs.maxPreampGain).toBeUndefined()
+    expect(specs.micPreampCount).toBeUndefined()
+  })
+
+  it('has no "Scarlett 4i4 (2nd Gen)": Focusrite has no such product', () => {
+    // Focusrite's 2nd Gen range is Solo, Solo Studio, 2i2, 2i2 Studio, 2i4, 6i6, 18i8 and 18i20
+    // (downloads.focusrite.com/focusrite/scarlett-2nd-gen). The 4i4 arrived with the 3rd Gen.
+    expect(getDeviceById('focusrite-scarlett-4i4-2gen')).toBeUndefined()
+    expect(getDeviceById('focusrite-scarlett-4i4-3gen')).toBeDefined()
+    expect(getDeviceById('focusrite-scarlett-4i4-4gen')).toBeDefined()
+  })
 
   it.each(corrected)('%s matches its source', (id, specs, source) => {
     const device = getDeviceById(id)

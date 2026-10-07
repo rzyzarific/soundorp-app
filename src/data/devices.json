@@ -315,7 +315,7 @@
       "inputConnectors": ["XLR"],
       "outputConnectors": ["XLR"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 80,
       "micPreampCount": 1
     }
   },
@@ -401,7 +401,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 56,
+      "maxPreampGain": 57,
       "micPreampCount": 1
     }
   },
@@ -1967,12 +1967,9 @@
     "category": "audio_interface",
     "msrp": 695,
     "specs": {
-      "inputConnectors": ["XLR", "TRS"],
+      "inputConnectors": ["TRS"],
       "outputConnectors": ["USB-C", "Thunderbolt", "ADAT", "TRS"],
-      "headphoneOutputConnectors": ["TRS"],
-      "providesPhantomPower": true,
-      "maxPreampGain": 60,
-      "micPreampCount": 8
+      "headphoneOutputConnectors": ["TRS"]
     }
   },
   {
@@ -2320,7 +2317,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 70,
       "micPreampCount": 1
     }
   },
@@ -2335,7 +2332,7 @@
       "outputConnectors": ["USB-C", "TRS"],
       "headphoneOutputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 70,
       "micPreampCount": 2
     }
   },
@@ -3133,7 +3130,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["TRS", "USB-A"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 55,
       "micPreampCount": 1
     }
   },
@@ -3161,7 +3158,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 64,
       "micPreampCount": 16
     }
   },
@@ -3755,21 +3752,6 @@
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 4
-    }
-  },
-  {
-    "id": "focusrite-scarlett-4i4-2gen",
-    "name": "Scarlett 4i4 (2nd Gen)",
-    "brand": "Focusrite",
-    "category": "audio_interface",
-    "msrp": 199,
-    "specs": {
-      "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["USB-A", "TRS"],
-      "headphoneOutputConnectors": ["TRS"],
-      "providesPhantomPower": true,
-      "maxPreampGain": 55,
-      "micPreampCount": 2
     }
   },
   {
