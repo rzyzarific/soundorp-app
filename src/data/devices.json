@@ -550,7 +550,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 64,
       "micPreampCount": 4
     }
   },
@@ -1028,7 +1028,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 64,
       "micPreampCount": 6
     }
   },
@@ -1749,7 +1749,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 64,
       "micPreampCount": 10
     }
   },
@@ -3895,7 +3895,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 64,
       "micPreampCount": 2
     }
   },
