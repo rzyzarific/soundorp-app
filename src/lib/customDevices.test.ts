@@ -224,6 +224,7 @@ describe('normalizeCustomDevice (untrusted input)', () => {
     const tainted = {
       ...good(),
       reviewUrl: 'javascript:alert(1)',
+      verification: { status: 'verified', source: 'trust me', checkedOn: '2026-10-07' },
       affiliateLinks: { amazon: 'https://evil.example' },
       subtype: 'whatever',
       extra: 'junk',
@@ -233,6 +234,7 @@ describe('normalizeCustomDevice (untrusted input)', () => {
     const cleaned = normalizeCustomDevice(tainted)!
 
     expect(cleaned).not.toHaveProperty('reviewUrl')
+    expect(cleaned).not.toHaveProperty('verification') // a shared link cannot claim a device is verified
     expect(cleaned).not.toHaveProperty('affiliateLinks')
     expect(cleaned).not.toHaveProperty('extra')
     expect(cleaned.specs).not.toHaveProperty('micPreampCount')

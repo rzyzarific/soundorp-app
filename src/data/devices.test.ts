@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import rawDevices from './devices.json'
-import { isValidDevice } from './devices.schema'
+import { isValidDevice, isValidVerification } from './devices.schema'
 import { ALL_DEVICES, getDeviceById, searchDevices } from './devices'
 
 describe('devices.json', () => {
@@ -112,6 +112,54 @@ describe('specs corrected against manufacturer pages', () => {
     expect(device, id).toBeDefined()
     for (const [key, value] of Object.entries(specs)) {
       expect((device!.specs as Record<string, unknown>)[key], `${id}.${key} (${source})`).toEqual(value)
+    }
+  })
+})
+
+describe('verification', () => {
+  const base = getDeviceById('shure-sm58')!
+  const withV = (verification: unknown) => ({ ...base, verification })
+  const inQuestion = { status: 'in_question', fields: ['minPreampGain'], note: 'Derived estimate.', checkedOn: '2026-10-07' }
+
+  it('accepts each status when it carries what that status needs', () => {
+    expect(isValidDevice(withV(inQuestion))).toBe(true)
+    expect(isValidDevice(withV({ status: 'in_question', note: 'One review only.', checkedOn: '2026-10-07' }))).toBe(true)
+    expect(isValidDevice(withV({ status: 'verified', source: 'https://example.com/spec', checkedOn: '2026-10-07' }))).toBe(true)
+    expect(
+      isValidDevice(withV({ status: 'inferred', source: 'sibling model', note: 'Jack type not stated.', checkedOn: '2026-10-07' })),
+    ).toBe(true)
+  })
+
+  it('rejects an entry with no date, a malformed date, or an unknown status', () => {
+    const { checkedOn: _omitted, ...noDate } = inQuestion
+    expect(isValidDevice(withV(noDate))).toBe(false)
+    expect(isValidDevice(withV({ ...inQuestion, checkedOn: '7 Oct 2026' }))).toBe(false)
+    expect(isValidDevice(withV({ ...inQuestion, status: 'probably_fine' }))).toBe(false)
+  })
+
+  it('rejects "verified" or "inferred" without a source', () => {
+    expect(isValidDevice(withV({ status: 'verified', checkedOn: '2026-10-07' }))).toBe(false)
+    expect(isValidDevice(withV({ status: 'verified', source: '  ', checkedOn: '2026-10-07' }))).toBe(false)
+    expect(isValidDevice(withV({ status: 'inferred', note: 'x', checkedOn: '2026-10-07' }))).toBe(false)
+  })
+
+  it('rejects "in_question" or "inferred" without a note saying what is uncertain', () => {
+    expect(isValidDevice(withV({ status: 'in_question', checkedOn: '2026-10-07' }))).toBe(false)
+    expect(isValidDevice(withV({ status: 'in_question', note: '', checkedOn: '2026-10-07' }))).toBe(false)
+    expect(isValidDevice(withV({ status: 'inferred', source: 'sibling', checkedOn: '2026-10-07' }))).toBe(false)
+  })
+
+  it('rejects an empty or non-string list of fields', () => {
+    expect(isValidDevice(withV({ ...inQuestion, fields: [] }))).toBe(false)
+    expect(isValidDevice(withV({ ...inQuestion, fields: [3] }))).toBe(false)
+  })
+
+  it('has no entry in the catalog that is incomplete, or that names a spec the device lacks', () => {
+    for (const d of rawDevices) {
+      const v = (d as { verification?: { fields?: string[] } }).verification
+      if (!v) continue
+      expect(isValidVerification(v), d.id).toBe(true)
+      for (const f of v.fields ?? []) expect(f in d.specs, `${d.id}: no spec "${f}"`).toBe(true)
     }
   })
 })
