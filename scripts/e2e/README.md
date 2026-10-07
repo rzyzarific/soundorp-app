@@ -27,6 +27,7 @@ node scripts/e2e/ui-layout.mjs     # or a single script
 | `m6` | Public `/c/<chain>` page, hostile and invalid links |
 | `ui-layout` | No page-level horizontal scroll at 320-1440px, toolbar sizing, report popovers (mouse and touch), toolbar popovers and modals, navbar |
 | `touch-drag` | Drag-to-reorder by mouse and by real touch events (swap, edge autoscroll, no browser back-swipe), and that the gaps between cards still scroll the row and a vertical swipe still scrolls the page |
+| `unconfirmed` | A spec the catalog marks `in_question` reaches the person as an "unconfirmed" warning, not a clean pass or a critical (the Alto ZMX122FX), and a device not in question is unchanged |
 
 Screenshots, PDFs and other output go to `scripts/e2e/out/` (git-ignored).
 

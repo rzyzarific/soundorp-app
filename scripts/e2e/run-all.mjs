@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 import { APP_URL } from './lib.mjs'
 
-const SCRIPTS = ['m0', 'm0b', 'm1', 'm2', 'm2b', 'm3', 'm4', 'm5', 'm6', 'ui-layout', 'touch-drag']
+const SCRIPTS = ['m0', 'm0b', 'm1', 'm2', 'm2b', 'm3', 'm4', 'm5', 'm6', 'ui-layout', 'touch-drag', 'unconfirmed']
 const only = process.argv.slice(2)
 const chosen = only.length ? SCRIPTS.filter((s) => only.includes(s)) : SCRIPTS
 
