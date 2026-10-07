@@ -180,6 +180,48 @@ describe('verification', () => {
     expect(isValidDevice(withV({ ...inQuestion, fields: [3] }))).toBe(false)
   })
 
+  const questionOn = (id: string, field: string) => {
+    const v = (rawDevices.find((d) => d.id === id) as { verification?: { status: string; fields?: string[] } } | undefined)
+      ?.verification
+    return v?.status === 'in_question' && (v.fields ?? []).includes(field)
+  }
+
+  it('flags minPreampGain on every microphone: it is an estimate no manufacturer publishes', () => {
+    const mics = rawDevices.filter((d) => d.category === 'microphone' && d.specs.minPreampGain !== undefined)
+    expect(mics.length).toBeGreaterThan(70)
+    for (const m of mics) expect(questionOn(m.id, 'minPreampGain'), m.id).toBe(true)
+  })
+
+  it('flags the input list of every DAW: software has no connectors', () => {
+    for (const d of rawDevices.filter((x) => x.category === 'daw' && x.specs.inputConnectors)) {
+      expect(questionOn(d.id, 'inputConnectors'), d.id).toBe(true)
+    }
+  })
+
+  it.each([
+    'native-instruments-komplete-audio-2',
+    'native-instruments-komplete-audio-6',
+    'antelope-zen-go-synergy-core',
+    'presonus-studio-26c',
+    'presonus-studio-1810c',
+    'art-pro-mpa-ii',
+    'behringer-umc204hd',
+    'behringer-umc1820',
+    'zoom-h4essential',
+    'universal-audio-la610-mkii',
+    'yamaha-mgp12x',
+    'soundcraft-notepad-12fx',
+    'soundcraft-ui12',
+  ])('flags the gain of %s: it could not be confirmed against a source', (id) => {
+    expect(questionOn(id, 'maxPreampGain'), id).toBe(true)
+  })
+
+  it('does not flag gains that a manufacturer document confirmed', () => {
+    for (const id of ['yamaha-mg20xu', 'yamaha-mg10xu', 'allen-heath-zed60-14fx', 'allen-heath-qu16', 'mackie-profx6v3', 'tascam-us-2x2']) {
+      expect(questionOn(id, 'maxPreampGain'), id).toBe(false)
+    }
+  })
+
   it('has no entry in the catalog that is incomplete, or that names a spec the device lacks', () => {
     for (const d of rawDevices) {
       const v = (d as { verification?: { fields?: string[] } }).verification
