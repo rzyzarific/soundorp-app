@@ -124,6 +124,38 @@ further sampling unless something specific flags them) and 14 others: PreSonus S
 DP88 and Studio 192; MOTU M2 and M4; dbx 286s; Grace Design m101; IK Multimedia AXE I/O; Alto ZMX122FX;
 TC-Helicon GoXLR; Tascam Series 208i; Zoom AMS-24; Steinberg UR44C.
 
+## Second batch, 2026-10-07: the 14 not-yet-examined non-Behringer, non-Mackie devices
+
+| Device | Was | Result | Source |
+|---|---|---|---|
+| `tascam-series-208i` | 60 dB, 8 preamps | **58 dB, 4 preamps** (corrected) | Tascam spec sheet: "Maximum gain 58 dB", four mic/line combo inputs |
+| `zoom-ams-24` | 60 dB | **58 dB** (corrected) | Zoom manual: "Input gain -inf - +58 dB" |
+| `alto-professional-zmx122fx` | 60 dB, 2 inputs | **50 dB, 4 mic inputs** (corrected) | [andertons.co.uk](https://www.andertons.co.uk/alto/alto-zmx122fx-input-mixer) and [bajaao.com](https://www.bajaao.com/products/alto-zmx122fx-8-channel-compact-mixer-with-effects) pages: "0 dB to 50 dB (Mic)" |
+| `grace-design-m101` | 60 dB | **75 dB** (corrected) | [gracedesign.com](https://gracedesign.com/products/microphone-preamplifiers/m101/): mic input 10-65 dB plus 10 dB on the output trim, "overall maximum of 75dB" |
+| `dbx-286s` | outputs XLR, TRS | **TRS only** (corrected); gain 0 to +60 dB confirmed | dbx datasheet: "LINE OUTPUT (1/4" TRS)" |
+| `presonus-studio-68c` | 2 preamps | **4 preamps** (corrected) | presonus.com |
+| `motu-m2`, `motu-m4` | 60 dB | confirmed | MOTU M-Series user guide: "Gain range 0 to +60 dB" |
+| `steinberg-ur44c` | 60 dB | confirmed | UR44C operation manual: "Gain Range +6 dB - +60 dB" |
+| `presonus-studio-68c`, `-quantum-2626`, `-studio-192`, `-dp88` | 60 dB | `in_question` | PreSonus gives a "gain control range" (80, 60, 60) or nothing; a range is not a stated maximum |
+| `ik-multimedia-axe-io` | 60 dB | `in_question` | IK gives only +12 dBu at min gain and -37 dBu at max gain for 0 dBFS, a 49 dB span |
+| `tc-helicon-goxlr` | 60 dB | `in_question` | no gain figure found |
+
+The Grace m101 figure counts the output trim, as the Great River MP-2NV's does; its mic-input stage alone is 65 dB.
+
+### The 60 dB count after the second batch
+
+**58 of 302 devices** (the first draw found 72 of 303): 33 mixers, 19 interfaces, 6 preamps.
+
+| Of the 58 | Count |
+|---|---|
+| Confirmed 60 by a manufacturer document or page | 15 |
+| Flagged `in_question` on gain | 30 |
+| Not examined | 13 |
+
+The 13 not examined are all Behringer or Mackie units (Xenyx 502, 1002FX, 1204USB, 1622USB, X2222USB, UMC202HD,
+UMC404HD; Mackie Mix12FX, 1202VLZ4, 1642VLZ4, Onyx8, ProFX8v3, DL806), whose product lines really are 60 dB.
+They stay out of further sampling unless something specific flags them.
+
 ## Not verified
 
 - The four "agrees" by extract only, and every "probable" above, rest on text I could not read at the source.
