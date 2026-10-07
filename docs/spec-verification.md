@@ -88,6 +88,34 @@ verified or not. If the list exists elsewhere, add it here:
 |---|---|---|---|---|
 | _(to be supplied)_ | | | | |
 
+## Pattern to watch for: USB port types
+
+The schema's connectors are `USB-A`, `USB-C` and `Thunderbolt`; it has no `USB-B`. Across interfaces and
+mixers the catalog lists 38 devices as `USB-A`, 44 as `USB-C` and 8 as `Thunderbolt`. Many devices that
+connect to a computer through a **USB-B** (or Micro-B) socket will have been entered as one of the other two.
+
+Why it matters: the connector check never tells USB types apart (every DAW entry accepts USB-A, USB-C and
+Thunderbolt), so no pass or warning depends on it. The **cable list** does: it prints the interface's own USB
+entry as the cable to buy ("USB-C cable", "USB-A cable"), and the PDF reuses that list. A wrong type names the
+wrong cable.
+
+Known cases, each marked `in_question` on `outputConnectors` and left at its catalog value:
+
+| Device | Catalog | What a source says | Evidence |
+|---|---|---|---|
+| `tascam-series-208i` | USB-C | "4-pin USB B-type" | Tascam's spec sheet |
+| `ik-multimedia-axe-io` | USB-C | "B-Type USB socket" | IK's page |
+| `yamaha-mg20xu` | USB-A | "1x USB-B 2.0" | a retailer page |
+| `tc-helicon-goxlr` | USB-A | "1 x USB 2.0, type B" (GoXLR Mini) | a retailer page |
+| `zoom-uac-2` | USB-C | "USB Type-B (USB 3.0)" | a retailer listing (search extract) |
+
+The other entries have **not** been investigated. They are left to surface through normal sampling: when an
+audited device's USB entry disagrees with its manufacturer's port, flag it the same way. If the pattern
+turns out to be widespread, the better fix is a `USB-B` connector in the schema and cable list, not
+device-by-device flags.
+
+(This section is written by hand. When the register is regenerated from the catalog, carry it over.)
+
 ## What has and has not been verified
 
 - **Verified during this work** (read from manufacturer or retailer specification text surfaced by

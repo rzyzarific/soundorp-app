@@ -254,6 +254,8 @@ describe('verification', () => {
     // Both name a USB-B port; the schema has no USB-B, and the cable list prints the entry as the cable to buy.
     expect(questionOn('tascam-series-208i', 'outputConnectors')).toBe(true)
     expect(questionOn('ik-multimedia-axe-io', 'outputConnectors')).toBe(true)
+    // Retailer-level evidence of a USB-B port, flagged on the same basis.
+    for (const id of ['yamaha-mg20xu', 'tc-helicon-goxlr', 'zoom-uac-2']) expect(questionOn(id, 'outputConnectors'), id).toBe(true)
   })
 
   it('flags the ZMX122FX phantom power: one flag per device cannot say "only two of four inputs"', () => {

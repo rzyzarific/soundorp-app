@@ -1500,9 +1500,9 @@
     },
     "verification": {
       "status": "in_question",
-      "fields": ["maxPreampGain"],
-      "source": "adorama.com and long-mcquade.com listings",
-      "note": "Agrees with the catalog (0 to 60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
+      "fields": ["maxPreampGain", "outputConnectors"],
+      "source": "adorama.com and long-mcquade.com listings (search extracts)",
+      "note": "maxPreampGain: Agrees with the catalog (0 to 60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page. USB: A retailer listing (search extract) gives \"USB Type-B (USB 3.0)\" for the computer connection, but the catalog lists USB-C and the schema has no USB-B value; the cable list prints this entry as \"USB-C cable\". Retailer-level evidence only.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -2853,9 +2853,9 @@
     },
     "verification": {
       "status": "in_question",
-      "fields": ["maxPreampGain"],
+      "fields": ["maxPreampGain", "outputConnectors"],
       "source": "markertek.com GoXLR Mini listing",
-      "note": "No gain figure was found for the Midas preamp on any page read (a retailer page for the GoXLR Mini states none).",
+      "note": "maxPreampGain: No gain figure was found for the Midas preamp on any page read (a retailer page for the GoXLR Mini states none). USB: A retailer page for the GoXLR Mini (same series) lists \"1 x USB 2.0, type B\", but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3854,6 +3854,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 64,
       "micPreampCount": 16
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["outputConnectors"],
+      "source": "musicredone.com Yamaha MG20XU page",
+      "note": "A retailer page lists \"1x USB-B 2.0\" for the computer connection, but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
