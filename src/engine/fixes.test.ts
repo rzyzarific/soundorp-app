@@ -1,3 +1,4 @@
+import { unconfirmedNote } from './unconfirmed'
 import { describe, expect, it } from 'vitest'
 import { suggestGainBoostActions } from './fixes'
 import { evaluateChain } from './evaluateChain'
@@ -242,6 +243,9 @@ describe('real catalog: every offered fix really fixes the chain', { timeout: 60
         const cannotWork =
           mic.specs.needsPhantomPower === true || // boosters block phantom to the mic
           !target.specs.providesPhantomPower || // boosters need 48V from the next device
+          // ...and if that is unconfirmed the repaired chain would not be a clean pass, so no
+          // one-click fix is offered (the unconfirmed-phantom rule, e.g. the Alto ZMX122FX).
+          unconfirmedNote(target, 'providesPhantomPower') !== null ||
           !target.specs.inputConnectors?.includes('XLR') ||
           !mic.specs.outputConnectors?.includes('XLR') ||
           (mic.specs.minPreampGain ?? 0) - (target.specs.maxPreampGain ?? 0) > 28

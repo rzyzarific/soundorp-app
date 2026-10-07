@@ -27,6 +27,9 @@ export interface CheckResult {
   fix?: string
   problem?: CheckProblem
   actions?: FixAction[]
+  // The catalog marks a spec this result rests on `in_question`: the result says so instead of
+  // answering as if the data were trusted.
+  unconfirmed?: boolean
 }
 
 // Where a rule is being evaluated within the full chain. Optional because most rules
