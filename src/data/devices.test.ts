@@ -250,6 +250,24 @@ describe('verification', () => {
     expect(questionOn(id, 'maxPreampGain'), id).toBe(true)
   })
 
+  it('flags a USB port type that a manufacturer says is not what the catalog lists', () => {
+    // Both name a USB-B port; the schema has no USB-B, and the cable list prints the entry as the cable to buy.
+    expect(questionOn('tascam-series-208i', 'outputConnectors')).toBe(true)
+    expect(questionOn('ik-multimedia-axe-io', 'outputConnectors')).toBe(true)
+  })
+
+  it('flags the ZMX122FX phantom power: one flag per device cannot say "only two of four inputs"', () => {
+    expect(questionOn('alto-professional-zmx122fx', 'providesPhantomPower')).toBe(true)
+  })
+
+  it('labels combined input-plus-trim gain figures as such', () => {
+    for (const id of ['grace-design-m101', 'great-river-mp2nv']) {
+      const v = (rawDevices.find((d) => d.id === id) as { verification?: { status: string; note?: string } }).verification
+      expect(v?.status, id).toBe('verified')
+      expect(v?.note, id).toMatch(/combined figure/i)
+    }
+  })
+
   it('does not flag gains that a manufacturer document confirmed', () => {
     for (const id of ['motu-m2', 'motu-m4', 'steinberg-ur44c', 'dbx-286s', 'grace-design-m101', 'tascam-series-208i', 'zoom-ams-24']) {
       expect(questionOn(id, 'maxPreampGain'), id).toBe(false)

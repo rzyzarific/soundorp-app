@@ -1584,6 +1584,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 70,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "retrogearshop.com (\"maximum overall gain 70db\"); Great River distributor datasheet (+70dB)",
+      "note": "A combined figure: input gain in 5 dB steps up to 60 dB plus output gain up to +10 dB. The input stage alone is 60 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1612,6 +1619,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 75,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "gracedesign.com/products/microphone-preamplifiers/m101/ (\"Mic input: 10-65dB\", \"+10dB\" on the output trim, \"overall maximum of 75dB\")",
+      "note": "A combined figure: the 65 dB mic-input stage plus up to 10 dB on the output trim. Most devices in the catalog list a single input-stage maximum.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1940,9 +1954,9 @@
     },
     "verification": {
       "status": "in_question",
-      "fields": ["maxPreampGain"],
+      "fields": ["maxPreampGain", "outputConnectors"],
       "source": "ikmultimedia.com/products/axeio/index.php?p=specs",
-      "note": "IK's specification gives only the level that reaches 0 dBFS: +12 dBu at minimum gain and -37 dBu at maximum gain, a span of 49 dB. No maximum gain in dB is stated; the catalog says 60.",
+      "note": "Gain: IK's specification gives only the level that reaches 0 dBFS, +12 dBu at minimum gain and -37 dBu at maximum gain, a span of 49 dB; no maximum gain in dB is stated, and the catalog says 60. USB: IK lists a \"B-Type USB socket\" for the computer, but the catalog lists USB-C and the schema has no USB-B value; the cable list prints this entry as \"USB-C cable\".",
       "checkedOn": "2026-10-07"
     }
   },
@@ -2128,6 +2142,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["providesPhantomPower"],
+      "source": "bajaao.com and andertons.co.uk listings (no manual read)",
+      "note": "Sources disagree about which inputs have phantom power: one retailer page says \"four microphone inputs ... (two with Phantom Power)\", other retailer text says phantom power on channels 1-4. The schema holds one phantom flag per device, so it cannot say \"some inputs\". Until a manual settles it, a condenser microphone may be told phantom power is available on an input that does not have it.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -3292,6 +3313,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 58,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["outputConnectors"],
+      "source": "Tascam Series 208i spec sheet (tascam.eu/en/docs/Tascam_SERIES208i.pdf)",
+      "note": "Tascam's spec sheet gives the computer connection as a \"4-pin USB B-type\" port, but the catalog lists USB-C and the schema has no USB-B value. The connector check accepts any USB type, so no warning depends on it, but the cable list prints this entry as \"USB-C cable\".",
+      "checkedOn": "2026-10-07"
     }
   },
   {
