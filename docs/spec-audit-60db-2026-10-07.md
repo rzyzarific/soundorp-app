@@ -156,6 +156,54 @@ The 13 not examined are all Behringer or Mackie units (Xenyx 502, 1002FX, 1204US
 UMC404HD; Mackie Mix12FX, 1202VLZ4, 1642VLZ4, Onyx8, ProFX8v3, DL806), whose product lines really are 60 dB.
 They stay out of further sampling unless something specific flags them.
 
+## Third batch, 2026-10-08: the last 13 (all Behringer and Mackie)
+
+The assumption in the paragraph above ("product lines really are 60 dB") was checked rather than trusted, because it
+had already failed once (the Xenyx 302USB is 55 dB). It failed again, twice.
+
+| Device | Was | Result | Source |
+|---|---|---|---|
+| `mackie-mix12fx` | 60 dB | **50 dB** (corrected) | Mackie Mix5/Mix8/Mix12FX owner's manual: XLR input has 0 dB of gain with the knob down, "ramping to 50 dB of gain fully up" |
+| `mackie-profx8v3` | in the catalog | **removed: no such product** | [mackie.com ProFXv3 page](https://mackie.com/en/products/mixers/profxv3-series) lists ProFX6v3, 10v3, 12v3, 16v3, 22v3, 30v3 (and "+" versions); the ProFXv3 spec sheet names the same six. The old 8-channel ProFX8 was replaced by the 10-channel ProFX10v3 (gearnews.com) |
+| `mackie-onyx8` | 8 preamps | **4 preamps** (corrected); 60 dB confirmed | Onyx owner's manual: XLR "0 dB of gain with the knob fully down, ramping to 60 dB fully up"; [mackie.com](https://mackie.com/en/products/mixers/onyx-series/Onyx8.html) "4 low-noise Onyx preamps", agreed by huss-licht-ton.de "4x Mic" |
+| `mackie-1642vlz4` | 16 preamps | **10 preamps** (corrected); 60 dB confirmed | 1642VLZ4 spec sheet: "10 boutique-quality Onyx mic preamps"; owner's manual: XLR 0 to 60 dB |
+| `mackie-1202vlz4` | 60 dB, 4 preamps | confirmed | 1202VLZ4 owner's manual (XLR 0 to 60 dB) and spec sheet (4 Onyx preamps) |
+| `mackie-dl806` | 60 dB, 8 preamps | confirmed | DL806 spec sheet: "XLR: 0 to 60 dB", eight Onyx preamps |
+| `behringer-xenyx-1622usb` | 10 preamps | **4 preamps** (corrected); 60 dB confirmed | [behringer.com X1622USB](https://www.behringer.com/en/products/0601-ACY) "4 onboard studio-grade XENYX Mic Preamps"; X2442/X2222/X1832/X1622USB user manual: gain range +10 to +60 dB |
+| `behringer-xenyx-x2222usb` | 16 preamps | **8 preamps** (corrected); 60 dB confirmed | [behringer.com X2222USB](https://www.behringer.com/ja/products/0601-ADA) "8 onboard studio-grade XENYX Mic Preamps"; same user manual |
+| `behringer-xenyx-1204usb` | 60 dB, 4 preamps | confirmed | Behringer X1204USB/1204USB Quick Start Guide, specification table: gain range +10 to +60 dB; behringer.com: 4 preamps |
+| `behringer-xenyx-1002fx` | 60 dB, 2 preamps | confirmed | Behringer 1002FX technical specifications: gain range +10 to +60 dB, 2 XENYX mic preamps |
+| `behringer-xenyx-502` | 60 dB, 1 preamp | confirmed | Behringer 502 technical specifications: gain range +10 to +60 dB |
+| `behringer-umc202hd`, `behringer-umc404hd` | 60 dB | `in_question` (preamp counts 2 and 4 confirmed) | Neither the product pages nor the Quick Start Guide's specification table gives a mic gain range, only a maximum mic input level of -4 dBu |
+
+Side effect: `behringer-xenyx-x1204usb` was flagged `in_question` on 2026-10-07 because its +10 to +60 dB agreement came
+only from search-extract text. The Quick Start Guide above covers both the X1204USB and the 1204USB in one
+specification table, so that flag is lifted: it is now confirmed against a manufacturer document.
+
+The Behringer technical-specification PDFs for the 502 and 1002FX were read from copies hosted by gear4music
+(Behringer's own document, retailer-hosted); the rest are from Mackie and Behringer's own sites.
+
+### The 60 dB count after the third batch
+
+**56 of 301 devices** (72 of 303 in the first draw): 31 mixers, 19 interfaces, 6 preamps.
+
+| Of the 56 | Count |
+|---|---|
+| Confirmed 60 by a manufacturer document or page | 25 |
+| Flagged `in_question` on gain | 31 |
+| Not examined | 0 |
+
+Every device now at 60 dB has been looked at: 25 are confirmed against a manufacturer document and 31 could not be
+confirmed and carry an `in_question` flag. The gain figure was wrong, or the device did not exist, for a substantial
+share of the original 72; this note lists each one above rather than totalling them, because the corrections span
+three batches and several sessions.
+
+### A pattern outside the gain figure: `micPreampCount` counted inputs, not preamps
+
+Four mixers in this batch listed their channel or input count as the number of mic preamps (Onyx8 8 vs 4,
+X1622USB 10 vs 4, X2222USB 16 vs 8, 1642VLZ4 16 vs 10). No rule reads `micPreampCount`, so no verdict changed,
+but the number is shown to the user. The other mixers in the catalog have not been checked for the same fault.
+
 ## Not verified
 
 - The four "agrees" by extract only, and every "probable" above, rest on text I could not read at the source.

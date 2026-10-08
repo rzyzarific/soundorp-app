@@ -622,6 +622,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "behringer.com/en/products/0805-AAR; U-PHORIA Quick Start Guide",
+      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -1085,6 +1092,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["maxPreampGain"],
+      "source": "behringer.com/en/products/0805-AAT; U-PHORIA Quick Start Guide",
+      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -1202,7 +1216,7 @@
       "inputConnectors": ["XLR", "TRS"],
       "outputConnectors": ["TRS"],
       "providesPhantomPower": true,
-      "maxPreampGain": 60,
+      "maxPreampGain": 50,
       "micPreampCount": 4
     }
   },
@@ -1661,13 +1675,6 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
-    },
-    "verification": {
-      "status": "in_question",
-      "fields": ["maxPreampGain"],
-      "source": "adorama.com and gear4music.ie listings",
-      "note": "Agrees with the catalog (+10 to +60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
-      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2544,7 +2551,7 @@
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 8
+      "micPreampCount": 4
     }
   },
   {
@@ -2964,20 +2971,6 @@
       "source": "fullcompass.com and adorama.com listings",
       "note": "Agrees with the catalog (+10 to +60 dB), but only through search-extract text of retailer listings; the page itself could not be read, so this is not confirmed against a real page.",
       "checkedOn": "2026-10-07"
-    }
-  },
-  {
-    "id": "mackie-profx8v3",
-    "name": "ProFX8v3",
-    "brand": "Mackie",
-    "category": "mixer",
-    "msrp": 229,
-    "specs": {
-      "inputConnectors": ["XLR", "TRS"],
-      "outputConnectors": ["XLR", "TRS", "USB-A"],
-      "providesPhantomPower": true,
-      "maxPreampGain": 60,
-      "micPreampCount": 4
     }
   },
   {
@@ -4266,7 +4259,7 @@
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 10
+      "micPreampCount": 4
     }
   },
   {
@@ -4280,7 +4273,7 @@
       "outputConnectors": ["XLR", "TRS"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 16
+      "micPreampCount": 10
     }
   },
   {
@@ -4718,7 +4711,7 @@
       "outputConnectors": ["XLR", "TRS", "USB-A"],
       "providesPhantomPower": true,
       "maxPreampGain": 60,
-      "micPreampCount": 16
+      "micPreampCount": 8
     }
   },
   {

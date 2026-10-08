@@ -4,7 +4,7 @@
 //
 // The pool is the 72 devices that had maxPreampGain === 60 on 2026-10-07 (frozen in
 // fixtures/at-60-2026-10-07.json, so later corrections that move a device off 60 do not change
-// the draw), minus the ones already audited. Drawn with the same seeded generator and the same
+// the draw, as are their categories), minus the ones already audited. Drawn with the same seeded generator and the same
 // partial Fisher-Yates as sample.mjs: 8 mixers, 6 interfaces, 4 preamps.
 import fs from 'node:fs'
 import { pathToFileURL } from 'node:url'
@@ -21,8 +21,9 @@ export const FROZEN = JSON.parse(
   fs.readFileSync(new URL('./fixtures/at-60-2026-10-07.json', import.meta.url), 'utf8'),
 )
 
-export function drawAt60(devices, seed = SEED_AT_60) {
-  const categoryOf = new Map(devices.map((d) => [d.id, d.category]))
+export function drawAt60(_devices, seed = SEED_AT_60) {
+  // Categories are frozen with the ids: a device removed from the catalog later must not change the draw.
+  const categoryOf = new Map(Object.entries(FROZEN.categories))
   const audited = new Set(FROZEN.auditedBefore)
   const eligible = FROZEN.at60.filter((id) => !audited.has(id))
   const rng = mulberry32(seed)
@@ -43,5 +44,5 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const byId = new Map(devices.map((d) => [d.id, d]))
   const sample = drawAt60(devices)
   console.log(`seed ${SEED_AT_60}: ${sample.length} of ${FROZEN.at60.length - new Set(FROZEN.auditedBefore.filter((i) => FROZEN.at60.includes(i))).size} eligible\n`)
-  for (const { stratum, id } of sample) console.log(`${stratum.padEnd(16)} ${id.padEnd(34)} ${byId.get(id).brand} ${byId.get(id).name}`)
+  for (const { stratum, id } of sample) console.log(`${stratum.padEnd(16)} ${id.padEnd(34)} ${byId.get(id)?.brand ?? '(removed from the catalog)'} ${byId.get(id)?.name ?? ''}`)
 }

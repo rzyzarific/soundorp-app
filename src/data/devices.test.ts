@@ -125,7 +125,29 @@ describe('specs corrected against manufacturer pages', () => {
     ['golden-age-pre-73', { maxPreampGain: 80 }, 'greentoe.com: PRE-73 MKIII 20 to 80 dB'],
     ['focusrite-scarlett-solo-4gen', { maxPreampGain: 57 }, 'us.focusrite.com/products/scarlett-solo'],
     ['motu-8a', { inputConnectors: ['TRS'] }, 'motu.com/products/avb/8a/specs.html: 8 x 1/4" TRS line inputs'],
+    // 2026-10-08: the last devices that were at exactly 60 dB, checked against manufacturer documents
+    ['mackie-mix12fx', { maxPreampGain: 50, micPreampCount: 4 }, 'Mackie Mix5/Mix8/Mix12FX owner\'s manual: XLR 0 dB, "ramping to 50 dB of gain fully up"'],
+    ['mackie-1202vlz4', { maxPreampGain: 60, micPreampCount: 4 }, '1202VLZ4 owner\'s manual: XLR 0 to 60 dB; spec sheet: 4 Onyx mic preamps'],
+    ['mackie-1642vlz4', { maxPreampGain: 60, micPreampCount: 10 }, '1642VLZ4 owner\'s manual: XLR 0 to 60 dB; spec sheet: "10 boutique-quality Onyx mic preamps"'],
+    ['mackie-onyx8', { maxPreampGain: 60, micPreampCount: 4 }, 'Onyx series owner\'s manual: XLR 0 to 60 dB; mackie.com and huss-licht-ton.de: 4 mic inputs'],
+    ['mackie-dl806', { maxPreampGain: 60, micPreampCount: 8 }, 'DL806 spec sheet: XLR 0 to 60 dB, eight Onyx mic preamps'],
+    ['behringer-xenyx-502', { maxPreampGain: 60, micPreampCount: 1 }, 'Behringer 502 technical specifications: gain range +10 to +60 dB'],
+    ['behringer-xenyx-1002fx', { maxPreampGain: 60, micPreampCount: 2 }, 'Behringer 1002FX technical specifications: gain range +10 to +60 dB, 2 mic preamps'],
+    ['behringer-xenyx-1204usb', { maxPreampGain: 60, micPreampCount: 4 }, 'Behringer X1204USB/1204USB Quick Start Guide: gain range +10 to +60 dB'],
+    ['behringer-xenyx-x1204usb', { maxPreampGain: 60 }, 'Behringer X1204USB/1204USB Quick Start Guide: gain range +10 to +60 dB'],
+    ['behringer-xenyx-1622usb', { maxPreampGain: 60, micPreampCount: 4 }, 'behringer.com X1622USB: 4 XENYX mic preamps; X2222/X1622 user manual: +10 to +60 dB'],
+    ['behringer-xenyx-x2222usb', { maxPreampGain: 60, micPreampCount: 8 }, 'behringer.com X2222USB: 8 XENYX mic preamps; X2222/X1622 user manual: +10 to +60 dB'],
+    ['behringer-umc202hd', { micPreampCount: 2 }, 'Behringer U-PHORIA Quick Start Guide: 2 x MIDAS preamps'],
+    ['behringer-umc404hd', { micPreampCount: 4 }, 'Behringer U-PHORIA Quick Start Guide: 4 x MIDAS preamps'],
   ]
+
+  it('has no "ProFX8v3": Mackie\'s ProFXv3 range is 6, 10, 12, 16, 22 and 30 channels', () => {
+    // mackie.com/en/products/mixers/profxv3-series and the ProFXv3 spec sheet list no 8-channel model;
+    // the 8-channel ProFX8 belonged to the earlier generation and the 10-channel ProFX10v3 replaced it.
+    expect(getDeviceById('mackie-profx8v3')).toBeUndefined()
+    expect(getDeviceById('mackie-profx6v3')).toBeDefined()
+    expect(getDeviceById('mackie-profx10v3')).toBeDefined()
+  })
 
   it('gives the MOTU 8A no mic preamp, phantom power or gain: it has line inputs only', () => {
     const specs = getDeviceById('motu-8a')!.specs
@@ -216,6 +238,8 @@ describe('verification', () => {
     'art-pro-mpa-ii',
     'behringer-umc204hd',
     'behringer-umc1820',
+    'behringer-umc202hd',
+    'behringer-umc404hd',
     'zoom-h4essential',
     'universal-audio-la610-mkii',
     'yamaha-mgp12x',
@@ -228,7 +252,6 @@ describe('verification', () => {
   it('flags the values that agree with a source only through a search extract', () => {
     for (const [id, field] of [
       ['steinberg-ur22c', 'maxPreampGain'],
-      ['behringer-xenyx-x1204usb', 'maxPreampGain'],
       ['behringer-xenyx-802', 'maxPreampGain'],
       ['zoom-uac-2', 'maxPreampGain'],
       ['spl-crimson-3', 'maxPreampGain'],
