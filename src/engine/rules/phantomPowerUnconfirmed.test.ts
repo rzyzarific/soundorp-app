@@ -162,6 +162,63 @@ describe('the Alto ZMX122FX, in the real catalog', () => {
   })
 })
 
+// The gain-shortfall advice must match what the app actually offers.
+describe('the gain-shortfall advice when no booster is offered because phantom power is unconfirmed', () => {
+  const sm7b = getDeviceById('shure-sm7b')!
+  const shortfall = (chain: Parameters<typeof evaluateChain>[0]) =>
+    evaluateChain(chain)[0].results.find((r) => r.problem?.type === 'gain_shortfall')
+  const lowGainMixer = (specs = {}, extra = {}) =>
+    mixer({ inputConnectors: ['XLR', 'TRS'], outputConnectors: ['TRS'], providesPhantomPower: true, maxPreampGain: 50, ...specs }, extra)
+
+  it('SM7B into the Alto: no booster button, and no advice to add an inline booster', () => {
+    const r = shortfall([sm7b, getDeviceById('alto-professional-zmx122fx')!])
+
+    expect(r).toBeDefined()
+    expect(r?.actions).toBeUndefined()
+    expect(r?.fix).not.toMatch(/inline gain booster|Cloudlifter/i)
+    expect(r?.fix).toMatch(/can't be safely recommended/i)
+    expect(r?.fix).toContain("ZMX122FX's phantom power support")
+    expect(r?.fix).toMatch(/manufacturer's manual/i)
+  })
+
+  it('the same, for a synthetic device (the rule is general)', () => {
+    const r = shortfall([sm7b, lowGainMixer({}, { verification: inQuestion(['providesPhantomPower']) })])
+
+    expect(r?.actions).toBeUndefined()
+    expect(r?.fix).toMatch(/can't be safely recommended/i)
+    expect(r?.fix).toContain("Mixer's phantom power support")
+  })
+
+  it('once phantom power is confirmed the booster button returns and the original advice is untouched', () => {
+    const r = shortfall([sm7b, lowGainMixer()])
+
+    expect(r?.actions?.length).toBeGreaterThan(0)
+    expect(r?.fix).toMatch(/inline gain booster/i)
+  })
+
+  it('keeps the original advice when a booster cannot work for some other reason', () => {
+    // No phantom power at all (confirmed): a booster could never work, and the doubt is not why.
+    const noPhantom = shortfall([sm7b, lowGainMixer({ providesPhantomPower: false })])
+    // The doubt is there, but the input has no XLR, so a booster would not fit even if it were lifted.
+    const noXlr = shortfall([
+      sm7b,
+      lowGainMixer({ inputConnectors: ['TRS'] }, { verification: inQuestion(['providesPhantomPower']) }),
+    ])
+
+    for (const r of [noPhantom, noXlr]) {
+      expect(r?.actions).toBeUndefined()
+      expect(r?.fix).toMatch(/inline gain booster/i)
+    }
+  })
+
+  it('ignores a doubt that is about some other spec', () => {
+    const r = shortfall([sm7b, lowGainMixer({}, { verification: inQuestion(['maxPreampGain']) })])
+
+    expect(r?.actions?.length).toBeGreaterThan(0)
+    expect(r?.fix).toMatch(/inline gain booster/i)
+  })
+})
+
 // The general rule, over the whole catalog, so a device flagged in a later audit batch is covered
 // without anyone remembering to write a test for it.
 describe('every catalog device whose phantom supply is in question', () => {

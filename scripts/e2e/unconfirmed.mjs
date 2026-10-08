@@ -66,6 +66,8 @@ async function reportFor(devices, width = 1200) {
   const { ctx, page, report } = await reportFor(['SM7B', 'ZMX122FX'])
   check('SM7B → Alto: the gain shortfall is reported', /Insufficient gain headroom/i.test(report), report.slice(0, 200))
   check('SM7B → Alto: no one-click booster button is offered', (await page.getByRole('button', { name: /^Add .*(Cloudlifter|FetHead|Dynamite)/ }).count()) === 0)
+  check('SM7B → Alto: the advice does not tell you to add an inline booster', !/inline gain booster/i.test(report), report.slice(0, 400))
+  check('SM7B → Alto: the advice says a booster cannot be recommended until phantom power is confirmed', /can't be safely recommended/i.test(report) && /phantom power support is confirmed/i.test(report))
   await ctx.close()
 }
 
