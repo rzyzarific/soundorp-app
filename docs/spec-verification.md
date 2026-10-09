@@ -116,6 +116,24 @@ device-by-device flags.
 
 (This section is written by hand. When the register is regenerated from the catalog, carry it over.)
 
+## Open thread: `micPreampCount` may hold an input or channel count
+
+Found 2026-10-08 while checking the last devices at 60 dB. Four mixers listed their input or channel count as the
+number of mic preamps; each was corrected against a manufacturer page or spec sheet:
+
+| Device | Catalog said | Manufacturer says |
+|---|---|---|
+| `mackie-onyx8` | 8 | 4 Onyx preamps |
+| `mackie-1642vlz4` | 16 | 10 Onyx mic preamps |
+| `behringer-xenyx-1622usb` | 10 | 4 XENYX mic preamps |
+| `behringer-xenyx-x2222usb` | 16 | 8 XENYX mic preamps |
+
+No rule reads `micPreampCount`, so no compatibility verdict changed, but the number is shown to the user.
+
+**The other mixers have not been checked for the same fault.** That is a separate future pass, deliberately not
+started here; do not assume the remaining counts are right. When it is done, compare each mixer's count with its
+manufacturer's stated number of mic preamps (not its channel count, input count or XLR-plus-line combo count).
+
 ## What has and has not been verified
 
 - **Verified during this work** (read from manufacturer or retailer specification text surfaced by
