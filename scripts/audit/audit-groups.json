@@ -1,0 +1,179 @@
+{
+  "note": "Which devices each audit actually examined. The register is generated from this file and the catalog: a device is 'examined' only if it is listed here. An in_question record on a device that is not listed here (a mic's minPreampGain, a DAW's input list) marks a field nobody can verify, not an examination.",
+  "groups": [
+    {
+      "key": "partA",
+      "title": "2026-10-06, Part A: devices already in question",
+      "doc": "spec-audit-2026-10-06.md",
+      "ids": [
+        "warm-audio-wa273-eq",
+        "warm-audio-wa273",
+        "warm-audio-wa412",
+        "warm-audio-wa12",
+        "universal-audio-volt-2",
+        "great-river-mp2nv",
+        "native-instruments-komplete-audio-2",
+        "native-instruments-komplete-audio-6"
+      ],
+      "removed": [
+        "focusrite-scarlett-4i4-2gen"
+      ]
+    },
+    {
+      "key": "partB",
+      "title": "2026-10-06, Part B: stratified random sample (seed 20261006)",
+      "doc": "spec-audit-2026-10-06.md",
+      "ids": [
+        "tascam-us-2x2",
+        "behringer-umc1820",
+        "presonus-studio-1810c",
+        "behringer-umc204hd",
+        "steinberg-ur22c",
+        "zoom-h4essential",
+        "apogee-duet-3",
+        "focusrite-scarlett-2i2-4gen",
+        "rode-nt55",
+        "neumann-u87ai",
+        "audio-technica-ae3000",
+        "audio-technica-at4053b",
+        "royer-r121",
+        "shure-sm58",
+        "electro-voice-re20",
+        "rode-nt1a",
+        "universal-audio-la610-mkii",
+        "universal-audio-solo-610",
+        "audient-mico",
+        "fmr-audio-rnp8380",
+        "chandler-limited-tg2",
+        "rupert-neve-shelford-channel",
+        "behringer-xenyx-qx1002usb",
+        "mackie-profx10v3",
+        "yamaha-mg10xu",
+        "behringer-xenyx-q1202usb",
+        "genelec-8010a",
+        "shure-srh440",
+        "pro-tools-studio",
+        "ardour"
+      ]
+    },
+    {
+      "key": "at60",
+      "title": "2026-10-07: the 60 dB sample (seed 20261007)",
+      "doc": "spec-audit-60db-2026-10-07.md",
+      "ids": [
+        "yamaha-mg20xu",
+        "behringer-xenyx-x1204usb",
+        "allen-heath-zed60-14fx",
+        "mackie-profx6v3",
+        "behringer-xenyx-302usb",
+        "behringer-xenyx-802",
+        "behringer-xenyx-2442fx",
+        "yamaha-ag06-mkii",
+        "antelope-zen-go-synergy-core",
+        "presonus-studio-26c",
+        "focusrite-vocaster-two",
+        "mackie-onyx-producer-2-2",
+        "motu-8a",
+        "zoom-uac-2",
+        "golden-age-pre-73",
+        "art-pro-mpa-ii",
+        "behringer-mic200",
+        "spl-crimson-3"
+      ]
+    },
+    {
+      "key": "followup",
+      "title": "2026-10-07: neighbours and the mixer fix pass at 60 dB",
+      "doc": "spec-audit-60db-2026-10-07.md",
+      "ids": [
+        "focusrite-vocaster-one",
+        "focusrite-scarlett-solo-4gen",
+        "yamaha-mg12xu",
+        "yamaha-mg16xu",
+        "yamaha-mg06",
+        "allen-heath-zedi8",
+        "allen-heath-zedi10",
+        "allen-heath-zedi10fx",
+        "allen-heath-zed10fx",
+        "allen-heath-qu16",
+        "allen-heath-sq5",
+        "soundcraft-signature-12mtk",
+        "yamaha-mgp12x",
+        "soundcraft-notepad-12fx",
+        "soundcraft-efx8",
+        "soundcraft-gb2",
+        "soundcraft-ui12",
+        "soundcraft-spirit-folio"
+      ]
+    },
+    {
+      "key": "batch2",
+      "title": "2026-10-07: the second batch of 60 dB devices",
+      "doc": "spec-audit-60db-2026-10-07.md",
+      "ids": [
+        "tascam-series-208i",
+        "zoom-ams-24",
+        "alto-professional-zmx122fx",
+        "grace-design-m101",
+        "dbx-286s",
+        "presonus-studio-68c",
+        "motu-m2",
+        "motu-m4",
+        "steinberg-ur44c",
+        "presonus-quantum-2626",
+        "presonus-studio-192",
+        "presonus-dp88",
+        "ik-multimedia-axe-io",
+        "tc-helicon-goxlr"
+      ]
+    },
+    {
+      "key": "batch3",
+      "title": "2026-10-08: the last batch of 60 dB devices",
+      "doc": "spec-audit-60db-2026-10-07.md",
+      "ids": [
+        "behringer-umc202hd",
+        "behringer-xenyx-1204usb",
+        "behringer-umc404hd",
+        "mackie-mix12fx",
+        "behringer-xenyx-1002fx",
+        "mackie-1202vlz4",
+        "behringer-xenyx-502",
+        "mackie-onyx8",
+        "mackie-dl806",
+        "behringer-xenyx-1622usb",
+        "mackie-1642vlz4",
+        "behringer-xenyx-x2222usb"
+      ],
+      "removed": [
+        "mackie-profx8v3"
+      ]
+    },
+    {
+      "key": "boosters",
+      "title": "2026-10-09: the three in-line boosters",
+      "doc": "",
+      "ids": [
+        "cloud-microphones-cloudlifter-cl-1",
+        "triton-audio-fethead",
+        "se-electronics-dm1-dynamite"
+      ]
+    },
+    {
+      "key": "register",
+      "title": "2026-10-05: the first register (inferred jack types and one open question)",
+      "doc": "",
+      "ids": [
+        "focusrite-scarlett-4i4-3gen",
+        "focusrite-clarett-plus-2pre",
+        "focusrite-scarlett-18i20-4gen",
+        "presonus-studio-24c",
+        "focusrite-scarlett-2i2-3gen",
+        "universal-audio-apollo-twin-duo",
+        "tc-helicon-goxlr",
+        "presonus-studio-192",
+        "focusrite-scarlett-solo-4gen"
+      ]
+    }
+  ]
+}

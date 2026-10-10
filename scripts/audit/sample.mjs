@@ -50,9 +50,19 @@ export function mulberry32(seed) {
   }
 }
 
-export function drawSample(devices, seed = SEED, exclude = ALREADY_CHECKED) {
+/**
+ * Devices that were in the catalog when the sample was drawn but were later removed because the product
+ * does not exist. They stay in the pool, with the category they had, so that the recorded seed keeps
+ * drawing the recorded sample (removing one would otherwise shift every pick after it in its stratum).
+ * The Scarlett 4i4 (2nd Gen) is not listed: it is in ALREADY_CHECKED, so it was never in the pool.
+ */
+export const REMOVED_SINCE_DRAW = [{ id: 'mackie-profx8v3', category: 'mixer', specs: {} }]
+
+export function drawSample(devices, seed = SEED, exclude = ALREADY_CHECKED, removed = REMOVED_SINCE_DRAW) {
   const skip = new Set(exclude)
-  const eligible = devices.filter((d) => !skip.has(d.id) && d.specs.gainBoost === undefined)
+  const present = new Set(devices.map((d) => d.id))
+  const withRemoved = [...devices, ...removed.filter((r) => !present.has(r.id))]
+  const eligible = withRemoved.filter((d) => !skip.has(d.id) && d.specs.gainBoost === undefined)
   const named = new Set(STRATA.map(([c]) => c).filter((c) => c !== 'other'))
   const rng = mulberry32(seed)
   const picked = []
@@ -78,6 +88,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   console.log(`seed ${seed}, ${sample.length} devices\n`)
   for (const { stratum, id } of sample) {
     const d = byId.get(id)
-    console.log(`${stratum.padEnd(16)} ${id.padEnd(48)} ${d.brand} ${d.name} (${d.category})`)
+    console.log(`${stratum.padEnd(16)} ${id.padEnd(48)} ${d ? `${d.brand} ${d.name} (${d.category})` : '(removed from the catalog)'}`)
   }
 }

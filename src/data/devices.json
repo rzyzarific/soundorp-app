@@ -417,6 +417,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "uaudio.com/hardware/mic-preamps/solo-610.html (\"55 dB (1.6K ohm input), 60 dB (450 ohm input)\")",
+      "note": "The figure depends on the input impedance setting; 60 dB is the 450 ohm figure.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -431,6 +438,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 80,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "greentoe.com Golden Age Project PRE-73 MKIII page (20 to 80 dB); Adorama and Muziker search extracts",
+      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one retailer page plus search extracts; no manufacturer page was read. The DLX, Premier and MKIV are also 80 dB; only the JR is 70. Gain was corrected from 60 to 80 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -445,6 +459,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 71,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "warmaudio.com/wa12mkii (\"71 dB of warm analog gain\")",
+      "note": "The figure is for the WA12 MKII, whose $449 price matches the catalog. Warm Audio lists the original WA12 as a legacy product at $499, with no gain figure on that page.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -473,6 +494,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "outputConnectors"],
+      "source": "dbxpro.com 286s datasheet (read as text): mic gain 0 to +60 dB; line output 1/4 in TRS",
+      "note": "The catalog listed XLR and TRS outputs; the datasheet shows TRS only.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -502,6 +530,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 69,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount", "providesPhantomPower"],
+      "source": "us.focusrite.com/products/scarlett-2i2",
+      "note": "Gain was corrected from 56 to 69 dB; 56 dB is the 3rd Gen figure.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -517,6 +552,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 57,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["outputConnectors", "headphoneOutputConnectors"],
+      "source": "us.focusrite.com/products/scarlett-solo specifications (\"Line outputs (Balanced)\" and a headphone output, jack types not named); Scarlett 2i2 and 4i4 4th Gen pages, which state 6.3 mm TRS",
+      "note": "TRS is inferred from \"balanced\" and the sibling pages. Separately, maxPreampGain (57 dB, corrected from 56) is verified against us.focusrite.com/products/scarlett-solo.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -532,6 +574,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 57,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["headphoneOutputConnectors"],
+      "source": "Clarett+ 2Pre sources read: four balanced 1/4 in TRS outputs and \"a single headphone output\", jack type not stated; the Clarett+ 4Pre sibling is stated as 2 x 1/4 in TRS",
+      "note": "The headphone jack is inferred from the 4Pre sibling. The Clarett+ 2Pre user guide would settle it.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -607,6 +656,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "MOTU M-Series user guide (read as text): mic gain range 0 to +60 dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -627,7 +682,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0805-AAR; U-PHORIA Quick Start Guide",
-      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed.",
+      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed. The preamp count (2) is confirmed by the Quick Start Guide.",
       "checkedOn": "2026-10-08"
     }
   },
@@ -666,6 +721,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "inputConnectors", "outputConnectors", "headphoneOutputConnectors"],
+      "source": "tascam.com/us/product/us-2x2hr/spec",
+      "note": "Gain was corrected from 58 to 56 dB; the connector lists matched.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -680,6 +742,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 64,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Yamaha MG10XU technical specifications (data.yamaha.com/files/download/other_assets/2/1507032/MG10XU_technical_specifications_En_B0.pdf, read as text): Analog Input Characteristics, MIC/LINE, PAD off, GAIN trim +64 dB",
+      "note": "Gain was corrected from 60 to 64 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -694,6 +763,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Behringer X1204USB/1204USB Quick Start Guide specification table: gain range +10 dB to +60 dB; behringer.com/en/products/0601-ACM (4 XENYX mic preamps)",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -708,6 +783,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount", "providesPhantomPower"],
+      "source": "mackie.com/en/products/mixers/profxv3-series/ProFX10v3.html (four Onyx preamps, \"60dB of gain\", 48V on all channels)",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -722,6 +803,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath ZEDi-10FX datasheet (read as text): XLR mic gain min/max 6dB to 60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1032,6 +1119,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 69,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "in_question",
+      "fields": ["outputConnectors", "headphoneOutputConnectors"],
+      "source": "Focusrite 18i20 4th Gen sources read (user guide not read)",
+      "note": "No source read names the connector for the main monitor outputs, and whether they also appear on XLR was neither confirmed nor ruled out. Two headphone outputs were confirmed, but their jack type (TRS) was not stated. The 18i20 4th Gen user guide would settle both.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -1047,6 +1141,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 52,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["headphoneOutputConnectors"],
+      "source": "Studio 24c sources read: main outs confirmed 1/4 in TRS; \"1 stereo headphone output\" without the connector",
+      "note": "The headphone jack type is inferred. The Studio 24c owner's manual would settle it.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -1062,6 +1163,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount", "providesPhantomPower"],
+      "source": "uaudio.com/products/volt-2-usb-audio-interface (\"55 dB\" gain, two preamps, switchable +48V)",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -1097,7 +1204,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0805-AAT; U-PHORIA Quick Start Guide",
-      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed.",
+      "note": "No mic gain range on Behringer's product page, and the Quick Start Guide's specification table gives only a maximum mic input level (-4 dBu), so the catalog's 60 dB is unconfirmed. The preamp count (4) is confirmed by the Quick Start Guide.",
       "checkedOn": "2026-10-08"
     }
   },
@@ -1181,7 +1288,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0601-AGC",
-      "note": "No gain figure on Behringer's page, and none found elsewhere.",
+      "note": "No gain figure on Behringer's page, and none found elsewhere. The preamp count was corrected from 2 to 4 (\"4 onboard studio-grade XENYX Mic Preamps\", behringer.com/en/products/0601-AGC) and +48V matched.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -1218,6 +1325,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 50,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Mackie Mix5/Mix8/Mix12FX owner's manual (XLR input: 0 dB of gain with the knob down, \"ramping to 50 dB of gain fully up\"); mackie.com Mix12FX page (four mic/line inputs)",
+      "note": "Gain was corrected from 60 to 50 dB.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -1253,6 +1367,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 64,
       "micPreampCount": 6
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Yamaha MG12X/MG12XU technical specifications (read as text): Analog Input Characteristics, MIC/LINE, PAD off, GAIN trim +64 dB",
+      "note": "Gain was corrected from 60 to 64 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1293,6 +1414,13 @@
     "msrp": 495,
     "specs": {
       "inputConnectors": ["XLR"]
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["inputConnectors"],
+      "source": "genelec.com/8010a (\"1 x XLR Analog Input\")",
+      "note": "The catalog listed TRS and RCA inputs; Genelec lists no RCA or 1/4 in input.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -1494,7 +1622,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "intl.presonus.com/products/studio-68c",
-      "note": "PreSonus lists a \"Gain Control Range\" of 80 dB for the Studio 68c, which is a span: it equals the maximum gain only if the range starts at 0 dB, and no maximum is stated. The catalog says 60.",
+      "note": "PreSonus lists a \"Gain Control Range\" of 80 dB for the Studio 68c, which is a span: it equals the maximum gain only if the range starts at 0 dB, and no maximum is stated. The catalog says 60. The preamp count was corrected from 2 to 4 on presonus.com (\"four XMAX-L mic preamps\").",
       "checkedOn": "2026-10-07"
     }
   },
@@ -1584,6 +1712,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 80,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "warmaudio.com/mic-pre-wa73 (\"80 dB of gain\"; the WA273 is the dual-channel version); musicredone.com/products/warm-audio-wa273 (\"80dB of gain\", \"Two channel preamp\")",
+      "note": "wrdtunes.com also gives 80 dB but calls it single-channel, which contradicts the manufacturer page and musicredone.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -1675,6 +1810,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Behringer X1204USB/1204USB Quick Start Guide specification table: gain range +10 dB to +60 dB",
+      "note": "An earlier in_question flag (agreement only through a search extract) was lifted when this document was read.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -1689,6 +1831,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "mackie.com/en/products/mixers/profxv3-series/ProFX6v3.html (two Onyx preamps, 60dB)",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1703,6 +1851,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Soundcraft Signature 10/12/12MTK user manual (read as text): \"The Gain range is 10dB to 60dB\"",
+      "note": "A retailer search extract quoted -5 to +58 dB; the manufacturer's manual was preferred.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1717,6 +1872,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath ZEDi-8 datasheet (read as text): XLR mic gain min/max 6dB to 60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -1928,6 +2089,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "headphoneOutputConnectors"],
+      "source": "knowledge.apogeedigital.com/how-does-duet-3-compare-to-other-apogee-units",
+      "note": "Gain was corrected from 75 to 65 dB. The USB Type-C port also matched; the rest of outputConnectors was not checked.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -1985,7 +2153,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0805-AAN",
-      "note": "No gain figure on Behringer's page, and none found elsewhere.",
+      "note": "No gain figure on Behringer's page, and none found elsewhere. Other fields matched behringer.com: micPreampCount, providesPhantomPower, ADAT and USB outputs.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -2044,6 +2212,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 75,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "proaudiodesign.com and zenproaudio.com Chandler Limited TG2 pages (\"+5dB to +75dB\", \"Dual Mono\")",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -2086,6 +2260,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Behringer XENYX 1002FX technical specifications (gear4music-hosted copy of Behringer's document): gain range +10 to +60 dB, 2 XENYX mic preamps",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -2100,6 +2280,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "1202VLZ4 owner's manual (XLR input ramps from 0 dB to 60 dB); 1202VLZ4 spec sheet (4 Onyx mic preamps)",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -2135,6 +2321,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 64,
       "micPreampCount": 10
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Yamaha MG16X/MG16XU technical specifications (read as text): Analog Input Characteristics, MIC/LINE, PAD off, GAIN trim +64 dB",
+      "note": "Gain was corrected from 60 to 64 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2153,7 +2346,7 @@
     "verification": {
       "status": "in_question",
       "fields": ["providesPhantomPower"],
-      "source": "bajaao.com and andertons.co.uk listings (no manual read)",
+      "source": "bajaao.com and andertons.co.uk listings (no manual read); gain (50 dB, corrected from 60) and four mic inputs (corrected from 2) from andertons.co.uk and bajaao.com",
       "note": "Sources disagree about which inputs have phantom power: one retailer page says \"four microphone inputs ... (two with Phantom Power)\", other retailer text says phantom power on channels 1-4. The schema holds one phantom flag per device, so it cannot say \"some inputs\". Until a manual settles it, a condenser microphone may be told phantom power is available on an input that does not have it.",
       "checkedOn": "2026-10-07"
     }
@@ -2397,6 +2590,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "MOTU M-Series user guide (read as text): mic gain range 0 to +60 dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2431,6 +2630,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["headphoneOutputConnectors"],
+      "source": "Scarlett 2i2 3rd Gen sources read: line outs confirmed 6.3 mm; headphone jack type not stated",
+      "note": "The headphone jack type is inferred. The 3rd Gen user guide would settle it.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -2475,6 +2681,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "warmaudio.com/wa412 (\"65 dB of warm analog gain\", 4 channels)",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -2538,6 +2750,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Behringer XENYX 502 technical specifications (gear4music-hosted copy of Behringer's document): gain range +10 dB to +60 dB",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -2552,6 +2770,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Onyx series owner's manual (XLR input ramps from 0 dB to 60 dB); mackie.com Onyx8 page (\"4 low-noise Onyx preamps\"); huss-licht-ton.de (\"4x Mic\")",
+      "note": "The preamp count was corrected from 8 to 4.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -2586,6 +2811,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 16
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath SQ-5 datasheet (read as text): analogue gain 0dB to +60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2827,6 +3058,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 70,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "us.focusrite.com/products/vocaster-one",
+      "note": "Gain was corrected from 60 to 70 dB, as a neighbour of the Vocaster Two.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2842,6 +3080,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 70,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "us.focusrite.com/products/vocaster-two (\"Mic input gain range 70dB\")",
+      "note": "Gain was corrected from 60 to 70 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -2860,9 +3105,9 @@
     },
     "verification": {
       "status": "in_question",
-      "fields": ["maxPreampGain", "outputConnectors"],
+      "fields": ["maxPreampGain", "outputConnectors", "headphoneOutputConnectors"],
       "source": "markertek.com GoXLR Mini listing",
-      "note": "maxPreampGain: No gain figure was found for the Midas preamp on any page read (a retailer page for the GoXLR Mini states none). USB: A retailer page for the GoXLR Mini (same series) lists \"1 x USB 2.0, type B\", but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only.",
+      "note": "maxPreampGain: No gain figure was found for the Midas preamp on any page read (a retailer page for the GoXLR Mini states none). USB: A retailer page for the GoXLR Mini (same series) lists \"1 x USB 2.0, type B\", but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only. The 3.5 mm line out and 3.5 mm headphone jack also rest on one thin search result; no manufacturer page was read, and the original (2022) and newer (2024) units differ.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3011,7 +3256,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0601-AGB",
-      "note": "No gain figure on Behringer's page, and none found elsewhere.",
+      "note": "No gain figure on Behringer's page, and none found elsewhere. The preamp count (2) and built-in USB matched behringer.com/en/products/0601-AGB; gain and phantom power are not on that page.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3289,7 +3534,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "zoomcorp.com/en/us/handheld-recorders/handheld-recorders/h4essential/",
-      "note": "Zoom lists the input gain as \"Adjustment unnecessary\" (32-bit float), so there is no published maximum gain and the catalog's 60 has no source. It may need to be removed.",
+      "note": "Zoom lists the input gain as \"Adjustment unnecessary\" (32-bit float), so there is no published maximum gain and the catalog's 60 has no source. It may need to be removed. Other fields matched zoomcorp.com: inputs, providesPhantomPower, USB-C and the stereo mini output.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3311,7 +3556,7 @@
       "status": "in_question",
       "fields": ["outputConnectors"],
       "source": "Tascam Series 208i spec sheet (tascam.eu/en/docs/Tascam_SERIES208i.pdf)",
-      "note": "Tascam's spec sheet gives the computer connection as a \"4-pin USB B-type\" port, but the catalog lists USB-C and the schema has no USB-B value. The connector check accepts any USB type, so no warning depends on it, but the cable list prints this entry as \"USB-C cable\".",
+      "note": "Tascam's spec sheet gives the computer connection as a \"4-pin USB B-type\" port, but the catalog lists USB-C and the schema has no USB-B value. The connector check accepts any USB type, so no warning depends on it, but the cable list prints this entry as \"USB-C cable\". Gain (58 dB, corrected from 60) and the preamp count (4, corrected from 8) are from the same spec sheet.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3357,6 +3602,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 66,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "soundonsound.com/reviews/audient-mico (\"18 to 66dB\" per channel, two channels); Audient spec page (search extract only)",
+      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one review page plus an extract of Audient's own page; no manufacturer page was read.",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -3399,6 +3651,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 66,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "united-music.by and analoguehaven.com/fmr-audio/rnp-8380 (\"up to 66dB\", two channels)",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -3434,6 +3692,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Mackie DL806 spec sheet (read as text): XLR gain 0 to 60 dB, eight Onyx mic preamps",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -3468,6 +3732,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath ZED-10FX user guide (read as text): gain +10dB to +60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -3669,6 +3939,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 56,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["outputConnectors", "headphoneOutputConnectors"],
+      "source": "Scarlett 4i4 3rd Gen sources read: four balanced outputs and one headphone output, jack types not named; the 4i4 4th Gen sibling states 6.3 mm",
+      "note": "TRS is inferred from the 4th Gen sibling. The 3rd Gen user guide, rear-panel section, would settle it.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -3747,7 +4024,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "behringer.com/en/products/0805-AAS",
-      "note": "No gain figure on Behringer's page; one review (bonedo.de) says 56 dB against the catalog's 60.",
+      "note": "No gain figure on Behringer's page; one review (bonedo.de) says 56 dB against the catalog's 60. Other fields matched behringer.com: micPreampCount, providesPhantomPower, USB 2.0 and TRS/RCA outputs.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3812,6 +4089,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 55,
       "micPreampCount": 1
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "musiciansfriend.com Xenyx 302USB page (\"+15dB to +55dB\", one mic input); retailer search extracts",
+      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one retailer page plus retailer search extracts; no manufacturer page was read. Gain was corrected from 60 to 55 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -3852,7 +4136,7 @@
       "status": "in_question",
       "fields": ["outputConnectors"],
       "source": "musicredone.com Yamaha MG20XU page",
-      "note": "A retailer page lists \"1x USB-B 2.0\" for the computer connection, but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only.",
+      "note": "A retailer page lists \"1x USB-B 2.0\" for the computer connection, but the catalog lists USB-A and the schema has no USB-B value; the cable list prints this entry as \"USB-A cable\". Retailer-level evidence only. Gain (+64 dB, corrected from 60) and the preamp count (16) rest on musicredone.com and a search extract of Yamaha's technical-specifications PDF; the Yamaha document was not read as text for this model.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -4106,7 +4390,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "presonus.com/products/Studio-1810c/tech-specs",
-      "note": "PreSonus lists a \"Gain Control Range\" of 80 dB, which disagrees with the catalog's 60, but a range is not clearly the maximum gain.",
+      "note": "PreSonus lists a \"Gain Control Range\" of 80 dB, which disagrees with the catalog's 60, but a range is not clearly the maximum gain. Other fields matched presonus.com: micPreampCount, USB-C and TRS outputs, TRS headphone output.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -4123,6 +4407,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 58,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Zoom AMS-24 manual (read as text): input gain \"-inf - +58 dB\"",
+      "note": "Gain was corrected from 60 to 58 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -4260,6 +4551,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "behringer.com/en/products/0601-ACY (\"4 onboard studio-grade XENYX Mic Preamps\"); X2442/X2222/X1832/X1622USB user manual: gain range +10 to +60 dB",
+      "note": "The preamp count was corrected from 10 to 4.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -4274,6 +4572,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 10
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "1642VLZ4 owner's manual (XLR input ramps from 0 dB to 60 dB); 1642VLZ4 spec sheet (\"10 boutique-quality Onyx mic preamps\")",
+      "note": "The preamp count was corrected from 16 to 10.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -4308,6 +4613,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 16
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath Qu-16 datasheet (read as text): analogue gain -5 to +60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -4559,6 +4870,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 65,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "inferred",
+      "fields": ["headphoneOutputConnectors"],
+      "source": "Apollo Twin Duo sources read: 2 monitor, 4 line TRS and 1 stereo headphone output, with the headphone jack type stated only for the newer Apollo Twin X Gen 2 (1/4 in TRS)",
+      "note": "Applied to the Duo by sibling. The Apollo Twin Duo hardware manual would settle it.",
+      "checkedOn": "2026-10-05"
     }
   },
   {
@@ -4594,7 +4912,7 @@
       "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "presonus.com/products/Studio-192/tech-specs (search extract)",
-      "note": "A search extract of PreSonus's tech specs gives a gain control range of 60 dB; the page could not be opened, and a range is not clearly the maximum.",
+      "note": "A search extract of PreSonus's tech specs gives a gain control range of 60 dB; the page could not be opened, and a range is not clearly the maximum. The headphone jack type (TRS) is also inferred: sources confirm ten 1/4 in balanced outputs and two headphone outputs without the jack type.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -4611,6 +4929,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Steinberg UR44C operation manual (read as text): mic input gain range +6 dB to +60 dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -4625,6 +4949,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 80,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "warmaudio.com/mic-pre-wa73-eq (\"80 dB of gain\", dual-channel version); bswusa.com/warm-audio-wa273-eq (\"80DB OF GAIN\", \"DUAL CHANNEL\")",
+      "checkedOn": "2026-10-06"
     }
   },
   {
@@ -4668,6 +4998,13 @@
       "needsPhantomPower": true,
       "phantomPowerDamages": false,
       "gainBoost": 27
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["gainBoost", "needsPhantomPower", "phantomPowerDamages", "inputConnectors", "outputConnectors"],
+      "source": "tritonaudio.com/fethead/ (\"27 dB amplification (@ 3000 ohm load)\", 24-48V phantom power, balanced XLR input and output); thomann.co.uk/tritonaudio_fethead.htm (does not allow phantom power to pass through to the microphone)",
+      "note": "Needs 24 to 48 V phantom power.",
+      "checkedOn": "2026-10-09"
     }
   },
   {
@@ -4683,6 +5020,13 @@
       "needsPhantomPower": true,
       "phantomPowerDamages": false,
       "gainBoost": 28
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["gainBoost", "needsPhantomPower", "inputConnectors", "outputConnectors"],
+      "source": "seelectronics.com/products/dm1-dynamite (\"28 dB\", requires 48V phantom power, \"3-pin male/female XLR connector\")",
+      "note": "The page does not say whether phantom power reaches the microphone, so phantomPowerDamages is not covered by this record.",
+      "checkedOn": "2026-10-09"
     }
   },
   {
@@ -4698,6 +5042,13 @@
       "needsPhantomPower": true,
       "phantomPowerDamages": false,
       "gainBoost": 25
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["gainBoost", "needsPhantomPower", "phantomPowerDamages"],
+      "source": "cloudmicrophones.com/products/cloudlifter-cl-1 (\"Up to +25dB of gain for any passive microphone\", \"Uses standard +48v Phantom Power\", \"Does not pass phantom power, protecting ribbon and tube mics\")",
+      "note": "The page does not name the connectors, so the XLR input and output are not covered by this record.",
+      "checkedOn": "2026-10-09"
     }
   },
   {
@@ -4712,6 +5063,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 8
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "behringer.com/en/products/0601-ADA (\"8 onboard studio-grade XENYX Mic Preamps\"); X2442/X2222/X1832/X1622USB user manual: gain range +10 to +60 dB",
+      "note": "The preamp count was corrected from 16 to 8.",
+      "checkedOn": "2026-10-08"
     }
   },
   {
@@ -4726,6 +5084,13 @@
       "providesPhantomPower": true,
       "maxPreampGain": 64,
       "micPreampCount": 2
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain", "micPreampCount"],
+      "source": "Yamaha MG06 technical specifications (read as text): Analog Input Characteristics, MIC/LINE, PAD off, GAIN trim +64 dB",
+      "note": "Gain was corrected from 60 to 64 dB.",
+      "checkedOn": "2026-10-07"
     }
   },
   {
@@ -4740,6 +5105,12 @@
       "providesPhantomPower": true,
       "maxPreampGain": 60,
       "micPreampCount": 4
+    },
+    "verification": {
+      "status": "verified",
+      "fields": ["maxPreampGain"],
+      "source": "Allen & Heath ZEDi-10 datasheet (read as text): XLR mic gain min/max 6dB to 60dB",
+      "checkedOn": "2026-10-07"
     }
   },
   {
