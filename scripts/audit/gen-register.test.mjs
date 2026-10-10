@@ -60,6 +60,12 @@ describe('the verification records', () => {
     }
   })
 
+  it('never mark a correction that rests on one retailer or review page as verified', () => {
+    for (const id of ['audient-mico', 'behringer-xenyx-302usb', 'golden-age-pre-73', 'great-river-mp2nv']) {
+      expect(byId.get(id).verification.status, id).toBe('in_question')
+    }
+  })
+
   it('carry the combined-figure note on the two devices whose gain includes an output trim', () => {
     for (const id of ['great-river-mp2nv', 'grace-design-m101']) {
       expect(byId.get(id).verification.note, id).toMatch(/combined figure/)

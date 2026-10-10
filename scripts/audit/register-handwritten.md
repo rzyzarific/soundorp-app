@@ -73,3 +73,12 @@ The other entries have **not** been investigated. They are left to surface throu
 audited device's USB entry disagrees with its manufacturer's port, flag it the same way. If the pattern
 turns out to be widespread, the better fix is a `USB-B` connector in the schema and cable list, not
 device-by-device flags.
+
+## Known flaky test run
+
+The browser script `scripts/e2e/ui-layout.mjs` can fail with a `TimeoutError` (a 30-second wait on clicking
+"Add" while building a long chain) on a slow run. On 2026-10-10 it failed twice, once inside the full suite and
+once alone, and then passed 1362/1362 standalone; the failing runs were the slower ones (the passing standalone run
+took 413 s, an earlier clean run 223 s, and the other scripts in the same suite ran two to three times slower).
+It could not be reproduced with a plain add loop at 1440, 1024 or 390 px. It is recorded here as a known flaky run,
+not investigated further. If it fails, re-run it on its own before suspecting the change under test.

@@ -11,12 +11,6 @@ import { pathToFileURL } from 'node:url'
 const ROOT = new URL('../../', import.meta.url)
 const read = (p) => fs.readFileSync(new URL(p, ROOT), 'utf8').replace(/\r\n/g, '\n')
 
-// Verified records that rest on thinner evidence than the audit's usual bar (a manufacturer page, or two
-// independent retailer pages). Notes that begin "Thinner evidence" are listed too.
-const THIN_EXTRA = {
-  'great-river-mp2nv': 'one retailer page plus a distributor datasheet seen only as a search extract; no manufacturer page was found. A combined figure (input stage 60 dB plus output gain).',
-}
-
 const cell = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ')
 const code = (ids) => ids.map((i) => `\`${i}\``).join(', ')
 const pct = (n, d) => `${Math.round((100 * n) / d)}%`
@@ -90,16 +84,6 @@ export function buildRegister(devices, groupsFile, handwritten) {
   p(`## Verified (${verified.length})`, '')
   p(...head)
   for (const d of verified) p(row(d))
-  p('')
-
-  const thin = verified.filter((d) => /^Thinner evidence/.test(d.verification.note ?? '') || THIN_EXTRA[d.id])
-  p(`### Verified on thinner evidence (${thin.length})`, '')
-  p('These are marked `verified` but did not meet the usual bar. They are listed so they can be downgraded or re-checked against a manufacturer page.', '')
-  p('| Device | Why the evidence is thin |', '|---|---|')
-  for (const d of thin) {
-    const why = THIN_EXTRA[d.id] ?? d.verification.note.replace(/^Thinner evidence than the audit's usual bar \(a manufacturer page, or two independent retailer pages\): /, '')
-    p(`| \`${d.id}\` | ${cell(why)} |`)
-  }
   p('')
 
   p(`## Inferred (${inferred.length})`, '')

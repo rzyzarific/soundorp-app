@@ -440,10 +440,10 @@
       "micPreampCount": 1
     },
     "verification": {
-      "status": "verified",
+      "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "greentoe.com Golden Age Project PRE-73 MKIII page (20 to 80 dB); Adorama and Muziker search extracts",
-      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one retailer page plus search extracts; no manufacturer page was read. The DLX, Premier and MKIV are also 80 dB; only the JR is 70. Gain was corrected from 60 to 80 dB.",
+      "note": "Corrected from 60 to 80 dB on one retailer page (greentoe.com, MKIII: 20 to 80 dB) and Adorama and Muziker search extracts. No manufacturer page was read, so the new value is not confirmed. The DLX, Premier and MKIV are also 80 dB; only the JR is 70.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -1735,10 +1735,10 @@
       "micPreampCount": 2
     },
     "verification": {
-      "status": "verified",
+      "status": "in_question",
       "fields": ["maxPreampGain"],
       "source": "retrogearshop.com (\"maximum overall gain 70db\"); Great River distributor datasheet (+70dB)",
-      "note": "A combined figure: input gain in 5 dB steps up to 60 dB plus output gain up to +10 dB. The input stage alone is 60 dB.",
+      "note": "A combined figure: input gain in 5 dB steps up to 60 dB plus output gain up to +10 dB; the input stage alone is 60 dB. The 70 dB rests on one retailer page (retrogearshop.com: \"maximum overall gain 70db\") and a distributor datasheet seen only as a search extract; no manufacturer page was found.",
       "checkedOn": "2026-10-07"
     }
   },
@@ -3604,10 +3604,10 @@
       "micPreampCount": 2
     },
     "verification": {
-      "status": "verified",
+      "status": "in_question",
       "fields": ["maxPreampGain", "micPreampCount"],
       "source": "soundonsound.com/reviews/audient-mico (\"18 to 66dB\" per channel, two channels); Audient spec page (search extract only)",
-      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one review page plus an extract of Audient's own page; no manufacturer page was read.",
+      "note": "Corrected from 65 to 66 dB and from 1 to 2 channels on one review page (soundonsound.com/reviews/audient-mico: \"18 to 66dB\" per channel, two channels) and an extract of Audient's own spec page. No manufacturer page was read, so the new values are not confirmed.",
       "checkedOn": "2026-10-06"
     }
   },
@@ -4091,10 +4091,10 @@
       "micPreampCount": 1
     },
     "verification": {
-      "status": "verified",
+      "status": "in_question",
       "fields": ["maxPreampGain", "micPreampCount"],
       "source": "musiciansfriend.com Xenyx 302USB page (\"+15dB to +55dB\", one mic input); retailer search extracts",
-      "note": "Thinner evidence than the audit's usual bar (a manufacturer page, or two independent retailer pages): one retailer page plus retailer search extracts; no manufacturer page was read. Gain was corrected from 60 to 55 dB.",
+      "note": "Corrected from 60 to 55 dB (one mic input) on one retailer page (musiciansfriend.com: \"+15dB to +55dB\") and retailer search extracts. No manufacturer page was read, so the new values are not confirmed.",
       "checkedOn": "2026-10-07"
     }
   },

@@ -286,10 +286,23 @@ describe('verification', () => {
   })
 
   it('labels combined input-plus-trim gain figures as such', () => {
-    for (const id of ['grace-design-m101', 'great-river-mp2nv']) {
-      const v = (rawDevices.find((d) => d.id === id) as { verification?: { status: string; note?: string } }).verification
-      expect(v?.status, id).toBe('verified')
-      expect(v?.note, id).toMatch(/combined figure/i)
+    const record = (id: string) =>
+      (rawDevices.find((d) => d.id === id) as { verification?: { status: string; note?: string } }).verification
+    expect(record('grace-design-m101')?.status).toBe('verified') // gracedesign.com states the 75 dB overall maximum
+    expect(record('great-river-mp2nv')?.status).toBe('in_question') // one retailer page and a search extract
+    for (const id of ['grace-design-m101', 'great-river-mp2nv']) expect(record(id)?.note, id).toMatch(/combined figure/i)
+  })
+
+  it('marks corrections that rest on one retailer or review page as in question, not verified', () => {
+    // The values were changed from what the catalog had, but no manufacturer page (or second retailer page) confirms them.
+    for (const [id, field] of [
+      ['audient-mico', 'maxPreampGain'],
+      ['audient-mico', 'micPreampCount'],
+      ['behringer-xenyx-302usb', 'maxPreampGain'],
+      ['golden-age-pre-73', 'maxPreampGain'],
+      ['great-river-mp2nv', 'maxPreampGain'],
+    ]) {
+      expect(questionOn(id, field), `${id}.${field}`).toBe(true)
     }
   })
 
